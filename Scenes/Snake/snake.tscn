@@ -1,0 +1,167 @@
+[gd_scene load_steps=19 format=3 uid="uid://b6i8phvj5ixr3"]
+
+[ext_resource type="Script" path="res://Scenes/Snake/snake.gd" id="1_dmhks"]
+[ext_resource type="Texture2D" uid="uid://b77wl21fkaev" path="res://Assets/Snake/Red_Snake/snake_idle.png" id="2_n88ot"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmli4"]
+atlas = ExtResource("2_n88ot")
+region = Rect2(0, 0, 40, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5q0e2"]
+atlas = ExtResource("2_n88ot")
+region = Rect2(40, 0, 40, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uyc2v"]
+atlas = ExtResource("2_n88ot")
+region = Rect2(0, 29, 40, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tkvy7"]
+atlas = ExtResource("2_n88ot")
+region = Rect2(40, 29, 40, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wh0b5"]
+atlas = ExtResource("2_n88ot")
+region = Rect2(0, 58, 40, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lq4om"]
+atlas = ExtResource("2_n88ot")
+region = Rect2(40, 58, 40, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ds5nm"]
+atlas = ExtResource("2_n88ot")
+region = Rect2(0, 87, 40, 29)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v8osn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmli4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5q0e2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uyc2v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tkvy7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wh0b5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lq4om")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ds5nm")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_vkw2x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_5pm7j"]
+resource_name = "idle"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tvdpw"]
+_data = {
+"RESET": SubResource("Animation_vkw2x"),
+"idle": SubResource("Animation_5pm7j")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ryj1c"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_r7bt1"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_lvq38"]
+states/idle/node = SubResource("AnimationNodeAnimation_ryj1c")
+states/idle/position = Vector2(451, 91)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_r7bt1")]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_vyxcb"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2rkju"]
+radius = 5.0
+height = 24.0
+
+[node name="Snake" type="CharacterBody2D"]
+script = ExtResource("1_dmhks")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_v8osn")
+animation = &"idle"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_tvdpw")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_lvq38")
+anim_player = NodePath("../AnimatedSprite2D/AnimationPlayer")
+active = true
+parameters/playback = SubResource("AnimationNodeStateMachinePlayback_vyxcb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, 0)
+shape = SubResource("CapsuleShape2D_2rkju")

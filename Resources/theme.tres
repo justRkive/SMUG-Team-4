@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bafyavu7yhamd"]
+
+[ext_resource type="FontFile" uid="uid://c4wyue846wsni" path="res://Resources/Kubasta.ttf" id="1_631hp"]
+
+[resource]
+Label/fonts/font = ExtResource("1_631hp")
+MarginContainer/constants/margin_bottom = 30
+MarginContainer/constants/margin_left = 30
+MarginContainer/constants/margin_right = 30
+MarginContainer/constants/margin_top = 30
