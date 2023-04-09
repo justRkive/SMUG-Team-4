@@ -1,11 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://1rvgpa1tr821"]
+[gd_scene load_steps=4 format=3 uid="uid://1rvgpa1tr821"]
 
 [ext_resource type="Theme" uid="uid://bafyavu7yhamd" path="res://Resources/theme.tres" id="1_ejiga"]
+[ext_resource type="PackedScene" uid="uid://c50tbrvq30c3w" path="res://Scenes/World/world.tscn" id="1_ptm45"]
 
 [sub_resource type="GDScript" id="GDScript_tbflc"]
 script/source = "extends MarginContainer
 @onready var play = %Play
 @onready var exit = %Exit
+
+@export var main_scene = PackedScene
 
 
 # Called when the node enters the scene tree for the first time.
@@ -15,7 +18,7 @@ func _ready():
 
 
 func _on_play_pressed():
-	get_tree().change_scene_to_file(\"res://Scenes/World/world.tscn\")
+	get_tree().change_scene_to_packed(main_scene)
 	
 func _on_exit_pressed():
 	get_tree().quit()
@@ -28,14 +31,16 @@ func _process(delta):
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1.0
 offset_top = -3.0
-offset_right = 9.0
+offset_right = 10.0
 offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 script = SubResource("GDScript_tbflc")
+main_scene = ExtResource("1_ptm45")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
@@ -48,7 +53,6 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("1_ejiga")
-metadata/_edit_group_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
 custom_minimum_size = Vector2(100, 100)
@@ -57,6 +61,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
+theme_type_variation = &"biglabel"
 text = "Battle Menu
 "
 horizontal_alignment = 1

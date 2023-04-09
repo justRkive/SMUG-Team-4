@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://b6i8phvj5ixr3"]
+[gd_scene load_steps=20 format=3 uid="uid://b6i8phvj5ixr3"]
 
 [ext_resource type="Script" path="res://Scenes/Snake/snake.gd" id="1_dmhks"]
 [ext_resource type="Texture2D" uid="uid://b77wl21fkaev" path="res://Assets/Snake/Red_Snake/snake_idle.png" id="2_n88ot"]
+[ext_resource type="PackedScene" uid="uid://tcmm27hffiwg" path="res://Scenes/Pause_menu/pause_menu.tscn" id="3_kob20"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nmli4"]
 atlas = ExtResource("2_n88ot")
@@ -165,3 +166,19 @@ parameters/playback = SubResource("AnimationNodeStateMachinePlayback_vyxcb")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(4, 0)
 shape = SubResource("CapsuleShape2D_2rkju")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("3_kob20")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -199.0
+offset_top = -216.0
+offset_right = 61.0
+offset_bottom = 103.0
+rotation = -0.00668926
+scale = Vector2(1.6187, 1.48165)
+metadata/_edit_group_ = true

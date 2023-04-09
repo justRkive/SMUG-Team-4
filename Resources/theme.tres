@@ -1,10 +1,37 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bafyavu7yhamd"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bafyavu7yhamd"]
 
 [ext_resource type="FontFile" uid="uid://c4wyue846wsni" path="res://Resources/Kubasta.ttf" id="1_631hp"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x26cl"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 0.365, 0.365, 1)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_detail = 1
+
 [resource]
-Label/fonts/font = ExtResource("1_631hp")
+default_font = ExtResource("1_631hp")
+default_font_size = 30
+BigLabel/base_type = &"Label"
+BigLabel/constants/line_spacing = 0
+BigLabel/constants/outline_size = 0
+BigLabel/constants/shadow_offset_x = 0
+BigLabel/constants/shadow_offset_y = 0
+BigLabel/constants/shadow_outline_size = 0
+BigLabel/font_sizes/font_size = 42
+BigLabel/styles/normal = SubResource("StyleBoxFlat_x26cl")
 MarginContainer/constants/margin_bottom = 30
 MarginContainer/constants/margin_left = 30
 MarginContainer/constants/margin_right = 30
 MarginContainer/constants/margin_top = 30
+biglabel/base_type = &"Label"
+biglabel/font_sizes/font_size = 42
+small_buttom/base_type = &"Button"
+small_label/base_type = &"Label"
+small_label/font_sizes/font_size = 32
