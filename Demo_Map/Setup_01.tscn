@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://c5qt82dxyupoi"]
+
+[ext_resource type="PackedScene" uid="uid://cjqu0rub50sdp" path="res://player.tscn" id="2_0gjkp"]
+[ext_resource type="PackedScene" uid="uid://denalp5rpke1j" path="res://mapa_proto.tscn" id="3_5tb5k"]
+[ext_resource type="Script" path="res://player.gd" id="3_dahfc"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fjiud"]
+sky_top_color = Color(0.352941, 0.67451, 0.686275, 1)
+sky_horizon_color = Color(0.388235, 0.67451, 0.858824, 1)
+ground_bottom_color = Color(0.2, 0.168627, 0.133333, 1)
+ground_horizon_color = Color(0.60098, 0.706863, 0.756863, 1)
+
+[sub_resource type="Sky" id="Sky_0xpb8"]
+sky_material = SubResource("ProceduralSkyMaterial_fjiud")
+
+[sub_resource type="Environment" id="Environment_s5s3p"]
+background_mode = 2
+sky = SubResource("Sky_0xpb8")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_8gb21"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_s5s3p")
+camera_attributes = SubResource("CameraAttributesPhysical_8gb21")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.72835, -0.559927, 0.394952, -0.461564, 0.826932, 0.321156, -0.506423, 0.0516186, -0.860739, 0.568107, 0.205331, -0.930693)
+shadow_enabled = true
+
+[node name="serpiente" parent="." instance=ExtResource("2_0gjkp")]
+transform = Transform3D(-0.342144, 0, 1.49012e-08, 0, 0.342144, 0, -1.49012e-08, 0, -0.342144, -13.6661, -1.96733, -10.7755)
+script = ExtResource("3_dahfc")
+
+[node name="mapaa" parent="." instance=ExtResource("3_5tb5k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -4, 2)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1.39091e-08, 1, 4.49794e-08, 1.20522e-08, -4.49794e-08, 1, 1, 1.39091e-08, -1.20522e-08, 8.57872, 34.0764, -7.58616)
