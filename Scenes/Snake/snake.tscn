@@ -1,70 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://b6i8phvj5ixr3"]
+[gd_scene load_steps=11 format=3 uid="uid://b6i8phvj5ixr3"]
 
-[ext_resource type="Script" path="res://Scenes/Snake/snake.gd" id="1_dmhks"]
-[ext_resource type="Texture2D" uid="uid://b77wl21fkaev" path="res://Assets/Snake/Red_Snake/snake_idle.png" id="2_n88ot"]
-[ext_resource type="PackedScene" uid="uid://tcmm27hffiwg" path="res://Scenes/Pause_menu/pause_menu.tscn" id="3_kob20"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nmli4"]
-atlas = ExtResource("2_n88ot")
-region = Rect2(0, 0, 40, 29)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5q0e2"]
-atlas = ExtResource("2_n88ot")
-region = Rect2(40, 0, 40, 29)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uyc2v"]
-atlas = ExtResource("2_n88ot")
-region = Rect2(0, 29, 40, 29)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tkvy7"]
-atlas = ExtResource("2_n88ot")
-region = Rect2(40, 29, 40, 29)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wh0b5"]
-atlas = ExtResource("2_n88ot")
-region = Rect2(0, 58, 40, 29)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lq4om"]
-atlas = ExtResource("2_n88ot")
-region = Rect2(40, 58, 40, 29)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ds5nm"]
-atlas = ExtResource("2_n88ot")
-region = Rect2(0, 87, 40, 29)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_v8osn"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nmli4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5q0e2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uyc2v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tkvy7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wh0b5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lq4om")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ds5nm")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"new_animation",
-"speed": 5.0
-}]
+[ext_resource type="Script" path="res://Scenes/Snake/Snake.gd" id="1_82ax1"]
+[ext_resource type="SpriteFrames" uid="uid://j08g7gjt00m4" path="res://Scenes/Snake/idle_animiation/snake.tres" id="2_qnjb4"]
+[ext_resource type="Script" path="res://Utility/hurt_box.gd" id="3_7ntqe"]
+[ext_resource type="PackedScene" uid="uid://tcmm27hffiwg" path="res://Scenes/Pause_menu/pause_menu.tscn" id="3_53i7j"]
 
 [sub_resource type="Animation" id="Animation_vkw2x"]
 length = 0.001
@@ -91,6 +30,35 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_snmcr"]
+resource_name = "die"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"die"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
 }
 
 [sub_resource type="Animation" id="Animation_5pm7j"]
@@ -125,50 +93,49 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tvdpw"]
 _data = {
 "RESET": SubResource("Animation_vkw2x"),
+"die": SubResource("Animation_snmcr"),
 "idle": SubResource("Animation_5pm7j")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ryj1c"]
-animation = &"idle"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_r7bt1"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_lvq38"]
-states/idle/node = SubResource("AnimationNodeAnimation_ryj1c")
-states/idle/position = Vector2(451, 91)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_r7bt1")]
-
-[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_vyxcb"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rnyem"]
+radius = 7.0
+height = 22.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2rkju"]
 radius = 5.0
 height = 24.0
 
-[node name="Snake" type="CharacterBody2D"]
-script = ExtResource("1_dmhks")
+[node name="red_snake" type="CharacterBody2D" groups=["atacable", "player_reed"]]
+script = ExtResource("1_82ax1")
 
 [node name="Pivot" type="Node2D" parent="."]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Pivot"]
-sprite_frames = SubResource("SpriteFrames_v8osn")
+[node name="AnimatedSpritReed" type="AnimatedSprite2D" parent="Pivot" groups=["atacable"]]
+sprite_frames = ExtResource("2_qnjb4")
 animation = &"idle"
-frame = 6
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Pivot/AnimatedSprite2D"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Pivot/AnimatedSpritReed"]
 libraries = {
 "": SubResource("AnimationLibrary_tvdpw")
 }
 
-[node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource("AnimationNodeStateMachine_lvq38")
-anim_player = NodePath("../Pivot/AnimatedSprite2D/AnimationPlayer")
-active = true
-parameters/playback = SubResource("AnimationNodeStateMachinePlayback_vyxcb")
+[node name="HurtBox" type="Area2D" parent="Pivot"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("3_7ntqe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/HurtBox"]
+position = Vector2(5, 0)
+shape = SubResource("CapsuleShape2D_rnyem")
+debug_color = Color(0.94902, 0.137255, 0.458824, 0.419608)
+
+[node name="DisableTimer" type="Timer" parent="Pivot/HurtBox"]
+wait_time = 0.5
+one_shot = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("3_kob20")]
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("3_53i7j")]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -185,3 +152,14 @@ metadata/_edit_group_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(4, 0)
 shape = SubResource("CapsuleShape2D_2rkju")
+
+[node name="DeadTimer" type="Timer" parent="."]
+
+[node name="AttackTimer" type="Timer" parent="."]
+
+[connection signal="area_entered" from="Pivot/HurtBox" to="." method="_on_hurt_box_area_entered"]
+[connection signal="area_entered" from="Pivot/HurtBox" to="Pivot/HurtBox" method="_on_area_entered" flags=18]
+[connection signal="hurt" from="Pivot/HurtBox" to="." method="_on_hurt_box_hurt"]
+[connection signal="timeout" from="Pivot/HurtBox/DisableTimer" to="Pivot/HurtBox" method="_on_disable_timer_timeout" flags=18]
+[connection signal="timeout" from="DeadTimer" to="." method="_on_dead_timer_timeout"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

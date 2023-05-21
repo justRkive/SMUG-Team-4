@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://c50tbrvq30c3w"]
+[gd_scene load_steps=13 format=3 uid="uid://c50tbrvq30c3w"]
 
 [ext_resource type="Texture2D" uid="uid://dnhye3evpje8l" path="res://Assets/Maps/Cave/Tiles-and-Some-Props.png" id="2_7ggcx"]
-[ext_resource type="PackedScene" uid="uid://b6i8phvj5ixr3" path="res://Scenes/Snake/snake.tscn" id="2_gl6sn"]
+[ext_resource type="PackedScene" uid="uid://b6i8phvj5ixr3" path="res://Scenes/Snake/Snake.tscn" id="2_gl6sn"]
 [ext_resource type="Texture2D" uid="uid://diyaqww4iuu5l" path="res://Assets/Icons of powers/UI_Flat_Button_Large_Press_01a2.png" id="3_dytg1"]
 [ext_resource type="Texture2D" uid="uid://ctrwvrn31ax00" path="res://Assets/Maps/Cave/Preview.png" id="3_f776w"]
 [ext_resource type="FontFile" uid="uid://c4wyue846wsni" path="res://Resources/Kubasta.ttf" id="4_k3t5y"]
+[ext_resource type="PackedScene" uid="uid://ci2pw58msbryp" path="res://Scenes/Green_Snake/green_snake.tscn" id="6_18dit"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yit01"]
 texture = ExtResource("3_f776w")
@@ -3521,3 +3522,7 @@ theme_override_fonts/font = ExtResource("4_k3t5y")
 text = "x3
 "
 horizontal_alignment = 1
+
+[node name="green_snake" parent="." instance=ExtResource("6_18dit")]
+position = Vector2(565.826, 126.32)
+scale = Vector2(3, 3)
