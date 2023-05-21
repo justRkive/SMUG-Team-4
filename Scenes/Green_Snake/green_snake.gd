@@ -30,12 +30,14 @@ func attack():
 	var blueball_attack = BlueBall.instantiate()
 	var pivot = blueball_attack.get_node("%Pivot")
 	blueball_attack.target = loking
-	blueball_attack.position = global_position + Vector2(sign(loking.x)*40,0)
 	pivot.scale.x = -sign(loking.x)
 	if rotation>0:
+		blueball_attack.position = global_position + Vector2(sign(loking.x)*50,sign(loking.y)*8)
 		pivot.rotation = loking.angle()
-		if rotation>1.6:
+		if rotation>1.5707:
 			pivot.scale.x = sign(loking.x)
+	else:
+		blueball_attack.position = global_position + Vector2(sign(loking.x)*50,-12)
 	add_child(blueball_attack)
 
 	
