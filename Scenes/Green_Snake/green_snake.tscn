@@ -159,8 +159,8 @@ unique_name_in_owner = true
 
 [node name="HurtBoxGreen" type="Area2D" parent="Pivot" groups=["atacable"]]
 position = Vector2(-3, 0)
-collision_layer = 6
-collision_mask = 6
+collision_layer = 0
+collision_mask = 4
 script = ExtResource("5_ypi4v")
 
 [node name="DisableTimer" type="Timer" parent="Pivot/HurtBoxGreen"]

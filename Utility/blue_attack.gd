@@ -1,11 +1,7 @@
 extends Area2D
-@onready var dir
-var level=1
-var hp = 1
+
 var speed = 100
-var damage=5
-var knock_amount = 100
-var attack_size = 1.0
+var damage = 5
 var longevity = 5
 var timer_ataque = 1
 @onready var animation_tree = $AnimationTree
@@ -25,15 +21,7 @@ func _ready():
 	timer.start()
 	timer_rafaga.wait_time = timer_ataque
 	timer_rafaga.start()
-	
-	match level:
-		1:
-			hp = 1
-			speed = 100
-			damage = 5
-			knock_amount = 100
-			attack_size = 1.0
-			
+
 
 func _physics_process(delta):
 	global_position = global_position + target*speed*delta

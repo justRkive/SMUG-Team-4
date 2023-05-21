@@ -18,6 +18,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var animated_sprit_reed = $Pivot/AnimatedSpritReed
 @onready var attack_timer = $AttackTimer
 
+
 #Attack
 var BlueBall = preload("res://Utility/blue_attack.tscn")
 
@@ -29,16 +30,17 @@ func rotar():
 
 func attack():
 	var blueball_attack = BlueBall.instantiate()
+	blueball_attack.set_collision_layer_value(3, true)
 	var pivot = blueball_attack.get_node("%Pivot")
 	blueball_attack.target = loking
 	pivot.scale.x = -sign(loking.x)
 	if rotation>0:
-		blueball_attack.position = global_position + Vector2(sign(loking.x)*50,sign(loking.y)*8)
+		blueball_attack.position = global_position # + Vector2(sign(loking.x)*50,sign(loking.y)*8)
 		pivot.rotation = loking.angle()
 		if rotation>1.5707:
 			pivot.scale.x = sign(loking.x)
 	else:
-		blueball_attack.position = global_position + Vector2(sign(loking.x)*50,-12)
+		blueball_attack.position = global_position# + Vector2(sign(loking.x)*50,-12)
 	add_child(blueball_attack)
 
 
@@ -97,6 +99,7 @@ func _on_hurt_box_area_entered(area):
 	if area.is_in_group("blue_ball"):
 		var damage = area.damage
 		hp-=damage
+		print(hp)
 		if hp<=0:
 			animated_sprit_reed.play("die")
 			dead_timer.wait_time = 1
