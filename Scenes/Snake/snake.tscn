@@ -9,6 +9,7 @@ script/source = "extends CharacterBody2D
 
 var permiso_atacar = true
 const SPEED = 200.0
+var velocidad_ataque = 400
 var angulo = 0
 var loking = Vector2.RIGHT
 var last_direction = 1
@@ -36,16 +37,18 @@ func rotar():
 
 func attack():
 	var blueball_attack = BlueBall.instantiate()
+	blueball_attack.set_collision_layer_value(3, true)
 	var pivot = blueball_attack.get_node(\"%Pivot\")
 	blueball_attack.target = loking
+	blueball_attack.speed = velocidad_ataque
 	pivot.scale.x = -sign(loking.x)
 	if rotation>0:
-		blueball_attack.position = global_position + Vector2(sign(loking.x)*50,sign(loking.y)*8)
+		blueball_attack.position = global_position 
 		pivot.rotation = loking.angle()
 		if rotation>1.5707:
 			pivot.scale.x = sign(loking.x)
 	else:
-		blueball_attack.position = global_position + Vector2(sign(loking.x)*50,-12)
+		blueball_attack.position = global_position 
 	add_child(blueball_attack)
 
 
@@ -233,8 +236,8 @@ libraries = {
 }
 
 [node name="HurtBox" type="Area2D" parent="Pivot"]
-collision_layer = 4
-collision_mask = 4
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("3_7ntqe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Pivot/HurtBox"]

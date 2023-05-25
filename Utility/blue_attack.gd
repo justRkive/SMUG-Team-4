@@ -2,7 +2,7 @@ extends Area2D
 @onready var dir
 var level=1
 var hp = 1
-var speed = 100
+var speed = 10000
 var damage=5
 var knock_amount = 100
 var attack_size = 1.0

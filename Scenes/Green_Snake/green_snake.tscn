@@ -9,6 +9,7 @@
 script/source = "extends CharacterBody2D
 
 const SPEED = 200.0
+var velocidad_ataque = 400
 var permiso_atacar = true
 var angulo = 0
 var loking = Vector2.RIGHT
@@ -36,17 +37,20 @@ func rotar():
 
 func attack():
 	var blueball_attack = BlueBall.instantiate()
+	blueball_attack.set_collision_layer_value(2, true)
 	var pivot = blueball_attack.get_node(\"%Pivot\")
 	blueball_attack.target = loking
+	blueball_attack.speed = velocidad_ataque
 	pivot.scale.x = -sign(loking.x)
 	if rotation>0:
-		blueball_attack.position = global_position + Vector2(sign(loking.x)*50,sign(loking.y)*8)
+		blueball_attack.position = global_position
 		pivot.rotation = loking.angle()
 		if rotation>1.5707:
 			pivot.scale.x = sign(loking.x)
 	else:
-		blueball_attack.position = global_position + Vector2(sign(loking.x)*50,-12)
+		blueball_attack.position = global_position 
 	add_child(blueball_attack)
+
 
 	
 
@@ -274,8 +278,8 @@ unique_name_in_owner = true
 
 [node name="HurtBoxGreen" type="Area2D" parent="Pivot" groups=["atacable"]]
 position = Vector2(-3, 0)
-collision_layer = 6
-collision_mask = 6
+collision_layer = 0
+collision_mask = 4
 script = ExtResource("5_ypi4v")
 
 [node name="DisableTimer" type="Timer" parent="Pivot/HurtBoxGreen"]
