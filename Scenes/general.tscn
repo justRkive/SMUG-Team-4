@@ -1,0 +1,509 @@
+[gd_scene load_steps=31 format=3 uid="uid://datkwxa046xoe"]
+
+[ext_resource type="PackedScene" uid="uid://cpfp0lug3q7ec" path="res://scenes/mapa.tscn" id="1_k6gn1"]
+[ext_resource type="PackedScene" uid="uid://b2o8ce4nbfjak" path="res://scenes/serpiente_2.tscn" id="2_27tdm"]
+[ext_resource type="PackedScene" uid="uid://ce2lri86aqfxq" path="res://scenes/serpiente.tscn" id="2_c8t22"]
+[ext_resource type="Script" path="res://scripts/SubViewportContainer.gd" id="3_ovim0"]
+[ext_resource type="Script" path="res://scripts/serpiente_2.gd" id="3_u8fuu"]
+[ext_resource type="Shader" path="res://shader/pixelart_stylizer.gdshader" id="3_uwvlc"]
+[ext_resource type="Script" path="res://scripts/detector_2.gd" id="4_7587m"]
+[ext_resource type="Script" path="res://scripts/detector_1.gd" id="6_nt5vx"]
+[ext_resource type="FontFile" uid="uid://b3830y4uiulde" path="res://fonts/magofonts/mago1.ttf" id="7_apc04"]
+[ext_resource type="Script" path="res://scripts/Label2.gd" id="8_tyni4"]
+[ext_resource type="Script" path="res://scripts/Label3.gd" id="8_xhipt"]
+[ext_resource type="Script" path="res://scripts/Label.gd" id="9_741ex"]
+[ext_resource type="PackedScene" uid="uid://mv1cedb3km7x" path="res://assets/dado.glb" id="9_uj43o"]
+[ext_resource type="Script" path="res://scripts/dado.gd" id="10_feiti"]
+
+[sub_resource type="Sky" id="Sky_rtyq0"]
+
+[sub_resource type="Environment" id="Environment_0flt4"]
+background_mode = 1
+background_color = Color(0.403922, 0.537255, 0.894118, 1)
+sky = SubResource("Sky_rtyq0")
+
+[sub_resource type="LabelSettings" id="LabelSettings_sjury"]
+font = ExtResource("7_apc04")
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_l88yt"]
+font = ExtResource("7_apc04")
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_a5lw8"]
+font = ExtResource("7_apc04")
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_bh6k2"]
+font = ExtResource("7_apc04")
+font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_ysq4f"]
+font = ExtResource("7_apc04")
+font_size = 40
+
+[sub_resource type="GDScript" id="GDScript_inynm"]
+script/source = "extends Camera3D
+@onready var serpiente = $\"../../../serpiente\"
+@onready var serpiente_2 = $\"../../../serpiente2\"
+const altura_camara=4
+@onready var dado = $dado
+
+@export var mapa=0
+
+func _physics_process(delta):
+	if mapa==0 and dado.jugador_actual==0 and serpiente.movimientos_disponibles==0 and serpiente_2.movimientos_disponibles==0:
+		$\".\".position.x=(serpiente.position.x)+(cos(serpiente.rotation.y)*0.5)
+		$\".\".position.y=serpiente.position.y+0.3
+		$\".\".position.z=(serpiente.position.z)-(sin(serpiente.rotation.y)*0.5)
+	
+		$\".\".rotation.x = deg_to_rad(-32.6)
+		$\".\".rotation.y	= serpiente.rotation.y+deg_to_rad(92)
+		$\".\".rotation.z	= deg_to_rad(0)
+	if mapa==1 and dado.jugador_actual==0 and serpiente.movimientos_disponibles==0 and serpiente_2.movimientos_disponibles==0:
+		$\".\".position.x=serpiente.position.x
+		$\".\".position.y=serpiente.position.y+altura_camara
+		$\".\".position.z=serpiente.position.z
+		
+		$\".\".rotation.x=deg_to_rad(270)
+		$\".\".rotation.y=deg_to_rad(0)
+		$\".\".rotation.z=deg_to_rad(0)	
+	if mapa==0 and dado.jugador_actual==1 and serpiente.movimientos_disponibles==0 and serpiente_2.movimientos_disponibles==0:
+		$\".\".position.x=(serpiente_2.position.x)+(cos(serpiente_2.rotation.y)*0.5)
+		$\".\".position.y=serpiente_2.position.y+0.3
+		$\".\".position.z=(serpiente_2.position.z)-(sin(serpiente_2.rotation.y)*0.5)
+	
+		$\".\".rotation.x = deg_to_rad(-32.6)
+		$\".\".rotation.y	= serpiente_2.rotation.y+deg_to_rad(92)
+		$\".\".rotation.z	= deg_to_rad(0)
+	if mapa==1 and dado.jugador_actual==1 and serpiente.movimientos_disponibles==0 and serpiente_2.movimientos_disponibles==0:
+		$\".\".position.x=serpiente_2.position.x
+		$\".\".position.y=serpiente_2.position.y+altura_camara
+		$\".\".position.z=serpiente_2.position.z
+		
+		$\".\".rotation.x=deg_to_rad(270)
+		$\".\".rotation.y=deg_to_rad(0)
+		$\".\".rotation.z=deg_to_rad(0)
+		
+	if mapa==0 and dado.jugador_actual==1 and serpiente.movimientos_disponibles!=0:
+		$\".\".position.x=(serpiente.position.x)+(cos(serpiente.rotation.y)*0.5)
+		$\".\".position.y=serpiente.position.y+0.3
+		$\".\".position.z=(serpiente.position.z)-(sin(serpiente.rotation.y)*0.5)
+	
+		$\".\".rotation.x = deg_to_rad(-32.6)
+		$\".\".rotation.y	= serpiente.rotation.y+deg_to_rad(92)
+		$\".\".rotation.z	= deg_to_rad(0)
+	if mapa==1 and dado.jugador_actual==1 and serpiente.movimientos_disponibles!=0:
+		$\".\".position.x=serpiente.position.x
+		$\".\".position.y=serpiente.position.y+altura_camara
+		$\".\".position.z=serpiente.position.z
+		
+		$\".\".rotation.x=deg_to_rad(270)
+		$\".\".rotation.y=deg_to_rad(0)
+		$\".\".rotation.z=deg_to_rad(0)	
+		
+	if mapa==0 and dado.jugador_actual==0 and serpiente_2.movimientos_disponibles!=0:
+		$\".\".position.x=(serpiente_2.position.x)+(cos(serpiente_2.rotation.y)*0.5)
+		$\".\".position.y=serpiente_2.position.y+0.3
+		$\".\".position.z=(serpiente_2.position.z)-(sin(serpiente_2.rotation.y)*0.5)
+	
+		$\".\".rotation.x = deg_to_rad(-32.6)
+		$\".\".rotation.y	= serpiente_2.rotation.y+deg_to_rad(92)
+		$\".\".rotation.z	= deg_to_rad(0)
+	if mapa==1 and dado.jugador_actual==0 and serpiente_2.movimientos_disponibles!=0:
+		$\".\".position.x=serpiente_2.position.x
+		$\".\".position.y=serpiente_2.position.y+altura_camara
+		$\".\".position.z=serpiente_2.position.z
+		
+		$\".\".rotation.x=deg_to_rad(270)
+		$\".\".rotation.y=deg_to_rad(0)
+		$\".\".rotation.z=deg_to_rad(0)			
+		
+						
+	if Input.is_action_just_pressed(\"mapa\"):
+		mapa=(mapa+1)%2
+
+"
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4q6fp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pgkr7"]
+render_priority = 0
+shader = ExtResource("3_uwvlc")
+shader_parameter/shadows_enabled = true
+shader_parameter/highlights_enabled = true
+shader_parameter/shadow_strength = 0.4
+shader_parameter/highlight_strength = 0.1
+shader_parameter/highlight_color = Color(1, 1, 1, 1)
+shader_parameter/shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hsxiw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vmxgk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fv2ka"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_672lx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wyca4"]
+size = Vector3(1.09264, 1.34711, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q1dku"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_0flt4")
+
+[node name="mapa" parent="." instance=ExtResource("1_k6gn1")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0.59703, -0.0280147, -1.5421)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.79193, 0)
+light_energy = 16.0
+omni_range = 48.117
+
+[node name="serpiente2" parent="." instance=ExtResource("2_27tdm")]
+transform = Transform3D(-0.07, 0, -6.11959e-09, 0, 0.07, 0, 6.11959e-09, 0, -0.07, -6.03453, -4.749, 0.300928)
+script = ExtResource("3_u8fuu")
+
+[node name="detector_derecha_2" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.035, -4.749, 0.301)
+target_position = Vector3(1, 0, 0)
+collide_with_areas = true
+collide_with_bodies = false
+script = ExtResource("4_7587m")
+
+[node name="detector_abajo_2" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.035, -4.749, 0.301)
+target_position = Vector3(0, 0, 1)
+collide_with_areas = true
+collide_with_bodies = false
+script = ExtResource("4_7587m")
+
+[node name="detector_izquierda_2" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.035, -4.749, 0.301)
+target_position = Vector3(-1, 0, 0)
+collide_with_areas = true
+collide_with_bodies = false
+script = ExtResource("4_7587m")
+
+[node name="detector_arriba_2" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.035, -4.749, 0.301)
+target_position = Vector3(0, 0, -1)
+collide_with_areas = true
+collide_with_bodies = false
+script = ExtResource("4_7587m")
+
+[node name="serpiente" parent="." instance=ExtResource("2_c8t22")]
+transform = Transform3D(-0.07, 0, 1.05697e-08, 0, 0.07, 0, -1.05697e-08, 0, -0.07, -6.07496, -4.74862, 0.443309)
+
+[node name="detector_derecha_1" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.64971, -4.68105, 0.374878)
+exclude_parent = false
+target_position = Vector3(1, 0, 0)
+collide_with_areas = true
+collide_with_bodies = false
+script = ExtResource("6_nt5vx")
+
+[node name="detector_abajo_1" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.05, -4.681, 0.875)
+target_position = Vector3(0, 0, 1)
+collide_with_areas = true
+collide_with_bodies = false
+script = ExtResource("6_nt5vx")
+
+[node name="detector_izquierda_1" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.65, -4.681, 0.375)
+target_position = Vector3(-1, 0, 0)
+collide_with_areas = true
+collide_with_bodies = false
+script = ExtResource("6_nt5vx")
+
+[node name="detector_arriba_1" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.15, -4.781, -0.225)
+target_position = Vector3(0, 0, -1)
+collide_with_areas = true
+collide_with_bodies = false
+script = ExtResource("6_nt5vx")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 3.0
+offset_right = 5.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+stretch_shrink = 2
+
+[node name="Control" type="Control" parent="SubViewportContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="SubViewportContainer/Control"]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 537.0
+offset_right = 79.0
+offset_bottom = 577.0
+scale = Vector2(6.06888, 2.88008)
+
+[node name="Panel" type="Panel" parent="SubViewportContainer/Control/PanelContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SubViewportContainer/Control"]
+top_level = true
+layout_mode = 2
+offset_left = 58.0
+offset_top = 574.0
+offset_right = 233.0
+offset_bottom = 618.0
+
+[node name="Label" type="Label" parent="SubViewportContainer/Control/HBoxContainer"]
+layout_mode = 2
+text = "Ronda:"
+label_settings = SubResource("LabelSettings_sjury")
+
+[node name="Label2" type="Label" parent="SubViewportContainer/Control/HBoxContainer"]
+layout_mode = 2
+text = "test"
+label_settings = SubResource("LabelSettings_l88yt")
+script = ExtResource("8_xhipt")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="SubViewportContainer/Control"]
+layout_mode = 2
+offset_left = 53.0
+offset_top = 605.0
+offset_right = 250.0
+offset_bottom = 645.0
+
+[node name="Label" type="Label" parent="SubViewportContainer/Control/HBoxContainer2"]
+layout_mode = 2
+text = "turno jugador:"
+label_settings = SubResource("LabelSettings_a5lw8")
+
+[node name="Label2" type="Label" parent="SubViewportContainer/Control/HBoxContainer2"]
+layout_mode = 2
+text = "1"
+label_settings = SubResource("LabelSettings_bh6k2")
+script = ExtResource("8_tyni4")
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="SubViewportContainer/Control"]
+layout_mode = 0
+offset_left = 53.0
+offset_top = 537.0
+offset_right = 109.0
+offset_bottom = 577.0
+
+[node name="Label" type="Label" parent="SubViewportContainer/Control/HBoxContainer3"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_ysq4f")
+script = ExtResource("9_741ex")
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(576, 324)
+render_target_update_mode = 4
+script = ExtResource("3_ovim0")
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(-0.076719, 0.318019, -0.944975, 0, 0.947769, 0.318959, 0.997053, 0.0244702, -0.0727118, -17.545, -3.994, 0.71)
+current = true
+fov = 100.0
+script = SubResource("GDScript_inynm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Camera3D"]
+transform = Transform3D(3, 0, 0, 0, -1.31134e-07, -3, 0, 3, -1.31134e-07, 0, 0, -0.822127)
+mesh = SubResource("PlaneMesh_4q6fp")
+surface_material_override/0 = SubResource("ShaderMaterial_pgkr7")
+
+[node name="dado" parent="SubViewportContainer/SubViewport/Camera3D" instance=ExtResource("9_uj43o")]
+transform = Transform3D(-0.0559118, -0.0163146, 0.0388291, -0.0185841, 0.0674693, 0.00158811, -0.0377955, -0.00904016, -0.0582218, -0.604, -0.178, -0.406)
+script = ExtResource("10_feiti")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.96629, -5.35243, 1.63735)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(4, 0, 0, 0, 2, 0, 0, 0, 1.5, 0.912648, 0.6408, 0)
+shape = SubResource("BoxShape3D_hsxiw")
+
+[node name="Area3D2" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.82992, -4.65242, -1.25597)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2"]
+transform = Transform3D(4.5, 0, 0, 0, 2, 0, 0, 0, 1.5, -0.267383, -0.0402331, 0.160892)
+shape = SubResource("BoxShape3D_vmxgk")
+
+[node name="Area3D3" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.82992, -4.65242, -4.65596)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D3"]
+transform = Transform3D(6.5, 0, 0, 0, 2, 0, 0, 0, 4.5, -0.267383, -0.0402331, -0.726876)
+shape = SubResource("BoxShape3D_vmxgk")
+
+[node name="Area3D4" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.82992, -4.65242, 6.82391)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D4"]
+transform = Transform3D(6.5, 0, 0, 0, 2, 0, 0, 0, 4.5, -0.267383, -0.0402331, -0.726876)
+shape = SubResource("BoxShape3D_vmxgk")
+
+[node name="Area3D5" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.253889, -4.33769, 5.1726)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D5"]
+transform = Transform3D(2.8, 0, 0, 0, 2.8, 0, 0, 0, 2.8, 0, 0, 0)
+shape = SubResource("BoxShape3D_fv2ka")
+
+[node name="Area3D6" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.253889, -4.33769, -4.44911)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D6"]
+transform = Transform3D(2.8, 0, 0, 0, 2.8, 0, 0, 0, 2.8, 0, 0, 0)
+shape = SubResource("BoxShape3D_fv2ka")
+
+[node name="Area3D7" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8298, -4.33769, 5.1726)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D7"]
+transform = Transform3D(2.8, 0, 0, 0, 2.8, 0, 0, 0, 2.8, 0, 0, 0)
+shape = SubResource("BoxShape3D_fv2ka")
+
+[node name="Area3D8" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8298, -4.33769, -4.44911)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D8"]
+transform = Transform3D(2.8, 0, 0, 0, 2.8, 0, 0, 0, 2.8, 0, 0, 0)
+shape = SubResource("BoxShape3D_fv2ka")
+
+[node name="Area3D9" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.410554, -5.46781, 1.28646)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D9"]
+transform = Transform3D(6.5, 0, 0, 0, 2, 0, 0, 0, 2, 0.279754, 0.544216, 0.500633)
+shape = SubResource("BoxShape3D_672lx")
+
+[node name="Area3D11" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.410554, -5.46781, -1.64301)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D11"]
+transform = Transform3D(6.5, 0, 0, 0, 2, 0, 0, 0, 2, 0.279754, 0.544216, 0.500633)
+shape = SubResource("BoxShape3D_672lx")
+
+[node name="Area3D13" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.2038, -5.46781, 1.28646)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D13"]
+transform = Transform3D(6.5, 0, 0, 0, 2, 0, 0, 0, 2, 0.279754, 0.544216, 0.500633)
+shape = SubResource("BoxShape3D_672lx")
+
+[node name="Area3D14" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.2038, -5.46781, -1.64301)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D14"]
+transform = Transform3D(6.5, 0, 0, 0, 2, 0, 0, 0, 2, 0.279754, 0.544216, 0.500633)
+shape = SubResource("BoxShape3D_672lx")
+
+[node name="Area3D10" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.34789, -6.60169, 2.80445)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D10"]
+transform = Transform3D(1.5, 0, 0, 0, 2, 0, 0, 0, 3, 0.774577, 1.25957, 0.319695)
+shape = SubResource("BoxShape3D_wyca4")
+
+[node name="Area3D20" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.99386, -6.29915, 6.92917)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D20"]
+transform = Transform3D(3, 0, 0, 0, 2, 0, 0, 0, 3, 0.774577, 1.25957, 0.319695)
+shape = SubResource("BoxShape3D_wyca4")
+
+[node name="Area3D12" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.34789, -6.60169, -2.80207)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D12"]
+transform = Transform3D(1.5, 0, 0, 0, 2, 0, 0, 0, 3, 0.774577, 1.25957, 0.319695)
+shape = SubResource("BoxShape3D_wyca4")
+
+[node name="Area3D19" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.16871, -6.60169, -7.03589)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D19"]
+transform = Transform3D(3, 0, 0, 0, 2, 0, 0, 0, 3, 0.774577, 1.25957, 0.319695)
+shape = SubResource("BoxShape3D_wyca4")
+
+[node name="Area3D21" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.856, -6.29915, 6.92917)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D21"]
+transform = Transform3D(3, 0, 0, 0, 2, 0, 0, 0, 3, 0.774577, 1.25957, 0.319695)
+shape = SubResource("BoxShape3D_wyca4")
+
+[node name="Area3D23" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.9299, -6.29915, 8.88089)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D23"]
+transform = Transform3D(6, 0, 0, 0, 2, 0, 0, 0, 3, 0.774577, 1.25957, 0.319695)
+shape = SubResource("BoxShape3D_wyca4")
+
+[node name="Area3D24" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.827284, -6.29915, 8.88089)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D24"]
+transform = Transform3D(6, 0, 0, 0, 2, 0, 0, 0, 3, 0.774577, 1.25957, 0.319695)
+shape = SubResource("BoxShape3D_wyca4")
+
+[node name="Area3D25" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.827284, -6.29915, -8.77688)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D25"]
+transform = Transform3D(6, 0, 0, 0, 2, 0, 0, 0, 3, 0.774577, 1.25957, 0.319695)
+shape = SubResource("BoxShape3D_wyca4")
+
+[node name="Area3D26" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8287, -6.29915, -8.8524)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D26"]
+transform = Transform3D(6, 0, 0, 0, 2, 0, 0, 0, 3, 0.774577, 1.25957, 0.319695)
+shape = SubResource("BoxShape3D_wyca4")
+
+[node name="Area3D22" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.6812, -6.60169, -7.03589)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D22"]
+transform = Transform3D(3, 0, 0, 0, 2, 0, 0, 0, 3, 0.774577, 1.25957, 0.319695)
+shape = SubResource("BoxShape3D_wyca4")
+
+[node name="Area3D15" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.0073, -6.60169, 2.80445)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D15"]
+transform = Transform3D(1.5, 0, 0, 0, 2, 0, 0, 0, 3, 0.774577, 1.25957, 0.319695)
+shape = SubResource("BoxShape3D_wyca4")
+
+[node name="Area3D16" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.0073, -6.60169, -2.80207)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D16"]
+transform = Transform3D(1.5, 0, 0, 0, 2, 0, 0, 0, 3, 0.774577, 1.25957, 0.319695)
+shape = SubResource("BoxShape3D_wyca4")
+
+[node name="Area3D17" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.7869, -5.33456, -5.13606)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D17"]
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 14, 0.92569, 1.04215, 5.62124)
+shape = SubResource("BoxShape3D_q1dku")
+
+[node name="Area3D18" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.59747, -5.33456, -5.13606)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D18"]
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 14, 0.92569, 1.04215, 5.62124)
+shape = SubResource("BoxShape3D_q1dku")
+
+[connection signal="ronda" from="serpiente2" to="SubViewportContainer/Control/HBoxContainer/Label2" method="_on_serpiente_2_ronda"]

@@ -1,9 +1,66 @@
 [gd_scene load_steps=47 format=3 uid="uid://ve03srovoxp3"]
 
-[ext_resource type="Script" path="res://Scenes/Test_player/character_body_2d.gd" id="1_n3w62"]
-[ext_resource type="Texture2D" uid="uid://27732lit83mx" path="res://Assets/Character/Sprites/player air spin 48x48.png" id="2_p3h1f"]
-[ext_resource type="Texture2D" uid="uid://6xwq1twcmqsf" path="res://Assets/Character/Sprites/Character Idle 48x48.png" id="3_24smb"]
-[ext_resource type="Texture2D" uid="uid://nl667flkbql1" path="res://Assets/Character/Sprites/run cycle 48x48.png" id="4_4vrfa"]
+[ext_resource type="Texture2D" uid="uid://27732lit83mx" path="res://assets/Character/Sprites/player air spin 48x48.png" id="2_p3h1f"]
+[ext_resource type="Texture2D" uid="uid://6xwq1twcmqsf" path="res://assets/Character/Sprites/Character Idle 48x48.png" id="3_24smb"]
+[ext_resource type="Texture2D" uid="uid://nl667flkbql1" path="res://assets/Character/Sprites/run cycle 48x48.png" id="4_4vrfa"]
+
+[sub_resource type="GDScript" id="GDScript_jw318"]
+script/source = "extends CharacterBody2D
+
+
+
+const SPEED = 300.0
+var angulo = 0
+var loking = Vector2.RIGHT
+var up = Vector2.UP
+
+@onready var sprite = $Sprite2D
+
+@onready var animation_tree = $AnimationTree
+@onready var playback = animation_tree.get(\"parameters/playback\")
+
+func _ready():
+	animation_tree.active=true	
+	
+func _physics_process(delta):
+	movement()
+	
+	if Input.is_action_just_pressed(\"ui_accept\"):
+		playback.travel(\"air_spin\")
+		
+	if Input.is_action_just_pressed(\"ui_down\"):
+		playback.travel(\"run\")
+		
+	if Input.is_action_just_pressed(\"ui_up\"):
+		playback.travel(\"idle\")
+		
+func movement():
+	
+	var sentido = Input.get_axis(\"rotar_izq\",\"rotar_der\")
+	rotation += 0.1 * sentido
+	
+	loking = Vector2.from_angle(rotation)
+	up = Vector2.from_angle(rotation-1.5707)
+	
+	
+	var direction_X =  Input.get_axis(\"ui_left\",\"ui_right\")
+	var direction_Y = Input.get_axis(\"ui_down\",\"ui_up\")
+	
+	loking *= direction_X * SPEED
+	up *= direction_Y*SPEED
+	
+	velocity = loking + up
+	
+	
+	if Input.is_action_pressed(\"ui_accept\"):
+		velocity = velocity.normalized()*4*SPEED
+		
+	move_and_slide()
+	
+func _process(delta):
+	pass
+
+"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_31mtr"]
 atlas = ExtResource("2_p3h1f")
@@ -522,7 +579,7 @@ graph_offset = Vector2(0, -160.8)
 
 [node name="Player1" type="CharacterBody2D"]
 position = Vector2(464, 220)
-script = ExtResource("1_n3w62")
+script = SubResource("GDScript_jw318")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)

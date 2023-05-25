@@ -1,0 +1,36 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://dlsdq41g5x1km"]
+
+[ext_resource type="FontFile" uid="uid://bvgx168yqjte4" path="res://fonts/magofonts/mago3.ttf" id="1_kn1m8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1uvvm"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 0.365, 0.365, 1)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_detail = 1
+
+[resource]
+default_font = ExtResource("1_kn1m8")
+default_font_size = 50
+BigLabel/base_type = &"Label"
+BigLabel/colors/font_color = Color(0, 0, 0, 1)
+BigLabel/colors/font_outline_color = Color(0, 0, 0, 1)
+BigLabel/colors/font_shadow_color = Color(0, 0, 0, 1)
+BigLabel/constants/line_spacing = 0
+BigLabel/constants/outline_size = 0
+BigLabel/constants/shadow_offset_x = 0
+BigLabel/constants/shadow_offset_y = 0
+BigLabel/constants/shadow_outline_size = 0
+BigLabel/font_sizes/font_size = 18
+BigLabel/styles/normal = SubResource("StyleBoxFlat_1uvvm")
+Label/fonts/font = ExtResource("1_kn1m8")
+MarginContainer/constants/margin_bottom = 15
+MarginContainer/constants/margin_left = 15
+MarginContainer/constants/margin_right = 15
+MarginContainer/constants/margin_top = 15
