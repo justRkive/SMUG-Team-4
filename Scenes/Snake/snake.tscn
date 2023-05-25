@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://b6i8phvj5ixr3"]
 
-[ext_resource type="SpriteFrames" uid="uid://j08g7gjt00m4" path="res://scenes/Snake/idle_animiation/snake.tres" id="2_qnjb4"]
+[ext_resource type="SpriteFrames" uid="uid://j08g7gjt00m4" path="res://Scenes/Snake/idle_animiation/snake.tres" id="2_qnjb4"]
 [ext_resource type="Script" path="res://Utility/hurt_box.gd" id="3_7ntqe"]
 [ext_resource type="PackedScene" uid="uid://bekvm2gch1soa" path="res://Menu/debug_menu_2d.tscn" id="4_ncqrs"]
 

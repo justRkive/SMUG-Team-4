@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bhf6yu8csqqb0"
-path="res://.godot/imported/Preparing Burst.png-14a5709367a4601a0261e13f9621450d.ctex"
+path="res://.godot/imported/Preparing Burst.png-85e2d62cf53d3be88ceb71bee3c135d1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Character/Wind Effect 02/Preparing Burst.png"
-dest_files=["res://.godot/imported/Preparing Burst.png-14a5709367a4601a0261e13f9621450d.ctex"]
+source_file="res://Assets/Character/Wind Effect 02/Preparing Burst.png"
+dest_files=["res://.godot/imported/Preparing Burst.png-85e2d62cf53d3be88ceb71bee3c135d1.ctex"]
 
 [params]
 

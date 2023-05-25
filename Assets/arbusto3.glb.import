@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dbaequdc7ldb"
-path="res://.godot/imported/arbusto3.glb-bb9ab2e4cbca63cf03400ce76bd958a9.scn"
+path="res://.godot/imported/arbusto3.glb-b91dfd4229e70980b627e97c7074be65.scn"
 
 [deps]
 
-source_file="res://assets/arbusto3.glb"
-dest_files=["res://.godot/imported/arbusto3.glb-bb9ab2e4cbca63cf03400ce76bd958a9.scn"]
+source_file="res://Assets/arbusto3.glb"
+dest_files=["res://.godot/imported/arbusto3.glb-b91dfd4229e70980b627e97c7074be65.scn"]
 
 [params]
 
