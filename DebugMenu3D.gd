@@ -23,6 +23,18 @@ func _on_resume_pressed():
 	hide()
 	
 func _on_restart_pressed():
+	var data ={
+		"guardar_inicio":true
+		}
+	var file = FileAccess.open("user://data.json",FileAccess.WRITE)
+	file.store_string(JSON.stringify(data))
+	var data1={ 
+		"puntuacion1": 0,
+		"puntuacion2": 0,
+		"guardar_inicio":true
+	}
+	var file2 = FileAccess.open("user://data1.json",FileAccess.WRITE)
+	file2.store_string(JSON.stringify(data1))
 	get_tree().reload_current_scene()
 	get_tree().paused = false
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dif0u47ievfyw"
-path="res://.godot/imported/snake_idle.png-97a7e3fa562dc69120b2f46236f3201f.ctex"
+path="res://.godot/imported/snake_idle.png-52327ed11a71db9287251e5e9b5d6a5f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Green_Snake/snake_idle.png"
-dest_files=["res://.godot/imported/snake_idle.png-97a7e3fa562dc69120b2f46236f3201f.ctex"]
+source_file="res://assets/Green_Snake/snake_idle.png"
+dest_files=["res://.godot/imported/snake_idle.png-52327ed11a71db9287251e5e9b5d6a5f.ctex"]
 
 [params]
 

@@ -1,14 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://c50tbrvq30c3w"]
+[gd_scene load_steps=14 format=3 uid="uid://c50tbrvq30c3w"]
 
-[ext_resource type="Texture2D" uid="uid://dnhye3evpje8l" path="res://Assets/Maps/Cave/Tiles-and-Some-Props.png" id="2_7ggcx"]
-[ext_resource type="PackedScene" uid="uid://b6i8phvj5ixr3" path="res://Scenes/Snake/Snake.tscn" id="2_gl6sn"]
-[ext_resource type="Texture2D" uid="uid://diyaqww4iuu5l" path="res://Assets/Icons of powers/UI_Flat_Button_Large_Press_01a2.png" id="3_dytg1"]
-[ext_resource type="Texture2D" uid="uid://ctrwvrn31ax00" path="res://Assets/Maps/Cave/Preview.png" id="3_f776w"]
+[ext_resource type="Script" path="res://scripts/world.gd" id="1_7tmk4"]
+[ext_resource type="Texture2D" uid="uid://dnhye3evpje8l" path="res://assets/Maps/Cave/Tiles-and-Some-Props.png" id="2_7ggcx"]
+[ext_resource type="PackedScene" uid="uid://b6i8phvj5ixr3" path="res://scenes/Snake/snake.tscn" id="2_gl6sn"]
+[ext_resource type="Texture2D" uid="uid://diyaqww4iuu5l" path="res://assets/Icons of powers/UI_Flat_Button_Large_Press_01a2.png" id="3_dytg1"]
+[ext_resource type="Texture2D" uid="uid://ctrwvrn31ax00" path="res://assets/Maps/Cave/Preview.png" id="3_f776w"]
 [ext_resource type="FontFile" uid="uid://c4wyue846wsni" path="res://Resources/Kubasta.ttf" id="4_k3t5y"]
-[ext_resource type="Texture2D" uid="uid://qk8gp32yd5dh" path="res://Assets/Icons of powers/thunder.png" id="5_i7qp4"]
-[ext_resource type="Texture2D" uid="uid://uy10xlggc55k" path="res://Assets/Icons of powers/water.png" id="6_5mqxb"]
-[ext_resource type="PackedScene" uid="uid://ci2pw58msbryp" path="res://Scenes/Green_Snake/green_snake.tscn" id="6_18dit"]
-[ext_resource type="Texture2D" uid="uid://i30eahti0t74" path="res://Assets/Icons of powers/fire.png" id="7_yi1fm"]
+[ext_resource type="Texture2D" uid="uid://qk8gp32yd5dh" path="res://assets/Icons of powers/thunder.png" id="5_i7qp4"]
+[ext_resource type="Texture2D" uid="uid://uy10xlggc55k" path="res://assets/Icons of powers/water.png" id="6_5mqxb"]
+[ext_resource type="PackedScene" uid="uid://ci2pw58msbryp" path="res://scenes/Green_Snake/green_snake.tscn" id="6_18dit"]
+[ext_resource type="Texture2D" uid="uid://i30eahti0t74" path="res://assets/Icons of powers/fire.png" id="7_yi1fm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yit01"]
 texture = ExtResource("3_f776w")
@@ -3418,6 +3419,7 @@ sources/1 = SubResource("TileSetAtlasSource_dwqb2")
 [node name="World" type="Node2D"]
 position = Vector2(189, 165)
 scale = Vector2(0.595589, 0.783721)
+script = ExtResource("1_7tmk4")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(660, 230)

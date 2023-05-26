@@ -1,8 +1,10 @@
-[gd_scene load_steps=31 format=3 uid="uid://datkwxa046xoe"]
+[gd_scene load_steps=38 format=3 uid="uid://datkwxa046xoe"]
 
 [ext_resource type="PackedScene" uid="uid://cpfp0lug3q7ec" path="res://scenes/mapa.tscn" id="1_k6gn1"]
+[ext_resource type="Script" path="res://scripts/general.gd" id="1_lgv2j"]
 [ext_resource type="PackedScene" uid="uid://b2o8ce4nbfjak" path="res://scenes/serpiente_2.tscn" id="2_27tdm"]
 [ext_resource type="PackedScene" uid="uid://ce2lri86aqfxq" path="res://scenes/serpiente.tscn" id="2_c8t22"]
+[ext_resource type="Script" path="res://scripts/autoload.gd" id="3_c1jx5"]
 [ext_resource type="Script" path="res://scripts/SubViewportContainer.gd" id="3_ovim0"]
 [ext_resource type="Script" path="res://scripts/serpiente_2.gd" id="3_u8fuu"]
 [ext_resource type="Shader" path="res://shader/pixelart_stylizer.gdshader" id="3_uwvlc"]
@@ -14,6 +16,8 @@
 [ext_resource type="Script" path="res://scripts/Label.gd" id="9_741ex"]
 [ext_resource type="PackedScene" uid="uid://mv1cedb3km7x" path="res://assets/dado.glb" id="9_uj43o"]
 [ext_resource type="Script" path="res://scripts/dado.gd" id="10_feiti"]
+[ext_resource type="Script" path="res://scripts/label_puntuacion1.gd" id="13_f87js"]
+[ext_resource type="Script" path="res://scripts/label_puntuacion_2.gd" id="14_mnk0i"]
 
 [sub_resource type="Sky" id="Sky_rtyq0"]
 
@@ -41,6 +45,18 @@ font_size = 40
 [sub_resource type="LabelSettings" id="LabelSettings_ysq4f"]
 font = ExtResource("7_apc04")
 font_size = 40
+
+[sub_resource type="LabelSettings" id="LabelSettings_vkh7v"]
+font = ExtResource("7_apc04")
+font_size = 41
+
+[sub_resource type="LabelSettings" id="LabelSettings_nv0li"]
+font = ExtResource("7_apc04")
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_bxh3f"]
+font = ExtResource("7_apc04")
+font_size = 30
 
 [sub_resource type="GDScript" id="GDScript_inynm"]
 script/source = "extends Camera3D
@@ -151,12 +167,14 @@ size = Vector3(1.09264, 1.34711, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_q1dku"]
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_lgv2j")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_0flt4")
 
 [node name="mapa" parent="." instance=ExtResource("1_k6gn1")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0.59703, -0.0280147, -1.5421)
+script = ExtResource("3_c1jx5")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.79193, 0)
@@ -243,6 +261,17 @@ stretch_shrink = 2
 [node name="Control" type="Control" parent="SubViewportContainer"]
 layout_mode = 2
 
+[node name="PanelContainer2" type="PanelContainer" parent="SubViewportContainer/Control"]
+layout_mode = 0
+offset_left = 782.0
+offset_top = 534.0
+offset_right = 822.0
+offset_bottom = 574.0
+scale = Vector2(9.17073, 2.80928)
+
+[node name="Panel" type="Panel" parent="SubViewportContainer/Control/PanelContainer2"]
+layout_mode = 2
+
 [node name="PanelContainer" type="PanelContainer" parent="SubViewportContainer/Control"]
 layout_mode = 0
 offset_left = 39.0
@@ -302,6 +331,31 @@ offset_bottom = 577.0
 layout_mode = 2
 label_settings = SubResource("LabelSettings_ysq4f")
 script = ExtResource("9_741ex")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SubViewportContainer/Control"]
+layout_mode = 2
+offset_left = 885.0
+offset_top = 530.0
+offset_right = 1053.0
+offset_bottom = 570.0
+
+[node name="Label" type="Label" parent="SubViewportContainer/Control/VBoxContainer"]
+layout_mode = 2
+text = "puntuaciones
+"
+label_settings = SubResource("LabelSettings_vkh7v")
+
+[node name="Label_puntuacion" type="Label" parent="SubViewportContainer/Control/VBoxContainer"]
+layout_mode = 2
+text = "jugador 1="
+label_settings = SubResource("LabelSettings_nv0li")
+script = ExtResource("13_f87js")
+
+[node name="Label_puntuacion2" type="Label" parent="SubViewportContainer/Control/VBoxContainer"]
+layout_mode = 2
+text = "jugador 2="
+label_settings = SubResource("LabelSettings_bxh3f")
+script = ExtResource("14_mnk0i")
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 handle_input_locally = false

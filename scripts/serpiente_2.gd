@@ -2,10 +2,12 @@ extends CharacterBody3D
 var nueva_posicion =Vector3()
 var movimiento =false
 const velocidad= 2
-var rotacion=2
+@export var rotacion=2
 @onready var animation_player = $AnimationPlayer
 var aceleracion_angular=10
 @export var movimientos_disponibles=0
+@export var posicion_inicial_2=Vector3(-6.035,-4.749,0.301)
+@onready var node_3d = $".."
 
 @onready var detector_derecha_2 = $"../detector_derecha_2"
 @onready var detector_abajo_2 = $"../detector_abajo_2"
@@ -13,8 +15,12 @@ var aceleracion_angular=10
 @onready var detector_arriba_2 = $"../detector_arriba_2"
 @onready var camera_3d = $"../SubViewportContainer/SubViewport/Camera3D"
 
-signal ronda
 
+
+signal ronda
+func _ready():
+	
+	$".".global_position=posicion_inicial_2
 	
 func mover_a(delta,objetivo):
 	if movimiento:
@@ -25,11 +31,12 @@ func mover_a(delta,objetivo):
 		movimientos_disponibles-=1
 		if movimientos_disponibles==0:
 			emit_signal("ronda")
+		posicion_inicial_2=$".".global_position
 		print($".".global_position)
-
+		node_3d.save_data()
 
 func _physics_process(delta):
-	
+
 	if camera_3d.mapa==1:
 		if Input.is_action_just_pressed("arriba") and movimiento==false and detector_arriba_2.colisiona==false and movimientos_disponibles>0:
 

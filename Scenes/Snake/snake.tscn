@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://b6i8phvj5ixr3"]
 
-[ext_resource type="SpriteFrames" uid="uid://j08g7gjt00m4" path="res://Scenes/Snake/idle_animiation/snake.tres" id="2_qnjb4"]
+[ext_resource type="SpriteFrames" uid="uid://j08g7gjt00m4" path="res://scenes/Snake/idle_animiation/snake.tres" id="2_qnjb4"]
 [ext_resource type="Script" path="res://Utility/hurt_box.gd" id="3_7ntqe"]
 [ext_resource type="PackedScene" uid="uid://bekvm2gch1soa" path="res://Menu/debug_menu_2d.tscn" id="4_ncqrs"]
 
@@ -21,11 +21,14 @@ var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
 @onready var pivot = $Pivot
 @onready var hitbox = $CollisionShape2D
 @onready var posicion_hitbox = hitbox.get(\"position\")
+@onready var green_snake = $\"../green_snake\"
+@onready var world = $\"..\"
+
 #que pasa ahora si que si o no
 @onready var dead_timer = $DeadTimer
 @onready var animated_sprit_reed = $Pivot/AnimatedSpritReed
 @onready var attack_timer = $AttackTimer
-
+@export  var puntos=0
 #Attack
 var BlueBall = preload(\"res://Utility/blue_attack.tscn\")
 
@@ -48,7 +51,7 @@ func attack():
 		if rotation>1.5707:
 			pivot.scale.x = sign(loking.x)
 	else:
-		blueball_attack.position = global_position 
+		blueball_attack.position = global_position
 	add_child(blueball_attack)
 
 
@@ -111,10 +114,13 @@ func _on_hurt_box_area_entered(area):
 			animated_sprit_reed.play(\"die\")
 			dead_timer.wait_time = 1
 			dead_timer.start()
+			green_snake.puntos+=1
+			world.save_data()
 
 
 func _on_dead_timer_timeout():
 	queue_free()
+	get_tree().change_scene_to_file(\"res://scenes/general.tscn\")
 
 func _on_attack_timer_timeout():
 	permiso_idle = true

@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://dyyu7w4b8j3ib"]
 
 [ext_resource type="Script" path="res://Utility/blue_attack.gd" id="1_mdu6x"]
-[ext_resource type="Texture2D" uid="uid://dplhgpidtnlbu" path="res://Assets/Power_attack/projectile_blue.png" id="2_nudbe"]
+[ext_resource type="Texture2D" uid="uid://dplhgpidtnlbu" path="res://assets/Power_attack/projectile_blue.png" id="2_nudbe"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_agpdo"]
 atlas = ExtResource("2_nudbe")
