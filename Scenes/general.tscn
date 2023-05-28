@@ -293,7 +293,7 @@ offset_bottom = 618.0
 
 [node name="Label" type="Label" parent="SubViewportContainer/Control/HBoxContainer"]
 layout_mode = 2
-text = "Ronda:"
+text = "Round: "
 label_settings = SubResource("LabelSettings_sjury")
 
 [node name="Label2" type="Label" parent="SubViewportContainer/Control/HBoxContainer"]
@@ -311,7 +311,7 @@ offset_bottom = 645.0
 
 [node name="Label" type="Label" parent="SubViewportContainer/Control/HBoxContainer2"]
 layout_mode = 2
-text = "turno jugador:"
+text = "Player turn: "
 label_settings = SubResource("LabelSettings_a5lw8")
 
 [node name="Label2" type="Label" parent="SubViewportContainer/Control/HBoxContainer2"]
@@ -341,19 +341,19 @@ offset_bottom = 570.0
 
 [node name="Label" type="Label" parent="SubViewportContainer/Control/VBoxContainer"]
 layout_mode = 2
-text = "puntuaciones
+text = "Scoreboard
 "
 label_settings = SubResource("LabelSettings_vkh7v")
 
 [node name="Label_puntuacion" type="Label" parent="SubViewportContainer/Control/VBoxContainer"]
 layout_mode = 2
-text = "jugador 1="
+text = "player 1: "
 label_settings = SubResource("LabelSettings_nv0li")
 script = ExtResource("13_f87js")
 
 [node name="Label_puntuacion2" type="Label" parent="SubViewportContainer/Control/VBoxContainer"]
 layout_mode = 2
-text = "jugador 2="
+text = "player 2: "
 label_settings = SubResource("LabelSettings_bxh3f")
 script = ExtResource("14_mnk0i")
 
