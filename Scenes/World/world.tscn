@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c50tbrvq30c3w"]
+[gd_scene load_steps=15 format=3 uid="uid://c50tbrvq30c3w"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_7tmk4"]
 [ext_resource type="Texture2D" uid="uid://dnhye3evpje8l" path="res://assets/Maps/Cave/Tiles-and-Some-Props.png" id="2_7ggcx"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://diyaqww4iuu5l" path="res://assets/Icons of powers/UI_Flat_Button_Large_Press_01a2.png" id="3_dytg1"]
 [ext_resource type="Texture2D" uid="uid://ctrwvrn31ax00" path="res://assets/Maps/Cave/Preview.png" id="3_f776w"]
 [ext_resource type="FontFile" uid="uid://c4wyue846wsni" path="res://Resources/Kubasta.ttf" id="4_k3t5y"]
+[ext_resource type="Script" path="res://scripts/canvalayer.gd" id="5_dvpbc"]
 [ext_resource type="Texture2D" uid="uid://qk8gp32yd5dh" path="res://assets/Icons of powers/thunder.png" id="5_i7qp4"]
 [ext_resource type="Texture2D" uid="uid://uy10xlggc55k" path="res://assets/Icons of powers/water.png" id="6_5mqxb"]
 [ext_resource type="PackedScene" uid="uid://ci2pw58msbryp" path="res://scenes/Green_Snake/green_snake.tscn" id="6_18dit"]
@@ -3417,11 +3418,13 @@ sources/0 = SubResource("TileSetAtlasSource_yit01")
 sources/1 = SubResource("TileSetAtlasSource_dwqb2")
 
 [node name="World" type="Node2D"]
+texture_filter = 1
 position = Vector2(189, 165)
 scale = Vector2(0.595589, 0.783721)
 script = ExtResource("1_7tmk4")
 
 [node name="TileMap" type="TileMap" parent="."]
+texture_filter = 1
 position = Vector2(660, 230)
 scale = Vector2(2, 1.8)
 tile_set = SubResource("TileSet_l2jk8")
@@ -3437,10 +3440,12 @@ layer_1/z_index = 1
 layer_1/tile_data = PackedInt32Array(-65564, 262144, 9, -65563, 1048577, 9, -131100, 262144, 8, 131041, 720897, 16, 196577, 720897, 17, 131042, 786433, 16, 196578, 786433, 17, -131095, 720897, 19, -65559, 1441793, 15, -131094, 1507329, 14, -65558, 1507329, 15, -131093, 1572865, 14, -65557, 1572865, 15, -131092, 1441793, 14, -65556, 1441793, 15, -131091, 1507329, 14, -65555, 1507329, 15, -131090, 1179649, 19, -65554, 1572865, 15, -393243, 1441793, 14, -327707, 1441793, 15, -393242, 1507329, 14, -327706, 1507329, 15, -393241, 1572865, 14, -327705, 1572865, 15, -393244, 720897, 19, -327708, 720897, 20, -393240, 1179649, 19, -327704, 1179649, 20, -524316, 393217, 17, -458780, 393217, 18, -524315, 458753, 17, -458779, 458753, 18, -458778, 524289, 18, -393235, 393217, 17, -262154, 1441793, 14, -196618, 1441793, 15, -262153, 1507329, 14, -196617, 1507329, 15, -262152, 1572865, 14, -196616, 1572865, 15, -262155, 720897, 19, -196619, 720897, 20, -262151, 1179649, 19, -196615, 1179649, 20, -327663, 1441793, 14, -262127, 1441793, 15, -327662, 1507329, 14, -262126, 1507329, 15, -327661, 1572865, 14, -262125, 1572865, 15, -327664, 720897, 19, -262128, 720897, 20, -327660, 1179649, 19, -262124, 1179649, 20, -589801, 1441793, 14, -524265, 1441793, 15, -589800, 1507329, 14, -524264, 1507329, 15, -589799, 1572865, 14, -524263, 1572865, 15, -589802, 720897, 19, -524266, 720897, 20, -589798, 1179649, 19, -524262, 1179649, 20, 131091, 655361, 17, 131100, 655361, 17, 327659, 655361, 17)
 
 [node name="Snake" parent="." instance=ExtResource("2_gl6sn")]
+texture_filter = 1
 position = Vector2(936.888, 15.3116)
 scale = Vector2(3, 3)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("5_dvpbc")
 
 [node name="Pannel" type="TextureRect" parent="CanvasLayer"]
 modulate = Color(0.0509804, 0.196078, 0.27451, 1)

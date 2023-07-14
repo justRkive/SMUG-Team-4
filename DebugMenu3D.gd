@@ -4,7 +4,7 @@ extends MarginContainer
 @onready var restart = %Restart
 @onready var battle = %Battle
 @onready var main_menu = %MainMenu
-
+@export var permiso_pausa=true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	resume.pressed.connect(_on_resume_pressed)
@@ -14,7 +14,7 @@ func _ready():
 	hide()
 
 func _input(event):
-	if event.is_action_pressed("pause"):
+	if event.is_action_pressed("pause") and permiso_pausa==true:
 		show()
 		get_tree().paused = true
 

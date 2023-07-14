@@ -1,7 +1,8 @@
 extends Label
 
+@onready var serpiente_2 = $"../../../../serpiente2"
 
 @export var puntos=0
 
 func _process(delta):
-	self.text= "Player 2 = " + str(puntos)
+	self.text= "Player 2 = " + str(serpiente_2.puntos)

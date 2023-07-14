@@ -1,6 +1,6 @@
-[gd_scene load_steps=38 format=3 uid="uid://datkwxa046xoe"]
+[gd_scene load_steps=75 format=3 uid="uid://datkwxa046xoe"]
 
-[ext_resource type="PackedScene" uid="uid://cpfp0lug3q7ec" path="res://scenes/mapa.tscn" id="1_k6gn1"]
+[ext_resource type="PackedScene" uid="uid://cs5ei1uq2kgdk" path="res://scenes/mapa.tscn" id="1_k6gn1"]
 [ext_resource type="Script" path="res://scripts/general.gd" id="1_lgv2j"]
 [ext_resource type="PackedScene" uid="uid://b2o8ce4nbfjak" path="res://scenes/serpiente_2.tscn" id="2_27tdm"]
 [ext_resource type="PackedScene" uid="uid://ce2lri86aqfxq" path="res://scenes/serpiente.tscn" id="2_c8t22"]
@@ -14,10 +14,28 @@
 [ext_resource type="Script" path="res://scripts/Label2.gd" id="8_tyni4"]
 [ext_resource type="Script" path="res://scripts/Label3.gd" id="8_xhipt"]
 [ext_resource type="Script" path="res://scripts/Label.gd" id="9_741ex"]
+[ext_resource type="Texture2D" uid="uid://b6m72svocpgth" path="res://Menu/lazo.png" id="9_c0n4s"]
+[ext_resource type="Texture2D" uid="uid://dpusmlpbhhjpm" path="res://Menu/scoreboard.png" id="9_jpt5v"]
 [ext_resource type="PackedScene" uid="uid://mv1cedb3km7x" path="res://assets/dado.glb" id="9_uj43o"]
 [ext_resource type="Script" path="res://scripts/dado.gd" id="10_feiti"]
 [ext_resource type="Script" path="res://scripts/label_puntuacion1.gd" id="13_f87js"]
 [ext_resource type="Script" path="res://scripts/label_puntuacion_2.gd" id="14_mnk0i"]
+[ext_resource type="Script" path="res://scripts/VBoxContainer2.gd" id="15_cxgi0"]
+[ext_resource type="Script" path="res://scripts/VBoxContainer3.gd" id="16_f67o1"]
+[ext_resource type="Texture2D" uid="uid://5co3nrqvr871" path="res://Menu/serpiente_verde.png" id="17_ckvly"]
+[ext_resource type="Texture2D" uid="uid://i30eahti0t74" path="res://assets/Icons of powers/fire.png" id="18_5uhyi"]
+[ext_resource type="Script" path="res://scripts/battle_round.gd" id="19_31f8n"]
+[ext_resource type="Texture2D" uid="uid://qk8gp32yd5dh" path="res://assets/Icons of powers/thunder.png" id="19_lfpgx"]
+[ext_resource type="Texture2D" uid="uid://uy10xlggc55k" path="res://assets/Icons of powers/water.png" id="20_ohw36"]
+[ext_resource type="PackedScene" uid="uid://dopta3uhamc3x" path="res://assets/trueno.glb" id="20_v76c4"]
+[ext_resource type="PackedScene" uid="uid://tiha2450ibjc" path="res://assets/fuego.glb" id="21_42g0t"]
+[ext_resource type="Texture2D" uid="uid://dq3dqeg3ut1kv" path="res://Menu/ser.png" id="21_xn12n"]
+[ext_resource type="PackedScene" uid="uid://byqseswlhliiq" path="res://assets/agua.glb" id="22_6xlsa"]
+[ext_resource type="Texture2D" uid="uid://co0j4stp80ndb" path="res://Menu/carta2.png" id="26_hh7od"]
+[ext_resource type="Texture2D" uid="uid://v6j01jq1p78f" path="res://Menu/carta3.png" id="27_gwkrx"]
+[ext_resource type="Texture2D" uid="uid://byfigi548vx7f" path="res://Menu/carta1.png" id="32_1vhe1"]
+[ext_resource type="PackedScene" uid="uid://ds0biv0hjomfi" path="res://UI/transitioner.tscn" id="35_htqmn"]
+[ext_resource type="PackedScene" uid="uid://c50tbrvq30c3w" path="res://scenes/World/world.tscn" id="36_l0hrr"]
 
 [sub_resource type="Sky" id="Sky_rtyq0"]
 
@@ -58,11 +76,43 @@ font_size = 30
 font = ExtResource("7_apc04")
 font_size = 30
 
+[sub_resource type="LabelSettings" id="LabelSettings_yllsw"]
+line_spacing = 10.0
+font = ExtResource("7_apc04")
+font_size = 26
+
+[sub_resource type="LabelSettings" id="LabelSettings_7j0bf"]
+line_spacing = 15.0
+font = ExtResource("7_apc04")
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_g8b72"]
+font = ExtResource("7_apc04")
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_xme1f"]
+line_spacing = 10.0
+font = ExtResource("7_apc04")
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_t1q0j"]
+line_spacing = 15.0
+font = ExtResource("7_apc04")
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_hm6c4"]
+font = ExtResource("7_apc04")
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_wiliv"]
+font = ExtResource("7_apc04")
+font_size = 100
+
 [sub_resource type="GDScript" id="GDScript_inynm"]
 script/source = "extends Camera3D
 @onready var serpiente = $\"../../../serpiente\"
 @onready var serpiente_2 = $\"../../../serpiente2\"
-const altura_camara=4
+const altura_camara=6
 @onready var dado = $dado
 
 @export var mapa=0
@@ -166,8 +216,46 @@ size = Vector3(1.09264, 1.34711, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q1dku"]
 
-[node name="Node3D" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_3333c"]
+size = Vector3(0.4, 0.1, 0.45)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_68eua"]
+size = Vector3(0.4, 0.1, 0.45)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_a54yv"]
+size = Vector3(0.4, 0.1, 0.45)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_etwmd"]
+size = Vector3(0.4, 0.1, 0.45)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1x0wg"]
+size = Vector3(0.35, 0.1, 0.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cu34m"]
+size = Vector3(0.35, 0.1, 0.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gg0fm"]
+size = Vector3(0.35, 0.1, 0.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_27oik"]
+size = Vector3(0.35, 0.1, 0.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mbfbi"]
+size = Vector3(0.35, 0.06, 0.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x4lbx"]
+size = Vector3(0.35, 0.06, 0.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qraq4"]
+size = Vector3(0.35, 0.06, 0.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nebpj"]
+size = Vector3(0.35, 0.06, 0.4)
+
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("fade_out", "fade_in")]
 script = ExtResource("1_lgv2j")
+fade_out = NodePath("CanvasLayer/fadeOut")
+fade_in = NodePath("CanvasLayer/fadeIn")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_0flt4")
@@ -175,11 +263,6 @@ environment = SubResource("Environment_0flt4")
 [node name="mapa" parent="." instance=ExtResource("1_k6gn1")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0.59703, -0.0280147, -1.5421)
 script = ExtResource("3_c1jx5")
-
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.79193, 0)
-light_energy = 16.0
-omni_range = 48.117
 
 [node name="serpiente2" parent="." instance=ExtResource("2_27tdm")]
 transform = Transform3D(-0.07, 0, -6.11959e-09, 0, 0.07, 0, 6.11959e-09, 0, -0.07, -6.03453, -4.749, 0.300928)
@@ -212,6 +295,78 @@ target_position = Vector3(0, 0, -1)
 collide_with_areas = true
 collide_with_bodies = false
 script = ExtResource("4_7587m")
+
+[node name="fire_pos2" type="Marker3D" parent="."]
+transform = Transform3D(-0.07, 0, 1.05697e-08, 0, 0.07, 0, -1.05697e-08, 0, -0.07, -6.075, -5.25, 3.255)
+
+[node name="fire_pos1" type="Marker3D" parent="."]
+transform = Transform3D(-0.07, 0, 1.05697e-08, 0, 0.07, 0, -1.05697e-08, 0, -0.07, -13.83, -5.25, 3.293)
+
+[node name="fire_pos3" type="Marker3D" parent="."]
+transform = Transform3D(-0.07, 0, 1.05697e-08, 0, 0.07, 0, -1.05697e-08, 0, -0.07, 1.634, -5.25, 3.293)
+
+[node name="fire_pos4" type="Marker3D" parent="."]
+transform = Transform3D(-0.07, 0, 1.05697e-08, 0, 0.07, 0, -1.05697e-08, 0, -0.07, 4.567, -5.25, 0.327)
+
+[node name="fire_pos5" type="Marker3D" parent="."]
+transform = Transform3D(-0.07, 0, 1.05697e-08, 0, 0.07, 0, -1.05697e-08, 0, -0.07, -6.075, -5.25, -2.565)
+
+[node name="fire_pos6" type="Marker3D" parent="."]
+transform = Transform3D(-0.07, 0, 1.05697e-08, 0, 0.07, 0, -1.05697e-08, 0, -0.07, -13.811, -5.25, -2.575)
+
+[node name="fire_pos7" type="Marker3D" parent="."]
+transform = Transform3D(-0.07, 0, 1.05697e-08, 0, 0.07, 0, -1.05697e-08, 0, -0.07, 1.656, -5.25, -2.57)
+
+[node name="fire_pos8" type="Marker3D" parent="."]
+transform = Transform3D(-0.07, 0, 1.05697e-08, 0, 0.07, 0, -1.05697e-08, 0, -0.07, -16.751, -5.25, 0.361)
+
+[node name="water_pos1" type="Marker3D" parent="."]
+transform = Transform3D(-0.07, 0, 1.05697e-08, 0, 0.07, 0, -1.05697e-08, 0, -0.07, -2.2, -5.15, -6.365)
+
+[node name="water_pos2" type="Marker3D" parent="."]
+transform = Transform3D(-0.07, 0, 1.05697e-08, 0, 0.07, 0, -1.05697e-08, 0, -0.07, -9.973, -5.15, -6.385)
+
+[node name="water_pos3" type="Marker3D" parent="."]
+transform = Transform3D(-0.07, 0, 1.05697e-08, 0, 0.07, 0, -1.05697e-08, 0, -0.07, -9.976, -5.15, 7.268)
+
+[node name="water_pos4" type="Marker3D" parent="."]
+transform = Transform3D(-0.07, 0, 1.05697e-08, 0, 0.07, 0, -1.05697e-08, 0, -0.07, -2.189, -5.15, 7.289)
+
+[node name="water_pos5" type="Marker3D" parent="."]
+transform = Transform3D(-0.07, 0, 1.05697e-08, 0, 0.07, 0, -1.05697e-08, 0, -0.07, -0.25, -5.15, 0.44)
+
+[node name="water_pos8" type="Marker3D" parent="."]
+transform = Transform3D(-0.07, 0, 1.05697e-08, 0, 0.07, 0, -1.05697e-08, 0, -0.07, 4.545, -5.15, -4.386)
+
+[node name="water_pos6" type="Marker3D" parent="."]
+transform = Transform3D(-0.07, 0, 1.05697e-08, 0, 0.07, 0, -1.05697e-08, 0, -0.07, -12.874, -5.15, 0.446)
+
+[node name="water_pos7" type="Marker3D" parent="."]
+transform = Transform3D(-0.07, 0, 1.05697e-08, 0, 0.07, 0, -1.05697e-08, 0, -0.07, -16.77, -5.15, 5.264)
+
+[node name="thunder_pos2" type="Marker3D" parent="."]
+transform = Transform3D(-0.07, 0, 1.05697e-08, 0, 0.07, 0, -1.05697e-08, 0, -0.07, -17.017, -5.25, -4.94964)
+
+[node name="thunder_pos1" type="Marker3D" parent="."]
+transform = Transform3D(-0.07, 0, 1.05697e-08, 0, 0.07, 0, -1.05697e-08, 0, -0.07, 4.32112, -5.25, 4.75234)
+
+[node name="thunder_pos3" type="Marker3D" parent="."]
+transform = Transform3D(-0.07, 0, 1.05697e-08, 0, 0.07, 0, -1.05697e-08, 0, -0.07, -3.46341, -5.25, 1.81346)
+
+[node name="thunder_pos6" type="Marker3D" parent="."]
+transform = Transform3D(-0.07, 0, 1.05697e-08, 0, 0.07, 0, -1.05697e-08, 0, -0.07, -9.25225, -5.25, 1.82001)
+
+[node name="thunder_pos7" type="Marker3D" parent="."]
+transform = Transform3D(-0.07, 0, 1.05697e-08, 0, 0.07, 0, -1.05697e-08, 0, -0.07, -17.0458, -5.25, 1.86312)
+
+[node name="thunder_pos4" type="Marker3D" parent="."]
+transform = Transform3D(-0.07, 0, 1.05697e-08, 0, 0.07, 0, -1.05697e-08, 0, -0.07, -3.41967, -5.25, -2.04058)
+
+[node name="thunder_pos8" type="Marker3D" parent="."]
+transform = Transform3D(-0.07, 0, 1.05697e-08, 0, 0.07, 0, -1.05697e-08, 0, -0.07, 4.28555, -5.25, -2.05004)
+
+[node name="thunder_pos5" type="Marker3D" parent="."]
+transform = Transform3D(-0.07, 0, 1.05697e-08, 0, 0.07, 0, -1.05697e-08, 0, -0.07, -9.25024, -5.25, -2.06388)
 
 [node name="serpiente" parent="." instance=ExtResource("2_c8t22")]
 transform = Transform3D(-0.07, 0, 1.05697e-08, 0, 0.07, 0, -1.05697e-08, 0, -0.07, -6.07496, -4.74862, 0.443309)
@@ -249,10 +404,6 @@ script = ExtResource("6_nt5vx")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 5.0
-offset_top = 3.0
-offset_right = 5.0
-offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
 stretch = true
@@ -261,35 +412,70 @@ stretch_shrink = 2
 [node name="Control" type="Control" parent="SubViewportContainer"]
 layout_mode = 2
 
-[node name="PanelContainer2" type="PanelContainer" parent="SubViewportContainer/Control"]
-layout_mode = 0
-offset_left = 782.0
-offset_top = 534.0
-offset_right = 822.0
-offset_bottom = 574.0
-scale = Vector2(9.17073, 2.80928)
+[node name="Lazo" type="Sprite2D" parent="SubViewportContainer/Control"]
+position = Vector2(204, 27)
+scale = Vector2(0.440001, 0.434728)
+texture = ExtResource("9_c0n4s")
 
-[node name="Panel" type="Panel" parent="SubViewportContainer/Control/PanelContainer2"]
+[node name="Scoreboard" type="Sprite2D" parent="SubViewportContainer/Control"]
+position = Vector2(572, 605)
+scale = Vector2(0.169311, 0.169311)
+texture = ExtResource("9_jpt5v")
+
+[node name="PanelContainer3" type="PanelContainer" parent="SubViewportContainer/Control"]
+layout_mode = 2
+offset_left = 901.0
+offset_top = 126.0
+offset_right = 941.0
+offset_bottom = 166.0
+scale = Vector2(6.24476, 1.19285)
+
+[node name="Panel" type="Panel" parent="SubViewportContainer/Control/PanelContainer3"]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="SubViewportContainer/Control"]
-layout_mode = 0
-offset_left = 39.0
-offset_top = 537.0
-offset_right = 79.0
-offset_bottom = 577.0
-scale = Vector2(6.06888, 2.88008)
+[node name="PanelContainer4" type="PanelContainer" parent="SubViewportContainer/Control"]
+texture_filter = 2
+texture_repeat = 1
+layout_mode = 1
+offset_left = 916.0
+offset_top = 496.0
+offset_right = 925.0
+offset_bottom = 520.0
+rotation = -0.00187718
+scale = Vector2(29.5929, 7.07955)
 
-[node name="Panel" type="Panel" parent="SubViewportContainer/Control/PanelContainer"]
+[node name="Panel" type="Panel" parent="SubViewportContainer/Control/PanelContainer4"]
+modulate = Color(0.890196, 0.647059, 0.490196, 1)
+self_modulate = Color(0.882353, 0.117647, 1, 1)
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 2
+
+[node name="PanelContainer5" type="PanelContainer" parent="SubViewportContainer/Control"]
+texture_filter = 2
+texture_repeat = 1
+layout_mode = 1
+offset_left = -73.0001
+offset_top = 496.0
+offset_right = -64.0001
+offset_bottom = 520.0
+rotation = -0.00187718
+scale = Vector2(29.5929, 7.07955)
+
+[node name="Panel" type="Panel" parent="SubViewportContainer/Control/PanelContainer5"]
+modulate = Color(0.890196, 0.647059, 0.490196, 1)
+self_modulate = Color(0.882353, 0.117647, 1, 1)
+texture_filter = 1
+texture_repeat = 1
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SubViewportContainer/Control"]
 top_level = true
 layout_mode = 2
-offset_left = 58.0
-offset_top = 574.0
-offset_right = 233.0
-offset_bottom = 618.0
+offset_left = 16.0
+offset_top = 9.0
+offset_right = 191.0
+offset_bottom = 53.0
 
 [node name="Label" type="Label" parent="SubViewportContainer/Control/HBoxContainer"]
 layout_mode = 2
@@ -298,16 +484,17 @@ label_settings = SubResource("LabelSettings_sjury")
 
 [node name="Label2" type="Label" parent="SubViewportContainer/Control/HBoxContainer"]
 layout_mode = 2
-text = "test"
+text = "1
+"
 label_settings = SubResource("LabelSettings_l88yt")
 script = ExtResource("8_xhipt")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="SubViewportContainer/Control"]
 layout_mode = 2
-offset_left = 53.0
-offset_top = 605.0
-offset_right = 250.0
-offset_bottom = 645.0
+offset_left = 144.0
+offset_top = 8.0
+offset_right = 341.0
+offset_bottom = 48.0
 
 [node name="Label" type="Label" parent="SubViewportContainer/Control/HBoxContainer2"]
 layout_mode = 2
@@ -322,10 +509,10 @@ script = ExtResource("8_tyni4")
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="SubViewportContainer/Control"]
 layout_mode = 0
-offset_left = 53.0
-offset_top = 537.0
-offset_right = 109.0
-offset_bottom = 577.0
+offset_left = 936.0
+offset_top = 129.0
+offset_right = 992.0
+offset_bottom = 169.0
 
 [node name="Label" type="Label" parent="SubViewportContainer/Control/HBoxContainer3"]
 layout_mode = 2
@@ -334,10 +521,10 @@ script = ExtResource("9_741ex")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SubViewportContainer/Control"]
 layout_mode = 2
-offset_left = 885.0
-offset_top = 530.0
-offset_right = 1053.0
-offset_bottom = 570.0
+offset_left = 485.0
+offset_top = 537.0
+offset_right = 653.0
+offset_bottom = 636.0
 
 [node name="Label" type="Label" parent="SubViewportContainer/Control/VBoxContainer"]
 layout_mode = 2
@@ -357,6 +544,128 @@ text = "player 2: "
 label_settings = SubResource("LabelSettings_bxh3f")
 script = ExtResource("14_mnk0i")
 
+[node name="VBoxContainer2" type="VBoxContainer" parent="SubViewportContainer/Control"]
+layout_mode = 2
+offset_left = 181.0
+offset_top = 519.0
+offset_right = 297.0
+offset_bottom = 627.0
+script = ExtResource("15_cxgi0")
+
+[node name="Label2" type="Label" parent="SubViewportContainer/Control/VBoxContainer2"]
+layout_mode = 2
+text = "fire power"
+label_settings = SubResource("LabelSettings_yllsw")
+
+[node name="Label3" type="Label" parent="SubViewportContainer/Control/VBoxContainer2"]
+layout_mode = 2
+text = "water power"
+label_settings = SubResource("LabelSettings_7j0bf")
+
+[node name="Label4" type="Label" parent="SubViewportContainer/Control/VBoxContainer2"]
+layout_mode = 2
+text = "thunder power"
+label_settings = SubResource("LabelSettings_g8b72")
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="SubViewportContainer/Control"]
+layout_mode = 2
+offset_left = 873.0
+offset_top = 524.0
+offset_right = 989.0
+offset_bottom = 632.0
+script = ExtResource("16_f67o1")
+
+[node name="Label2" type="Label" parent="SubViewportContainer/Control/VBoxContainer3"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_xme1f")
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="SubViewportContainer/Control/VBoxContainer3"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_t1q0j")
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="SubViewportContainer/Control/VBoxContainer3"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_hm6c4")
+horizontal_alignment = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="SubViewportContainer/Control"]
+layout_mode = 2
+offset_left = -436.118
+offset_top = 262.0
+offset_right = -33.118
+offset_bottom = 345.0
+script = ExtResource("19_31f8n")
+
+[node name="PanelContainer" type="PanelContainer" parent="SubViewportContainer/Control/HBoxContainer4"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="SubViewportContainer/Control/HBoxContainer4/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SubViewportContainer/Control/HBoxContainer4/PanelContainer"]
+layout_mode = 2
+text = "battle round"
+label_settings = SubResource("LabelSettings_wiliv")
+
+[node name="SerpienteVerde" type="Sprite2D" parent="SubViewportContainer"]
+texture_filter = 2
+texture_repeat = 2
+position = Vector2(26, 570)
+scale = Vector2(0.278404, 0.278404)
+texture = ExtResource("17_ckvly")
+
+[node name="Fire" type="Sprite2D" parent="SubViewportContainer"]
+position = Vector2(162.06, 529.44)
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("18_5uhyi")
+
+[node name="Thunder" type="Sprite2D" parent="SubViewportContainer"]
+position = Vector2(162.06, 608.44)
+scale = Vector2(0.12, 0.121486)
+texture = ExtResource("19_lfpgx")
+
+[node name="Water" type="Sprite2D" parent="SubViewportContainer"]
+position = Vector2(162.06, 566.44)
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("20_ohw36")
+
+[node name="Fire2" type="Sprite2D" parent="SubViewportContainer"]
+position = Vector2(957.06, 528.44)
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("18_5uhyi")
+
+[node name="Thunder2" type="Sprite2D" parent="SubViewportContainer"]
+position = Vector2(957.06, 607.44)
+scale = Vector2(0.12, 0.121486)
+texture = ExtResource("19_lfpgx")
+
+[node name="Water2" type="Sprite2D" parent="SubViewportContainer"]
+position = Vector2(957.06, 565.44)
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("20_ohw36")
+
+[node name="Ser" type="Sprite2D" parent="SubViewportContainer"]
+position = Vector2(1104, 572)
+scale = Vector2(0.28, 0.28)
+texture = ExtResource("21_xn12n")
+
+[node name="Carta1" type="Sprite2D" parent="SubViewportContainer"]
+position = Vector2(-224, 345)
+scale = Vector2(0.28918, 0.28918)
+texture = ExtResource("32_1vhe1")
+
+[node name="Carta2" type="Sprite2D" parent="SubViewportContainer"]
+position = Vector2(-454, 333)
+scale = Vector2(0.289, 0.289)
+texture = ExtResource("26_hh7od")
+
+[node name="Carta3" type="Sprite2D" parent="SubViewportContainer"]
+position = Vector2(-673, 334)
+scale = Vector2(0.289, 0.289)
+texture = ExtResource("27_gwkrx")
+
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 handle_input_locally = false
 size = Vector2i(576, 324)
@@ -365,17 +674,22 @@ script = ExtResource("3_ovim0")
 
 [node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
 transform = Transform3D(-0.076719, 0.318019, -0.944975, 0, 0.947769, 0.318959, 0.997053, 0.0244702, -0.0727118, -17.545, -3.994, 0.71)
+doppler_tracking = 2
 current = true
 fov = 100.0
+near = 0.001
+far = 30.0
 script = SubResource("GDScript_inynm")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Camera3D"]
-transform = Transform3D(3, 0, 0, 0, -1.31134e-07, -3, 0, 3, -1.31134e-07, 0, 0, -0.822127)
+process_mode = 3
+transform = Transform3D(3, 2.98023e-07, 0, -3.72529e-08, -4.53088e-07, -3, -2.38419e-07, 3, -1.33645e-07, -0.128712, 0.946976, -0.42886)
+transparency = 1.0
 mesh = SubResource("PlaneMesh_4q6fp")
 surface_material_override/0 = SubResource("ShaderMaterial_pgkr7")
 
 [node name="dado" parent="SubViewportContainer/SubViewport/Camera3D" instance=ExtResource("9_uj43o")]
-transform = Transform3D(-0.0559118, -0.0163146, 0.0388291, -0.0185841, 0.0674693, 0.00158811, -0.0377955, -0.00904016, -0.0582218, -0.604, -0.178, -0.406)
+transform = Transform3D(0.0119754, -0.0253345, 0.0285439, -0.0361663, 0.00202202, 0.016968, -0.0121898, -0.0308881, -0.022301, 0.61, 0.339, -0.367)
 script = ExtResource("10_feiti")
 
 [node name="Area3D" type="Area3D" parent="."]
@@ -560,4 +874,137 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.59747, -5.33456, -5.13606)
 transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 14, 0.92569, 1.04215, 5.62124)
 shape = SubResource("BoxShape3D_q1dku")
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.519519, 0.854459, 0, -0.854459, 0.519519, 0, 0, 0)
+
+[node name="trueno" parent="." instance=ExtResource("20_v76c4")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 62.0783, 16.8449, 4.01049)
+
+[node name="AreaTrueno" type="Area3D" parent="trueno"]
+
+[node name="colitrueno" type="CollisionShape3D" parent="trueno/AreaTrueno"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.091116, 0.175266, 0.206893)
+shape = SubResource("BoxShape3D_3333c")
+
+[node name="trueno2" parent="." instance=ExtResource("20_v76c4")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 63.0573, 16.2591, 3.99454)
+
+[node name="AreaTrueno2" type="Area3D" parent="trueno2"]
+
+[node name="colitrueno2" type="CollisionShape3D" parent="trueno2/AreaTrueno2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.112585, 0.160457, 0.226472)
+shape = SubResource("BoxShape3D_68eua")
+
+[node name="trueno3" parent="." instance=ExtResource("20_v76c4")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 63.0275, 16.5088, 5.34428)
+
+[node name="AreaTrueno3" type="Area3D" parent="trueno3"]
+
+[node name="colitrueno3" type="CollisionShape3D" parent="trueno3/AreaTrueno3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11377, 0.166, 0.238145)
+shape = SubResource("BoxShape3D_a54yv")
+
+[node name="trueno4" parent="." instance=ExtResource("20_v76c4")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 63.0052, 16.7384, 4.07881)
+
+[node name="AreaTrueno4" type="Area3D" parent="trueno4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0069313, 0)
+
+[node name="colitrueno4" type="CollisionShape3D" parent="trueno4/AreaTrueno4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0869446, 0.181742, 0.232797)
+shape = SubResource("BoxShape3D_etwmd")
+
+[node name="fuego" parent="." instance=ExtResource("21_42g0t")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 65.0724, 16.9112, 3.1883)
+
+[node name="AreaFuego" type="Area3D" parent="fuego"]
+
+[node name="colifuego" type="CollisionShape3D" parent="fuego/AreaFuego"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.172988, 0)
+shape = SubResource("BoxShape3D_1x0wg")
+
+[node name="fuego2" parent="." instance=ExtResource("21_42g0t")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 65.0638, 17.0853, 4.19432)
+
+[node name="AreaFuego2" type="Area3D" parent="fuego2"]
+
+[node name="colifuego2" type="CollisionShape3D" parent="fuego2/AreaFuego2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.181775, 0)
+shape = SubResource("BoxShape3D_cu34m")
+
+[node name="fuego3" parent="." instance=ExtResource("21_42g0t")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 64.0488, 17.2567, 3.16683)
+
+[node name="AreaFuego3" type="Area3D" parent="fuego3"]
+
+[node name="colifuego3" type="CollisionShape3D" parent="fuego3/AreaFuego3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.173028, 0)
+shape = SubResource("BoxShape3D_gg0fm")
+
+[node name="fuego4" parent="." instance=ExtResource("21_42g0t")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 64.0393, 17.4746, 4.13239)
+
+[node name="AreaFuego4" type="Area3D" parent="fuego4"]
+
+[node name="colifuego4" type="CollisionShape3D" parent="fuego4/AreaFuego4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.169652, 0)
+shape = SubResource("BoxShape3D_27oik")
+
+[node name="agua" parent="." instance=ExtResource("22_6xlsa")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 63.0705, 17.671, -0.0673232)
+
+[node name="AreaAgua" type="Area3D" parent="agua"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="agua/AreaAgua"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.141577, -0.0621235)
+shape = SubResource("BoxShape3D_mbfbi")
+
+[node name="agua2" parent="." instance=ExtResource("22_6xlsa")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 63.0831, 17.8695, 1.00386)
+
+[node name="AreaAgua2" type="Area3D" parent="agua2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="agua2/AreaAgua2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.145629, -0.0494598)
+shape = SubResource("BoxShape3D_x4lbx")
+
+[node name="agua3" parent="." instance=ExtResource("22_6xlsa")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 63.0994, 18.0103, 2.15093)
+
+[node name="AreaAgua3" type="Area3D" parent="agua3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="agua3/AreaAgua3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.150383, -0.0561376)
+shape = SubResource("BoxShape3D_qraq4")
+
+[node name="agua4" parent="." instance=ExtResource("22_6xlsa")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 63.1239, 18.2028, 3.12862)
+
+[node name="AreaAgua4" type="Area3D" parent="agua4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="agua4/AreaAgua4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.139099, -0.0567565)
+shape = SubResource("BoxShape3D_nebpj")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="fadeIn" parent="CanvasLayer" instance=ExtResource("35_htqmn")]
+scene_switch_anim = "fade_in"
+
+[node name="fadeOut" parent="CanvasLayer" instance=ExtResource("35_htqmn")]
+scene_switch_anim = "fade_out"
+scene_to_load = ExtResource("36_l0hrr")
+
 [connection signal="ronda" from="serpiente2" to="SubViewportContainer/Control/HBoxContainer/Label2" method="_on_serpiente_2_ronda"]
+[connection signal="body_entered" from="trueno/AreaTrueno" to="mapa" method="_on_area_trueno_body_entered"]
+[connection signal="body_entered" from="trueno2/AreaTrueno2" to="mapa" method="_on_area_trueno_2_body_entered"]
+[connection signal="body_entered" from="trueno3/AreaTrueno3" to="mapa" method="_on_area_trueno_3_body_entered"]
+[connection signal="body_entered" from="trueno4/AreaTrueno4" to="mapa" method="_on_area_trueno_4_body_entered"]
+[connection signal="body_entered" from="fuego/AreaFuego" to="mapa" method="_on_area_fuego_body_entered"]
+[connection signal="body_entered" from="fuego2/AreaFuego2" to="mapa" method="_on_area_fuego_2_body_entered"]
+[connection signal="body_entered" from="fuego3/AreaFuego3" to="mapa" method="_on_area_fuego_3_body_entered"]
+[connection signal="body_entered" from="fuego4/AreaFuego4" to="mapa" method="_on_area_fuego_4_body_entered"]
+[connection signal="body_entered" from="agua/AreaAgua" to="mapa" method="_on_area_agua_body_entered"]
+[connection signal="body_entered" from="agua2/AreaAgua2" to="mapa" method="_on_area_agua_2_body_entered"]
+[connection signal="body_entered" from="agua3/AreaAgua3" to="mapa" method="_on_area_agua_3_body_entered"]
+[connection signal="body_entered" from="agua4/AreaAgua4" to="mapa" method="_on_area_agua_4_body_entered"]

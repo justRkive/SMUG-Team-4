@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cpfp0lug3q7ec"]
+[gd_scene load_steps=22 format=3 uid="uid://cs5ei1uq2kgdk"]
 
 [ext_resource type="PackedScene" uid="uid://yt1a58qjn5ae" path="res://assets/mapa.glb" id="1_ik5yx"]
 [ext_resource type="Shader" uid="uid://cumlblofs1k88" path="res://shader/pasto.tres" id="2_oceek"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://247rqtrq3grs" path="res://assets/arbusto2.glb" id="5_qok5e"]
 [ext_resource type="PackedScene" uid="uid://dbaequdc7ldb" path="res://assets/arbusto3.glb" id="6_15ei2"]
 [ext_resource type="PackedScene" uid="uid://b1yxd2an3dvox" path="res://assets/arbusto4.glb" id="7_j01nn"]
+[ext_resource type="PackedScene" uid="uid://bv0q1tpixvpm0" path="res://assets/mapa_2,0.glb" id="8_toaw3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mushv"]
 albedo_color = Color(0.521569, 0.529412, 0.545098, 1)
@@ -71,6 +72,55 @@ shader = ExtResource("2_oceek")
 
 [node name="mapa" instance=ExtResource("1_ik5yx")]
 
+[node name="Cubo001" parent="." index="0"]
+visible = false
+
+[node name="Cubo002" parent="." index="1"]
+visible = false
+
+[node name="Cubo135" parent="." index="122"]
+transform = Transform3D(0, 0, 0.0923006, 0, 0.0923006, 0, -0.0923006, 0, 0, 0.0558093, -1.02062, 0.871019)
+visible = false
+
+[node name="fire001" parent="." index="125"]
+visible = false
+
+[node name="fire002" parent="." index="126"]
+visible = false
+
+[node name="question" parent="." index="127"]
+visible = false
+
+[node name="question001" parent="." index="128"]
+visible = false
+
+[node name="thunder" parent="." index="129"]
+visible = false
+
+[node name="question002" parent="." index="130"]
+visible = false
+
+[node name="water" parent="." index="131"]
+visible = false
+
+[node name="water001" parent="." index="132"]
+visible = false
+
+[node name="thunder001" parent="." index="133"]
+visible = false
+
+[node name="fire" parent="." index="134"]
+visible = false
+
+[node name="water002" parent="." index="135"]
+visible = false
+
+[node name="thunder002" parent="." index="136"]
+visible = false
+
+[node name="Cubo" parent="." index="137"]
+visible = false
+
 [node name="Esfera geodésica001" parent="." index="142"]
 transform = Transform3D(0.127875, 0, 0, 0, 0.127875, 0, 0, 0, 0.127875, -5.19893, -0.761925, 2.45084)
 
@@ -79,6 +129,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_mushv")
 
 [node name="Cubo035" parent="." index="156"]
 transform = Transform3D(0.0923006, 0, 0, 0, 0.0923006, 0, 0, 0, 0.0923006, -1.33736, -1.10431, 0.375075)
+visible = false
 surface_material_override/0 = SubResource("StandardMaterial3D_0h1ao")
 
 [node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="." index="157"]
@@ -183,3 +234,5 @@ transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -4.84277, -1.01556, -0.
 
 [node name="arbusto18" parent="." index="183" instance=ExtResource("7_j01nn")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -4.6666, -0.402072, 2.55568)
+
+[node name="mapa_2,0" parent="." index="184" instance=ExtResource("8_toaw3")]

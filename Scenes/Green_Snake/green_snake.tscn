@@ -17,7 +17,7 @@ var last_direction = 1
 var up = Vector2.UP
 const JUMP_VELOCITY = -500
 var  permiso_idle = true
-@onready var hp = 10
+@onready var hp = 20
 @onready var animated_sprite_2d = $Pivot/AnimatedSprite2D
 var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
 @onready var pivot = $Pivot
@@ -31,7 +31,11 @@ var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
 
 var BlueBall = preload(\"res://Utility/blue_attack.tscn\")
 
- 
+#poderes
+@export var agua=0
+@export var fuego=0
+@export var trueno=0
+
 func rotar():
 	var sentido = Input.get_axis(\"key_O\",\"key_P\")
 	rotation += 0.1 * sentido
@@ -76,7 +80,7 @@ func _physics_process(delta):
 	if not is_on_floor():
 		rotar()
 		#gravedad
-		velocity.y += gravity * delta
+		velocity.y += 1100 * delta
 	
 	if is_on_floor():
 		rotation = 0
@@ -272,7 +276,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lstcq"]
-radius = 8.99107
+radius = 8.33333
 height = 22.9172
 
 [node name="green_snake" type="CharacterBody2D" groups=["atacable", "player_green"]]
@@ -283,7 +287,8 @@ script = SubResource("GDScript_dua3t")
 unique_name_in_owner = true
 
 [node name="HurtBoxGreen" type="Area2D" parent="Pivot" groups=["atacable"]]
-position = Vector2(-3, 0)
+position = Vector2(1, 0)
+scale = Vector2(0.95, 0.95)
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("5_ypi4v")
@@ -298,12 +303,13 @@ debug_color = Color(0.933333, 0.0980392, 0.596078, 0.419608)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Pivot"]
 position = Vector2(3, -5)
+scale = Vector2(0.9, 0.9)
 sprite_frames = SubResource("SpriteFrames_df0ww")
 animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(5, -6)
-scale = Vector2(0.77855, 0.959979)
+position = Vector2(2, -5)
+scale = Vector2(1.12191, 0.9)
 shape = SubResource("CapsuleShape2D_lstcq")
 
 [node name="DeadTimer" type="Timer" parent="."]

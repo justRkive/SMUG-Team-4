@@ -15,8 +15,13 @@ var aceleracion_angular=10
 @onready var detector_arriba_2 = $"../detector_arriba_2"
 @onready var camera_3d = $"../SubViewportContainer/SubViewport/Camera3D"
 
+@export var fuego=0
+@export var agua=0
+@export var trueno=0
 
+@export var permiso_movimiento=true
 
+@export var puntos=0
 signal ronda
 func _ready():
 	
@@ -37,7 +42,7 @@ func mover_a(delta,objetivo):
 
 func _physics_process(delta):
 
-	if camera_3d.mapa==1:
+	if camera_3d.mapa==1 and permiso_movimiento==true:
 		if Input.is_action_just_pressed("arriba") and movimiento==false and detector_arriba_2.colisiona==false and movimientos_disponibles>0:
 
 			rotacion=3
@@ -59,7 +64,7 @@ func _physics_process(delta):
 			movimiento=true
 			nueva_posicion= Vector3($".".position.x-0.95,$".".position.y,$".".position.z)		
 			
-	if camera_3d.mapa==0 and rotacion==1:
+	if camera_3d.mapa==0 and rotacion==1 and permiso_movimiento==true:
 		if Input.is_action_just_pressed("arriba") and movimiento==false and detector_abajo_2.colisiona==false and movimientos_disponibles>0:
 			rotacion=1
 			movimiento=true
@@ -79,7 +84,7 @@ func _physics_process(delta):
 			movimiento=true
 			nueva_posicion= Vector3($".".position.x+0.95,$".".position.y,$".".position.z)	
 			
-	if camera_3d.mapa==0 and rotacion==2:
+	if camera_3d.mapa==0 and rotacion==2 and permiso_movimiento==true:
 		if Input.is_action_just_pressed("arriba") and movimiento==false and detector_derecha_2.colisiona==false and movimientos_disponibles>0:
 
 			rotacion=2
@@ -100,7 +105,7 @@ func _physics_process(delta):
 			rotacion=4
 			movimiento=true
 			nueva_posicion= Vector3($".".position.x-0.95,$".".position.y,$".".position.z)
-	if camera_3d.mapa==0 and rotacion==3:
+	if camera_3d.mapa==0 and rotacion==3 and permiso_movimiento==true:
 		if Input.is_action_just_pressed("arriba") and movimiento==false and detector_arriba_2.colisiona==false and movimientos_disponibles>0:
 
 			rotacion=3
@@ -121,7 +126,7 @@ func _physics_process(delta):
 			rotacion=4
 			movimiento=true
 			nueva_posicion= Vector3($".".position.x-0.95,$".".position.y,$".".position.z)	
-	if camera_3d.mapa==0 and rotacion==4:
+	if camera_3d.mapa==0 and rotacion==4 and permiso_movimiento==true:
 		if Input.is_action_just_pressed("arriba") and movimiento==false and detector_izquierda_2.colisiona==false and movimientos_disponibles>0:
 
 			rotacion=4
