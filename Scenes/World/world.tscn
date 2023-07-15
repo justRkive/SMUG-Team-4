@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c50tbrvq30c3w"]
+[gd_scene load_steps=16 format=3 uid="uid://c50tbrvq30c3w"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_7tmk4"]
 [ext_resource type="Texture2D" uid="uid://dnhye3evpje8l" path="res://assets/Maps/Cave/Tiles-and-Some-Props.png" id="2_7ggcx"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://uy10xlggc55k" path="res://assets/Icons of powers/water.png" id="6_5mqxb"]
 [ext_resource type="PackedScene" uid="uid://ci2pw58msbryp" path="res://scenes/Green_Snake/green_snake.tscn" id="6_18dit"]
 [ext_resource type="Texture2D" uid="uid://i30eahti0t74" path="res://assets/Icons of powers/fire.png" id="7_yi1fm"]
+[ext_resource type="AudioStream" uid="uid://hwl2q5cbxo0e" path="res://sounds/music/batalla2d.mp3" id="12_hdifb"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yit01"]
 texture = ExtResource("3_f776w")
@@ -3586,3 +3587,8 @@ horizontal_alignment = 1
 [node name="green_snake" parent="." instance=ExtResource("6_18dit")]
 position = Vector2(377.777, -16.5876)
 scale = Vector2(3, 3)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_hdifb")
+autoplay = true
+bus = &"Music"

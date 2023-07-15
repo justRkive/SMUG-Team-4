@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://datkwxa046xoe"]
+[gd_scene load_steps=76 format=3 uid="uid://datkwxa046xoe"]
 
 [ext_resource type="PackedScene" uid="uid://cs5ei1uq2kgdk" path="res://scenes/mapa.tscn" id="1_k6gn1"]
 [ext_resource type="Script" path="res://scripts/general.gd" id="1_lgv2j"]
@@ -36,6 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://byfigi548vx7f" path="res://Menu/carta1.png" id="32_1vhe1"]
 [ext_resource type="PackedScene" uid="uid://ds0biv0hjomfi" path="res://UI/transitioner.tscn" id="35_htqmn"]
 [ext_resource type="PackedScene" uid="uid://c50tbrvq30c3w" path="res://scenes/World/world.tscn" id="36_l0hrr"]
+[ext_resource type="AudioStream" uid="uid://c8eqes0x8ytbb" path="res://sounds/music/Zona3d.mp3" id="37_h1sl2"]
 
 [sub_resource type="Sky" id="Sky_rtyq0"]
 
@@ -994,6 +995,11 @@ scene_switch_anim = "fade_in"
 [node name="fadeOut" parent="CanvasLayer" instance=ExtResource("35_htqmn")]
 scene_switch_anim = "fade_out"
 scene_to_load = ExtResource("36_l0hrr")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("37_h1sl2")
+autoplay = true
+bus = &"Music"
 
 [connection signal="ronda" from="serpiente2" to="SubViewportContainer/Control/HBoxContainer/Label2" method="_on_serpiente_2_ronda"]
 [connection signal="body_entered" from="trueno/AreaTrueno" to="mapa" method="_on_area_trueno_body_entered"]

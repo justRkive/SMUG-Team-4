@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://byt18gyrtmy7k"]
+[gd_scene load_steps=6 format=3 uid="uid://byt18gyrtmy7k"]
 
 [ext_resource type="Theme" uid="uid://dlsdq41g5x1km" path="res://Menu/Main_Menu.tres" id="1_fo011"]
 [ext_resource type="Script" path="res://Menu/main_menu.gd" id="2_4glys"]
 [ext_resource type="PackedScene" uid="uid://datkwxa046xoe" path="res://scenes/general.tscn" id="3_tas2g"]
 [ext_resource type="Texture2D" uid="uid://btn4kjomiks5a" path="res://Menu/portada.png" id="4_7qx4i"]
+[ext_resource type="AudioStream" uid="uid://dyeodkwxmpkcb" path="res://sounds/music/Menu4.mp3" id="5_tt06x"]
 
 [node name="MainMenu" type="MarginContainer"]
 anchors_preset = 15
@@ -55,3 +56,8 @@ text = "Play"
 unique_name_in_owner = true
 layout_mode = 2
 text = "Exit"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_tt06x")
+autoplay = true
+bus = &"Music"
