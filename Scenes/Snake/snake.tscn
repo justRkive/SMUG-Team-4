@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://b6i8phvj5ixr3"]
+[gd_scene load_steps=12 format=3 uid="uid://b6i8phvj5ixr3"]
 
 [ext_resource type="SpriteFrames" uid="uid://j08g7gjt00m4" path="res://scenes/Snake/idle_animiation/snake.tres" id="2_qnjb4"]
 [ext_resource type="Script" path="res://Utility/hurt_box.gd" id="3_7ntqe"]
 [ext_resource type="PackedScene" uid="uid://bekvm2gch1soa" path="res://Menu/debug_menu_2d.tscn" id="4_ncqrs"]
+[ext_resource type="AudioStream" uid="uid://cytyrhd6uqg35" path="res://sounds/sfx/Jump_03.wav" id="4_t73wv"]
 
 [sub_resource type="GDScript" id="GDScript_xq6l5"]
 script/source = "extends CharacterBody2D
@@ -23,6 +24,7 @@ var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
 @onready var posicion_hitbox = hitbox.get(\"position\")
 @onready var green_snake = $\"../green_snake\"
 @onready var world = $\"..\"
+@onready var audio_stream_player = $AudioStreamPlayer
 
 #que pasa ahora si que si o no
 @onready var dead_timer = $DeadTimer
@@ -99,6 +101,7 @@ func _physics_process(delta):
 	#saltar
 	if Input.is_action_just_pressed(\"ui_accept\") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		audio_stream_player.play()
 	
 	if direction!=0:
 		pivot.scale.x = sign(direction)
@@ -272,6 +275,11 @@ shape = SubResource("CapsuleShape2D_2rkju")
 [node name="DeadTimer" type="Timer" parent="."]
 
 [node name="AttackTimer" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_t73wv")
+volume_db = -10.0
+bus = &"SFX"
 
 [connection signal="area_entered" from="Pivot/HurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="area_entered" from="Pivot/HurtBox" to="Pivot/HurtBox" method="_on_area_entered" flags=18]

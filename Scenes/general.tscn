@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://datkwxa046xoe"]
+[gd_scene load_steps=77 format=3 uid="uid://datkwxa046xoe"]
 
 [ext_resource type="PackedScene" uid="uid://cs5ei1uq2kgdk" path="res://scenes/mapa.tscn" id="1_k6gn1"]
 [ext_resource type="Script" path="res://scripts/general.gd" id="1_lgv2j"]
@@ -34,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://co0j4stp80ndb" path="res://Menu/carta2.png" id="26_hh7od"]
 [ext_resource type="Texture2D" uid="uid://v6j01jq1p78f" path="res://Menu/carta3.png" id="27_gwkrx"]
 [ext_resource type="Texture2D" uid="uid://byfigi548vx7f" path="res://Menu/carta1.png" id="32_1vhe1"]
+[ext_resource type="AudioStream" uid="uid://fphvu50j4wca" path="res://sounds/sfx/rolldie.wav" id="32_mis5q"]
 [ext_resource type="PackedScene" uid="uid://ds0biv0hjomfi" path="res://UI/transitioner.tscn" id="35_htqmn"]
 [ext_resource type="PackedScene" uid="uid://c50tbrvq30c3w" path="res://scenes/World/world.tscn" id="36_l0hrr"]
 [ext_resource type="AudioStream" uid="uid://c8eqes0x8ytbb" path="res://sounds/music/Zona3d.mp3" id="37_h1sl2"]
@@ -692,6 +693,10 @@ surface_material_override/0 = SubResource("ShaderMaterial_pgkr7")
 [node name="dado" parent="SubViewportContainer/SubViewport/Camera3D" instance=ExtResource("9_uj43o")]
 transform = Transform3D(0.0119754, -0.0253345, 0.0285439, -0.0361663, 0.00202202, 0.016968, -0.0121898, -0.0308881, -0.022301, 0.61, 0.339, -0.367)
 script = ExtResource("10_feiti")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport/Camera3D/dado"]
+stream = ExtResource("32_mis5q")
+bus = &"SFX"
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.96629, -5.35243, 1.63735)

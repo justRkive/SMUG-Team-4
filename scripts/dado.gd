@@ -2,13 +2,14 @@ extends Node3D
 var numero_elegido =0
 @onready var serpiente_2 = $"../../../../serpiente2"
 @onready var serpiente = $"../../../../serpiente"
+@onready var audio_stream_player = $AudioStreamPlayer
 var aceleracion_angular=101
 @export var permiso_dado=true
 @export var jugador_actual=0
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("espacio") and jugador_actual==0 and serpiente_2.movimientos_disponibles==0 and permiso_dado==true:
-
+		audio_stream_player.play()
 		randomize()
 		numero_elegido=(randi()%6)
 		print("el número elegido fue "+str(numero_elegido) )
@@ -16,7 +17,7 @@ func _physics_process(delta):
 		await get_tree().create_timer(0.1).timeout
 		jugador_actual=(jugador_actual+1)%2
 	if Input.is_action_just_pressed("espacio") and jugador_actual==1 and serpiente.movimientos_disponibles==0:
-
+		audio_stream_player.play()
 		randomize()
 		numero_elegido=(randi()%6)
 		print("el número elegido fue "+str(numero_elegido) )
