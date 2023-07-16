@@ -1,16 +1,16 @@
 extends MarginContainer
 
 @onready var play3D = %Play3D
-
+@onready var credits = %Credits
 @onready var exit = %Exit
 
-
 @export var scene3D: PackedScene
+@export var sceneCred: PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	play3D.pressed.connect(_on_play3D_pressed)
-
+	credits.pressed.connect(_on_credits_pressed)
 	exit.pressed.connect(_on_exit_pressed)
 
 func _on_play3D_pressed():
@@ -28,6 +28,8 @@ func _on_play3D_pressed():
 	file2.store_string(JSON.stringify(data1))
 	get_tree().change_scene_to_packed(scene3D)
 
+func _on_credits_pressed():
+	pass
 
 func _on_exit_pressed():
 	get_tree().quit()

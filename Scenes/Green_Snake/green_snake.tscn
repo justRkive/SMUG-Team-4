@@ -1,10 +1,13 @@
-[gd_scene load_steps=27 format=3 uid="uid://ci2pw58msbryp"]
+[gd_scene load_steps=30 format=3 uid="uid://ci2pw58msbryp"]
 
 [ext_resource type="Texture2D" uid="uid://r5cai70cmcem" path="res://assets/Green_Snake/snake_attack.png" id="1_h1iub"]
 [ext_resource type="Texture2D" uid="uid://dok6rjya6dfum" path="res://assets/Green_Snake/snake_dead.png" id="2_0u2aw"]
 [ext_resource type="Texture2D" uid="uid://dif0u47ievfyw" path="res://assets/Green_Snake/snake_idle.png" id="3_olhuc"]
 [ext_resource type="AudioStream" uid="uid://cytyrhd6uqg35" path="res://sounds/sfx/Jump_03.wav" id="5_shs2v"]
 [ext_resource type="Script" path="res://Scenes/Green_Snake/Area2D.gd" id="5_ypi4v"]
+[ext_resource type="AudioStream" uid="uid://btjfbgefkp3q0" path="res://sounds/sfx/Explosion_00.wav" id="6_0dmft"]
+[ext_resource type="AudioStream" uid="uid://dldorhcdl54io" path="res://sounds/sfx/Hit_01.wav" id="7_potn4"]
+[ext_resource type="AudioStream" uid="uid://drieccv1ox0aw" path="res://sounds/sfx/Hero_Death_00.wav" id="8_4fwjs"]
 
 [sub_resource type="GDScript" id="GDScript_dua3t"]
 script/source = "extends CharacterBody2D
@@ -30,6 +33,10 @@ var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
 @onready var snake = $\"../Snake\"
 @onready var world = $\"..\"
 @onready var audio_stream_player = $AudioStreamPlayer
+@onready var audio_stream_player_2 = $AudioStreamPlayer2
+@onready var audio_stream_player_3 = $AudioStreamPlayer3
+@onready var audio_stream_player_4 = $AudioStreamPlayer4
+
 
 var BlueBall = preload(\"res://Utility/blue_attack.tscn\")
 
@@ -78,6 +85,7 @@ func _physics_process(delta):
 				attack_timer.wait_time = 1
 				attack_timer.start()
 				attack()
+				audio_stream_player_2.play()
 		
 	if not is_on_floor():
 		rotar()
@@ -120,8 +128,10 @@ func _on_hurt_box_green_area_entered(area):
 	if area.is_in_group(\"blue_ball\"):
 		var damage = area.damage
 		hp-=damage
+		audio_stream_player_3.play()
 		if hp<=0:
 			animated_sprite_2d.play(\"die\")
+			audio_stream_player_4.play()
 			dead_timer.wait_time = 1
 			dead_timer.start()
 			snake.puntos+=1
@@ -321,6 +331,21 @@ shape = SubResource("CapsuleShape2D_lstcq")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_shs2v")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_0dmft")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_potn4")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_4fwjs")
 volume_db = -10.0
 bus = &"SFX"
 
