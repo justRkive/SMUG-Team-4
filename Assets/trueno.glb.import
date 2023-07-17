@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dopta3uhamc3x"
-path="res://.godot/imported/trueno.glb-bd3594e5417657ecb2c9592a64d56eeb.scn"
+path="res://.godot/imported/trueno.glb-d86f7aa63cada6a536cf29d190340f64.scn"
 
 [deps]
 
-source_file="res://assets/trueno.glb"
-dest_files=["res://.godot/imported/trueno.glb-bd3594e5417657ecb2c9592a64d56eeb.scn"]
+source_file="res://Assets/trueno.glb"
+dest_files=["res://.godot/imported/trueno.glb-d86f7aa63cada6a536cf29d190340f64.scn"]
 
 [params]
 

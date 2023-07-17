@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" path="res://UI/transitioner.gd" id="1_bi60q"]
 
-[sub_resource type="Gradient" id="Gradient_5xxfy"]
+[sub_resource type="Gradient" id="Gradient_huhwv"]
 interpolation_mode = 1
 offsets = PackedFloat32Array(0, 0.674905)
 colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_0b3ib"]
-gradient = SubResource("Gradient_5xxfy")
+gradient = SubResource("Gradient_huhwv")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 

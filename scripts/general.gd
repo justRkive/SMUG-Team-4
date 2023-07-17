@@ -25,9 +25,13 @@ extends Node3D
 
 @onready var on_board = true
 @onready var canvasLayer := $CanvasLayer
+@onready var canvasLayerEnding := $CanvasLayerEnding
 
 @export var fade_out : Transitioner
 @export var fade_in : Transitioner 
+
+@export var ending : Transitioner
+@export var player1wins : Transitioner
 
 signal timer
 
@@ -40,6 +44,7 @@ func _ready():
 		load_data()
 
 	canvasLayer.visible = false
+	canvasLayerEnding.visible = false
 	var current_round = label_2.rondas
 	if (current_round > 1):
 		canvasLayer.visible = true
@@ -140,13 +145,38 @@ func _process(delta):
 	if (int(current_round)%4 == 0) and on_board:
 		on_board = false
 		canvasLayer.visible = true
+		dado.permiso_dado=false
 		print("Batte Starts")
 		serpiente.get_child(3).get_child(0).permiso_pausa=false
 		h_box_container_4.activacion_animada=true
 		await get_tree().create_timer(1.5).timeout
-		dado.permiso_dado=false
+	
 		fade_out.set_next_animation(true)
 		
+	if (int(current_round) == 13) and on_board:
+		#await get_tree().create_timer(1).timeout
+		print("game finished")
+		on_board = false		
+		dado.permiso_dado=false
+		
+		var player1_pts = serpiente.puntos
+		var player2_pts = serpiente_2.puntos
+		if (player1_pts > player2_pts):
+			canvasLayerEnding.visible = true
+			await get_tree().create_timer(2).timeout
+			player1wins.set_next_animation(true)
+			
+			print("Player 1 wins")
+			await get_tree().create_timer(3).timeout
+			get_tree().change_scene_to_file("res://Menu/main_menu.tscn")
+		else:
+			canvasLayerEnding.visible = true
+			await get_tree().create_timer(2).timeout
+			ending.set_next_animation(true)
+			
+			print("Player 2 wins")
+			await get_tree().create_timer(3).timeout
+			get_tree().change_scene_to_file("res://Menu/main_menu.tscn")
 
 
-		#get_tree().change_scene_to_file("res://scenes/World/world.tscn")
+		

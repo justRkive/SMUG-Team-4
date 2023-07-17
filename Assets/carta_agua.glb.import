@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://co1hv6738c0cx"
-path="res://.godot/imported/carta_agua.glb-3d6311d3d0f214885abe7047053918c6.scn"
+path="res://.godot/imported/carta_agua.glb-63bb7ce4fffd1f81674d8875cc4dc1b0.scn"
 
 [deps]
 
-source_file="res://assets/carta_agua.glb"
-dest_files=["res://.godot/imported/carta_agua.glb-3d6311d3d0f214885abe7047053918c6.scn"]
+source_file="res://Assets/carta_agua.glb"
+dest_files=["res://.godot/imported/carta_agua.glb-63bb7ce4fffd1f81674d8875cc4dc1b0.scn"]
 
 [params]
 

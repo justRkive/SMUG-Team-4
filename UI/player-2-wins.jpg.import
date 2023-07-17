@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cprj7smx3syjt"
-path="res://.godot/imported/Torch-5frm.png-60986bf41e5aee17c6fd86ecaecd2518.ctex"
+uid="uid://v1e8cmwwjx1y"
+path="res://.godot/imported/player-2-wins.jpg-480b4d507590c34e60e991a54eb7b66c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Maps/Cave/Animations/Torch-5frm.png"
-dest_files=["res://.godot/imported/Torch-5frm.png-60986bf41e5aee17c6fd86ecaecd2518.ctex"]
+source_file="res://UI/player-2-wins.jpg"
+dest_files=["res://.godot/imported/player-2-wins.jpg-480b4d507590c34e60e991a54eb7b66c.ctex"]
 
 [params]
 

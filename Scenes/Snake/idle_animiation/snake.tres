@@ -1,8 +1,8 @@
 [gd_resource type="SpriteFrames" load_steps=21 format=3 uid="uid://j08g7gjt00m4"]
 
-[ext_resource type="Texture2D" uid="uid://c670kg55qxdyd" path="res://assets/Snake/Red_Snake/snake_attack.png" id="1_xln4u"]
-[ext_resource type="Texture2D" uid="uid://or228te3udns" path="res://assets/Snake/Red_Snake/snake_dead.png" id="2_5ce1a"]
-[ext_resource type="Texture2D" uid="uid://b77wl21fkaev" path="res://assets/Snake/Red_Snake/snake_idle.png" id="3_fdq83"]
+[ext_resource type="Texture2D" uid="uid://c670kg55qxdyd" path="res://Assets/Snake/Red_Snake/snake_attack.png" id="1_xln4u"]
+[ext_resource type="Texture2D" uid="uid://or228te3udns" path="res://Assets/Snake/Red_Snake/snake_dead.png" id="2_5ce1a"]
+[ext_resource type="Texture2D" uid="uid://b77wl21fkaev" path="res://Assets/Snake/Red_Snake/snake_idle.png" id="3_fdq83"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7ed0p"]
 atlas = ExtResource("1_xln4u")
