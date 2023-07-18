@@ -5,5 +5,5 @@ var velocidad=4
 @export var activacion_animada=false
 func _process(delta):
 	if activacion_animada==true:
-		$".".position.x = $".".position.x+9
+		$".".position.y = $".".position.y+6.3
 

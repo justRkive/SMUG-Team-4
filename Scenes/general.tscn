@@ -256,11 +256,11 @@ size = Vector3(0.35, 0.06, 0.4)
 [sub_resource type="BoxShape3D" id="BoxShape3D_nebpj"]
 size = Vector3(0.35, 0.06, 0.4)
 
-[node name="Node3D" type="Node3D" node_paths=PackedStringArray("fade_out", "fade_in", "ending", "player1wins")]
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("fade_out", "fade_in", "player2wins", "player1wins")]
 script = ExtResource("1_lgv2j")
 fade_out = NodePath("CanvasLayer/fadeOut")
 fade_in = NodePath("CanvasLayer/fadeIn")
-ending = NodePath("CanvasLayerEnding/player-wins")
+player2wins = NodePath("CanvasLayerEnding/player-wins")
 player1wins = NodePath("CanvasLayerEnding/player1-wins")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -598,10 +598,11 @@ horizontal_alignment = 1
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="SubViewportContainer/Control"]
 layout_mode = 2
-offset_left = -436.118
-offset_top = 262.0
-offset_right = -33.118
-offset_bottom = 345.0
+offset_left = 200.0
+offset_top = -400.0
+offset_right = 894.0
+offset_bottom = -280.0
+scale = Vector2(1.2, 1.2)
 script = ExtResource("19_31f8n")
 
 [node name="PanelContainer" type="PanelContainer" parent="SubViewportContainer/Control/HBoxContainer4"]
@@ -612,7 +613,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="SubViewportContainer/Control/HBoxContainer4/PanelContainer"]
 layout_mode = 2
-text = "battle round"
+text = " THE BATTLE BEGINS! "
 label_settings = SubResource("LabelSettings_wiliv")
 
 [node name="SerpienteVerde" type="Sprite2D" parent="SubViewportContainer"]
@@ -1008,17 +1009,17 @@ scene_to_load = ExtResource("36_l0hrr")
 [node name="CanvasLayerEnding" type="CanvasLayer" parent="."]
 
 [node name="player1-wins" parent="CanvasLayerEnding" instance=ExtResource("38_kbsc3")]
-offset_left = 16.0
-offset_top = 10.0
-offset_right = 16.0
-offset_bottom = 10.0
+offset_left = 14.0
+offset_top = 6.0
+offset_right = 14.0
+offset_bottom = 6.0
 scene_switch_anim = "fade_in"
 
 [node name="player-wins" parent="CanvasLayerEnding" instance=ExtResource("38_hi2i1")]
-offset_left = 15.0
-offset_top = 3.0
-offset_right = 15.0
-offset_bottom = 3.0
+offset_left = 2.0
+offset_top = 5.0
+offset_right = 2.0
+offset_bottom = 5.0
 scene_switch_anim = "fade_in"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

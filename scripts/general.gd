@@ -30,7 +30,7 @@ extends Node3D
 @export var fade_out : Transitioner
 @export var fade_in : Transitioner 
 
-@export var ending : Transitioner
+@export var player2wins : Transitioner
 @export var player1wins : Transitioner
 
 signal timer
@@ -150,7 +150,6 @@ func _process(delta):
 		serpiente.get_child(3).get_child(0).permiso_pausa=false
 		h_box_container_4.activacion_animada=true
 		await get_tree().create_timer(1.5).timeout
-	
 		fade_out.set_next_animation(true)
 		
 	if (int(current_round) == 13) and on_board:
@@ -167,15 +166,15 @@ func _process(delta):
 			player1wins.set_next_animation(true)
 			
 			print("Player 1 wins")
-			await get_tree().create_timer(3).timeout
+			await get_tree().create_timer(5).timeout
 			get_tree().change_scene_to_file("res://Menu/main_menu.tscn")
 		else:
 			canvasLayerEnding.visible = true
 			await get_tree().create_timer(2).timeout
-			ending.set_next_animation(true)
+			player2wins.set_next_animation(true)
 			
 			print("Player 2 wins")
-			await get_tree().create_timer(3).timeout
+			await get_tree().create_timer(5).timeout
 			get_tree().change_scene_to_file("res://Menu/main_menu.tscn")
 
 
