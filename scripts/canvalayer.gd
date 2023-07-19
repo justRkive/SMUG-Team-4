@@ -1,22 +1,22 @@
 extends CanvasLayer
 
-@onready var fires_number = $Fires_number
-@onready var water_number = $Water_number
-@onready var thunder_number = $Thunder_number
+@onready var gs_fire_number = %gs_fire_label
+@onready var gs_water_number = %gs_water_label
+@onready var gs_thunder_number = %gs_thunder_label
 
-@onready var fires_number_2 = $Fires_number2
-@onready var water_number_2 = $Water_number2
-@onready var thunder_number_2 = $Thunder_number2
+@onready var rs_fire_number = %rs_fire_label
+@onready var rs_water_number = %rs_water_label
+@onready var rs_thunder_number = %rs_thunder_label
 
 @onready var snake = $"../Snake"
 @onready var green_snake = $"../green_snake"
 
 
 func _process(delta):
- 	fires_number.text= "x"+str(green_snake.fuego)
-	water_number.text= "x"+str(green_snake.agua)
-	thunder_number.text= "x"+str(green_snake.trueno)
+	gs_fire_number.text= "x"+str(green_snake.poderes["fire"])
+	gs_water_number.text= "x"+str(green_snake.poderes["water"])
+	gs_thunder_number.text= "x"+str(green_snake.poderes["thunder"])
 	
-	fires_number_2.text= "x"+str(snake.fuego)
-	water_number_2.text= "x"+str(snake.agua)
-	thunder_number_2.text="x"+str(snake.trueno)
+	rs_fire_number.text= "x"+str(snake.poderes["fire"])
+	rs_water_number.text= "x"+str(snake.poderes["water"])
+	rs_thunder_number.text="x"+str(snake.poderes["thunder"])

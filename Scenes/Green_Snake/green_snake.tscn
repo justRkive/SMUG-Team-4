@@ -16,18 +16,18 @@ const SPEED = 200.0
 const JUMP_VELOCITY = -500
 var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
 
-var velocidad_ataque = 400
+var velocidad_ataque = 300
 var permiso_atacar = true
+var permiso_mover = true
+var permiso_idle = true
 var angulo = 0
 var loking = Vector2.RIGHT
 var last_direction = 1
 var up = Vector2.UP
-var permiso_idle = true
 var der = \"key_D\"
 var izq = \"key_A\"
-
-var maxHp = 20
-var hp = 20
+var quemandose = false
+var hp = 30
 
 @onready var animated_sprite_2d = $Pivot/AnimatedSprite2D
 @onready var pivot = $Pivot
@@ -35,9 +35,14 @@ var hp = 20
 @onready var posicion_hitbox = hitbox.get(\"position\")
 @onready var dead_timer = $DeadTimer
 @onready var attack_timer = $AttackTimer
-@export  var puntos=0
+@export  var puntos = 0
 @onready var snake = $\"../Snake\"
 @onready var world = $\"..\"
+@onready var selector = world.get_node(\"%gs_selector\")
+@onready var fire_button = world.get_node(\"%gs_fire\")
+@onready var water_button = world.get_node(\"%gs_water\")
+@onready var thunder_button = world.get_node(\"%gs_thunder\")
+
 @onready var audio_stream_player = $AudioStreamPlayer
 @onready var audio_stream_player_2 = $AudioStreamPlayer2
 @onready var audio_stream_player_3 = $AudioStreamPlayer3
@@ -49,8 +54,8 @@ var fire_attack = preload(\"res://Utility/attacks/fire_attack.tscn\")
 var thunder_attack = preload(\"res://Utility/attacks/thunder_attack.tscn\")
 var selected_power = water_attack
 
-var poderes = {\"water\": 0, \"fire\": 0, \"thunder\": 0}
-var labels = [\"water\", \"fire\", \"thunder\"]
+var poderes = {\"fire\": 0, \"water\": 0, \"thunder\": 0}
+var labels = [\"fire\", \"water\", \"thunder\"]
 var indice = 0
 
 func rotar():
@@ -58,6 +63,32 @@ func rotar():
 	rotation += 0.1 * sentido
 	loking = Vector2.from_angle(rotation)
 	
+	
+func power_selection():
+	if Input.is_action_just_pressed(\"key_z\"):
+		indice = (indice - 1) % 3
+	if Input.is_action_just_pressed(\"key_c\"):
+		indice = (indice + 1) % 3
+
+	print(\"Poder seleccionado: \", labels[indice])
+
+	match labels[indice]:
+		\"fire\":
+			selected_power = fire_attack
+			selector.global_position = fire_button.global_position + Vector2(-17, -65)
+		\"water\":
+			selected_power = water_attack
+			selector.global_position = water_button.global_position + Vector2(-17, -65)
+		\"thunder\":
+			selected_power = thunder_attack
+			selector.global_position = thunder_button.global_position + Vector2(-17, -65)
+
+func stun():
+	permiso_mover = false
+
+func release_stun():
+	permiso_mover = true
+
 
 func invert_input():
 	der = \"key_A\"
@@ -70,13 +101,13 @@ func release_inversion():
 func attack():
 	var poder = poderes[labels[indice]]
 	var _attack
-	
+
 	if poder == 0:
 		_attack = normal_attack.instantiate()
 	else:
 		poderes[labels[indice]] -= 1
 		_attack = selected_power.instatiate()
-	
+
 	_attack.set_collision_layer_value(2, true)
 	var pivot = _attack.get_node(\"%Pivot\")
 	_attack.target = loking
@@ -89,13 +120,16 @@ func attack():
 			pivot.scale.x = sign(loking.x)
 	else:
 		_attack.position = global_position
-	add_child(_attack)	
+	attack_timer.start()
+	permiso_atacar = false
+	add_child(_attack)
 
 func _ready():
 	pass
 
 func _physics_process(delta):
-	
+	power_selection()
+
 	if hp>0 and permiso_idle:
 		animated_sprite_2d.play(\"idle\")
 	
@@ -119,6 +153,10 @@ func _physics_process(delta):
 		loking = Vector2.from_angle(rotation)
 	
 	#movimiento normal
+	if not permiso_mover:
+		move_and_slide()
+		return
+ 
 	var direction = Input.get_axis(izq, der)
 	if direction:
 		velocity.x = direction * SPEED
@@ -147,18 +185,20 @@ func _physics_process(delta):
 	
 
 func _on_hurt_box_green_area_entered(area):
-	if area.is_in_group(\"attack\"):
-		area._on_enemy_hit(self)
-		var damage = area.damage
-		hp -= damage
-		audio_stream_player_3.play()
-		if hp <= 0:
-			animated_sprite_2d.play(\"die\")
-			audio_stream_player_4.play()
-			dead_timer.wait_time = 1
-			dead_timer.start()
-			snake.puntos+=1
-			world.save_data()
+	if not area.is_in_group(\"attack\"):
+		return
+		
+	area._on_enemy_hit(self)
+	var damage = area.damage
+	hp -= damage
+	audio_stream_player_3.play()
+	if hp <= 0:
+		animated_sprite_2d.play(\"die\")
+		audio_stream_player_4.play()
+		dead_timer.wait_time = 1
+		dead_timer.start()
+		snake.puntos+=1
+		world.save_data()
 
 func _on_dead_timer_timeout():
 	queue_free()
@@ -166,9 +206,18 @@ func _on_dead_timer_timeout():
 
 func _on_attack_timer_timeout():
 	permiso_idle = true
+	permiso_atacar = true
 
-
-
+func hurt(damage):
+	hp -= damage
+	audio_stream_player_3.play()
+	if hp <= 0:
+		animated_sprite_2d.play(\"die\")
+		audio_stream_player_4.play()
+		dead_timer.wait_time = 1
+		dead_timer.start()
+		snake.puntos += 1
+		world.save_data()
 "
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mqd24"]
@@ -351,6 +400,7 @@ shape = SubResource("CapsuleShape2D_lstcq")
 [node name="DeadTimer" type="Timer" parent="."]
 
 [node name="AttackTimer" type="Timer" parent="."]
+one_shot = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_shs2v")

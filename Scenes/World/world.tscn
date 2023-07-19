@@ -3452,6 +3452,7 @@ script = ExtResource("5_dvpbc")
 [node name="Pannel" type="TextureRect" parent="CanvasLayer"]
 modulate = Color(0.0509804, 0.196078, 0.27451, 1)
 self_modulate = Color(0.952941, 0.976471, 1, 1)
+top_level = true
 offset_left = -6.0
 offset_top = 565.0
 offset_right = 1095.0
@@ -3460,18 +3461,25 @@ scale = Vector2(1.05589, 2.10994)
 texture = ExtResource("3_dytg1")
 metadata/_edit_use_anchors_ = true
 
-[node name="gs_fire" type="Button" parent="CanvasLayer"]
-offset_left = -7.0
-offset_top = -1.0
-offset_right = 1.0
-offset_bottom = 7.0
+[node name="gs_fire" type="TextureRect" parent="CanvasLayer"]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_top = 0.75
+anchor_bottom = 0.75
+offset_left = 48.0
+offset_top = 91.0
+offset_right = 332.0
+offset_bottom = 452.0
+scale = Vector2(0.115, 0.1)
+texture = ExtResource("7_yi1fm")
+metadata/_edit_use_anchors_ = true
 
-[node name="number" type="Label" parent="CanvasLayer/gs_fire"]
-layout_mode = 0
-offset_left = 50.0
-offset_top = 608.0
-offset_right = 93.0
-offset_bottom = 640.0
+[node name="gs_fire_label" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 43.0
+offset_top = 607.0
+offset_right = 86.0
+offset_bottom = 639.0
 scale = Vector2(1.03211, 1.24)
 theme_override_colors/font_color = Color(1, 0.337255, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.290196, 0.0627451, 0.0784314, 1)
@@ -3481,38 +3489,21 @@ text = "x3
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="icon" type="TextureRect" parent="CanvasLayer/gs_fire"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.75
-anchor_bottom = 0.75
-offset_left = 55.0
-offset_top = 572.0
-offset_right = 339.0
-offset_bottom = 933.0
-scale = Vector2(0.115, 0.1)
-texture = ExtResource("7_yi1fm")
-metadata/_edit_use_anchors_ = true
-
-[node name="gs_water" type="Button" parent="CanvasLayer"]
-offset_right = 8.0
-offset_bottom = 8.0
-
-[node name="icon" type="TextureRect" parent="CanvasLayer/gs_water"]
-layout_mode = 0
-offset_left = 106.0
+[node name="gs_water" type="TextureRect" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 99.0
 offset_top = 573.0
-offset_right = 387.0
+offset_right = 380.0
 offset_bottom = 993.0
 scale = Vector2(0.115, 0.1)
 texture = ExtResource("6_5mqxb")
 metadata/_edit_use_anchors_ = true
 
-[node name="number" type="Label" parent="CanvasLayer/gs_water"]
-layout_mode = 0
-offset_left = 97.0
+[node name="gs_water_label" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 90.0
 offset_top = 607.0
-offset_right = 140.0
+offset_right = 133.0
 offset_bottom = 639.0
 scale = Vector2(1.2, 1.32)
 theme_override_colors/font_color = Color(0.12549, 0.596078, 0.882353, 1)
@@ -3523,25 +3514,21 @@ text = "x3
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="gs_thunder" type="Button" parent="CanvasLayer"]
-offset_right = 8.0
-offset_bottom = 8.0
-
-[node name="icon" type="TextureRect" parent="CanvasLayer/gs_thunder"]
-layout_mode = 0
-offset_left = 159.0
+[node name="gs_thunder" type="TextureRect" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 153.0
 offset_top = 579.0
-offset_right = 360.0
+offset_right = 354.0
 offset_bottom = 949.0
 scale = Vector2(0.140348, 0.1)
 texture = ExtResource("5_i7qp4")
 metadata/_edit_use_anchors_ = true
 
-[node name="number" type="Label" parent="CanvasLayer/gs_thunder"]
-layout_mode = 0
-offset_left = 142.0
+[node name="gs_thunder_label" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 136.0
 offset_top = 604.0
-offset_right = 185.0
+offset_right = 179.0
 offset_bottom = 636.0
 scale = Vector2(1.44, 1.44)
 theme_override_colors/font_color = Color(0.603922, 0.372549, 0.988235, 1)
@@ -3552,26 +3539,33 @@ text = "x3
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="rs_fire" type="Button" parent="CanvasLayer"]
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="gs_selector" type="Polygon2D" parent="CanvasLayer"]
+unique_name_in_owner = true
+position = Vector2(37, 515)
+scale = Vector2(0.384615, 0.565217)
+polygon = PackedVector2Array(53, 71, 71, 94, 92, 71)
 
-[node name="icon" type="TextureRect" parent="CanvasLayer/rs_fire"]
-layout_mode = 0
-offset_left = 961.0
-offset_top = 576.0
-offset_right = 1245.0
-offset_bottom = 937.0
+[node name="rs_fire" type="TextureRect" parent="CanvasLayer"]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_left = -0.065
+anchor_top = 0.283
+anchor_right = -0.065
+anchor_bottom = 0.283
+offset_left = 1033.88
+offset_top = 398.616
+offset_right = 1317.88
+offset_bottom = 759.616
 scale = Vector2(0.115, 0.1)
 texture = ExtResource("7_yi1fm")
 metadata/_edit_use_anchors_ = true
 
-[node name="number" type="Label" parent="CanvasLayer/rs_fire"]
-layout_mode = 0
-offset_left = 954.0
-offset_top = 607.0
-offset_right = 997.0
-offset_bottom = 639.0
+[node name="rs_fire_label" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 953.0
+offset_top = 612.0
+offset_right = 996.0
+offset_bottom = 644.0
 scale = Vector2(1.03211, 1.24)
 theme_override_colors/font_color = Color(1, 0.337255, 0, 1)
 theme_override_colors/font_shadow_color = Color(0.290196, 0.0627451, 0.0784314, 1)
@@ -3581,26 +3575,22 @@ text = "x3
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="rs_water" type="Button" parent="CanvasLayer"]
-offset_right = 8.0
-offset_bottom = 8.0
-
-[node name="icon" type="TextureRect" parent="CanvasLayer/rs_water"]
-layout_mode = 0
-offset_left = 1007.0
-offset_top = 573.0
-offset_right = 1288.0
-offset_bottom = 993.0
+[node name="rs_water" type="TextureRect" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 1009.0
+offset_top = 579.0
+offset_right = 1290.0
+offset_bottom = 999.0
 scale = Vector2(0.115, 0.1)
 texture = ExtResource("6_5mqxb")
 metadata/_edit_use_anchors_ = true
 
-[node name="number" type="Label" parent="CanvasLayer/rs_water"]
-layout_mode = 0
-offset_left = 999.0
-offset_top = 605.0
-offset_right = 1042.0
-offset_bottom = 637.0
+[node name="rs_water_label" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 1001.0
+offset_top = 611.0
+offset_right = 1044.0
+offset_bottom = 643.0
 scale = Vector2(1.2, 1.32)
 theme_override_colors/font_color = Color(0.12549, 0.596078, 0.882353, 1)
 theme_override_colors/font_shadow_color = Color(0.290196, 0.0627451, 0.0784314, 1)
@@ -3610,26 +3600,22 @@ text = "x3
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="rs_thunder" type="Button" parent="CanvasLayer"]
-offset_right = 8.0
-offset_bottom = 8.0
-
-[node name="icon" type="TextureRect" parent="CanvasLayer/rs_thunder"]
-layout_mode = 0
-offset_left = 1060.0
-offset_top = 577.0
-offset_right = 1261.0
-offset_bottom = 947.0
+[node name="rs_thunder" type="TextureRect" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 1059.0
+offset_top = 583.0
+offset_right = 1260.0
+offset_bottom = 953.0
 scale = Vector2(0.140348, 0.1)
 texture = ExtResource("5_i7qp4")
 metadata/_edit_use_anchors_ = true
 
-[node name="number" type="Label" parent="CanvasLayer/rs_thunder"]
-layout_mode = 0
-offset_left = 1043.0
-offset_top = 602.0
-offset_right = 1086.0
-offset_bottom = 634.0
+[node name="rs_thunder_label" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+offset_left = 1042.0
+offset_top = 608.0
+offset_right = 1085.0
+offset_bottom = 640.0
 scale = Vector2(1.44, 1.44)
 theme_override_colors/font_color = Color(0.603922, 0.372549, 0.988235, 1)
 theme_override_colors/font_shadow_color = Color(0.290196, 0.0627451, 0.0784314, 1)
@@ -3638,6 +3624,13 @@ text = "x3
 "
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="rs_selector" type="Polygon2D" parent="CanvasLayer"]
+unique_name_in_owner = true
+top_level = true
+position = Vector2(949, 515)
+scale = Vector2(0.384615, 0.565217)
+polygon = PackedVector2Array(53, 71, 71, 94, 92, 71)
 
 [node name="green_snake" parent="." instance=ExtResource("6_18dit")]
 position = Vector2(377.777, -16.5876)

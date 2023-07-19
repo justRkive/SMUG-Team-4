@@ -9,7 +9,7 @@ func _ready():
 		save_data()
 	else:
 		load_data()
-	
+
 func save_data():
 	var data1 = {
 		"puntuacion1":green_snake.puntos,

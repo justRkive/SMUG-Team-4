@@ -18,25 +18,34 @@ const JUMP_VELOCITY = -500
 var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
 
 var permiso_atacar = true
-var velocidad_ataque = 400
+var velocidad_ataque = 300
 var angulo = 0
 var loking = Vector2.RIGHT
 var last_direction = 1
 var up = Vector2.UP
 var permiso_idle = true
+var permiso_mover = true
 var der = \"key_right\"
 var izq = \"key_left\"
 
-@onready var hp = 20
+var hp = 30
+
 @onready var pivot = $Pivot
 @onready var hitbox = $CollisionShape2D
 @onready var posicion_hitbox = hitbox.get(\"position\")
 @onready var green_snake = $\"../green_snake\"
 @onready var world = $\"..\"
+
+@onready var selector = world.get_node(\"%rs_selector\")
+@onready var fire_button = world.get_node(\"%rs_fire\")
+@onready var water_button = world.get_node(\"%rs_water\")
+@onready var thunder_button = world.get_node(\"%rs_thunder\")
+
 @onready var audio_stream_player = $AudioStreamPlayer
 @onready var audio_stream_player_2 = $AudioStreamPlayer2
 @onready var audio_stream_player_3 = $AudioStreamPlayer3
 @onready var audio_stream_player_4 = $AudioStreamPlayer4
+var quemandose = false
 
 #que pasa ahora si que si o no
 @onready var dead_timer = $DeadTimer
@@ -50,8 +59,8 @@ var fire_attack = preload(\"res://Utility/attacks/fire_attack.tscn\")
 var thunder_attack = preload(\"res://Utility/attacks/thunder_attack.tscn\")
 var selected_power = water_attack
 
-var poderes = {\"water\": 0, \"fire\": 0, \"thunder\": 0}
-var labels = [\"water\", \"fire\", \"thunder\"]
+var poderes = {\"fire\": 0, \"water\": 0, \"thunder\": 0}
+var labels = [\"fire\", \"water\", \"thunder\"]
 var indice = 0
 
 func rotar():
@@ -65,11 +74,24 @@ func power_selection():
 	if Input.is_action_just_pressed(\"key_dot\"):
 		indice = (indice + 1) % 3
 
+	print(\"Poder seleccionado: \", labels[indice])
+
 	match labels[indice]:
+		\"fire\":
+			selected_power = fire_attack
+			selector.global_position = fire_button.global_position + Vector2(-17, -65)
 		\"water\":
 			selected_power = water_attack
-		_:
-			selected_power = normal_attack
+			selector.global_position = water_button.global_position + Vector2(-17, -65)
+		\"thunder\":
+			selected_power = thunder_attack
+			selector.global_position = thunder_button.global_position + Vector2(-17, -65)
+
+func stun():
+	permiso_mover = false
+
+func release_stun():
+	permiso_mover = true
 
 func invert_input():
 	der = \"key_left\"
@@ -80,15 +102,14 @@ func release_inversion():
 	der = \"key_right\"
 
 func attack():
-	#var poder = poderes[labels[indice]]
+	var poder = poderes[labels[indice]]
 	var _attack
-	var poder = 1
+	
 	if poder == 0:
 		_attack = normal_attack.instantiate()
 	else:
-		# poderes[labels[indice]] -= 1
-		_attack = water_attack.instantiate()
-		#_attack = normal_attack.instantiate()
+		poderes[labels[indice]] -= 1
+		_attack = selected_power.instantiate()
 
 	_attack.set_collision_layer_value(3, true)
 	var pivot = _attack.get_node(\"%Pivot\")
@@ -109,7 +130,6 @@ func attack():
 func _ready():
 	pass
 
-	
 func _physics_process(delta):
 	
 	power_selection()
@@ -137,6 +157,10 @@ func _physics_process(delta):
 		loking = Vector2.from_angle(rotation)
 	
 	#movimiento normal
+	if not permiso_mover:
+		move_and_slide()
+		return
+		
 	var direction = Input.get_axis(izq, der)
 	if direction:
 		velocity.x = direction * SPEED
@@ -184,6 +208,19 @@ func _on_dead_timer_timeout():
 func _on_attack_timer_timeout():
 	permiso_idle = true
 	permiso_atacar = true
+
+func hurt(damage):
+	hp -= damage
+	audio_stream_player_3.play()
+	# match area.tipo:
+	#	\"agua\":
+	if hp <= 0:
+		animated_sprit_reed.play(\"die\")
+		audio_stream_player_4.play()
+		dead_timer.wait_time = 1
+		dead_timer.start()
+		green_snake.puntos+=1
+		world.save_data()
 "
 
 [sub_resource type="Animation" id="Animation_vkw2x"]
