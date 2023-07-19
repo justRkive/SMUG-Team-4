@@ -17,6 +17,7 @@ var timer_ataque = 1
 @onready var player_green = get_tree().get_first_node_in_group("player_green")
 @onready var disable_timer= $Timer
 @onready var collision = $CollisionShape2D
+@onready var timer_rafaga = $Rafaga
 @onready var pivot = $Pivot
 var enemy
 
