@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cyumab4nxdcoo"
-path="res://.godot/imported/carta_trueno.glb-f95c0ec3dcdcc3fade223a3d83270342.scn"
+path="res://.godot/imported/carta_trueno.glb-89f44ace4ac615725c75fa3659d66351.scn"
 
 [deps]
 
-source_file="res://Assets/carta_trueno.glb"
-dest_files=["res://.godot/imported/carta_trueno.glb-f95c0ec3dcdcc3fade223a3d83270342.scn"]
+source_file="res://assets/carta_trueno.glb"
+dest_files=["res://.godot/imported/carta_trueno.glb-89f44ace4ac615725c75fa3659d66351.scn"]
 
 [params]
 

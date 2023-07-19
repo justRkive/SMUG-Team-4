@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://diyaqww4iuu5l"
-path="res://.godot/imported/UI_Flat_Button_Large_Press_01a2.png-00996f91995d4461d7d4d3b01f3dfa5d.ctex"
+path="res://.godot/imported/UI_Flat_Button_Large_Press_01a2.png-09a554c761073772ff64619805fa78ca.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Icons of powers/UI_Flat_Button_Large_Press_01a2.png"
-dest_files=["res://.godot/imported/UI_Flat_Button_Large_Press_01a2.png-00996f91995d4461d7d4d3b01f3dfa5d.ctex"]
+source_file="res://assets/Icons of powers/UI_Flat_Button_Large_Press_01a2.png"
+dest_files=["res://.godot/imported/UI_Flat_Button_Large_Press_01a2.png-09a554c761073772ff64619805fa78ca.ctex"]
 
 [params]
 
