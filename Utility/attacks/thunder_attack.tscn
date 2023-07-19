@@ -1,52 +1,52 @@
 [gd_scene load_steps=17 format=3 uid="uid://q5lc4xd8i3bu"]
 
 [ext_resource type="Script" path="res://Utility/attacks/thunder_attack.gd" id="1_kmxb0"]
-[ext_resource type="Texture2D" uid="uid://dplhgpidtnlbu" path="res://Assets/Power_attack/projectile_blue.png" id="2_qnc38"]
+[ext_resource type="Texture2D" uid="uid://ce8b2t3kyylrf" path="res://Assets/Power_attack/projectile_purple.png" id="2_0u3gf"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_agpdo"]
-atlas = ExtResource("2_qnc38")
+[sub_resource type="AtlasTexture" id="AtlasTexture_l68qb"]
+atlas = ExtResource("2_0u3gf")
 region = Rect2(0, 0, 40, 25)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xi2lp"]
-atlas = ExtResource("2_qnc38")
+[sub_resource type="AtlasTexture" id="AtlasTexture_yq4hy"]
+atlas = ExtResource("2_0u3gf")
 region = Rect2(40, 0, 40, 25)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uwy6f"]
-atlas = ExtResource("2_qnc38")
+[sub_resource type="AtlasTexture" id="AtlasTexture_yr6c6"]
+atlas = ExtResource("2_0u3gf")
 region = Rect2(80, 0, 40, 25)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1bhq7"]
-atlas = ExtResource("2_qnc38")
+[sub_resource type="AtlasTexture" id="AtlasTexture_nbm8o"]
+atlas = ExtResource("2_0u3gf")
 region = Rect2(0, 25, 40, 25)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_auxlc"]
-atlas = ExtResource("2_qnc38")
+[sub_resource type="AtlasTexture" id="AtlasTexture_qgblb"]
+atlas = ExtResource("2_0u3gf")
 region = Rect2(40, 25, 40, 25)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0h78f"]
-atlas = ExtResource("2_qnc38")
+[sub_resource type="AtlasTexture" id="AtlasTexture_8pyv0"]
+atlas = ExtResource("2_0u3gf")
 region = Rect2(80, 25, 40, 25)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f4noj"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_agpdo")
+"texture": SubResource("AtlasTexture_l68qb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xi2lp")
+"texture": SubResource("AtlasTexture_yq4hy")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_uwy6f")
+"texture": SubResource("AtlasTexture_yr6c6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1bhq7")
+"texture": SubResource("AtlasTexture_nbm8o")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_auxlc")
+"texture": SubResource("AtlasTexture_qgblb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0h78f")
+"texture": SubResource("AtlasTexture_8pyv0")
 }],
 "loop": true,
 "name": &"default",
@@ -127,7 +127,6 @@ script = ExtResource("1_kmxb0")
 unique_name_in_owner = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Pivot"]
-modulate = Color(100, 100, 100, 1)
 sprite_frames = SubResource("SpriteFrames_f4noj")
 frame = 1
 

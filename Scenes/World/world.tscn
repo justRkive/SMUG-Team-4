@@ -3445,7 +3445,6 @@ layer_1/tile_data = PackedInt32Array(-65564, 262144, 9, -65563, 1048577, 9, -131
 texture_filter = 1
 position = Vector2(936.888, 15.3116)
 scale = Vector2(3, 3)
-puntos = 0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource("5_dvpbc")
