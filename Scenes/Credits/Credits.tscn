@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmky7daid4r4w"]
+[gd_scene load_steps=8 format=3 uid="uid://cmky7daid4r4w"]
 
 [ext_resource type="FontFile" uid="uid://6p27sne4gm62" path="res://fonts/magofonts/mago2.ttf" id="1_hs6ah"]
+[ext_resource type="Script" path="res://scenes/Credits/Credits.gd" id="1_mkjkm"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7bib5"]
 
@@ -34,6 +35,7 @@ _data = {
 }
 
 [node name="Credits" type="CanvasLayer"]
+script = ExtResource("1_mkjkm")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 anchors_preset = 15
