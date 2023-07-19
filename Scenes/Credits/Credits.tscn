@@ -14,7 +14,7 @@ VScrollBar/styles/scroll = SubResource("StyleBoxEmpty_ptcrx")
 
 [sub_resource type="Animation" id="Animation_m5lyu"]
 resource_name = "Credits"
-length = 15.0
+length = 20.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -22,7 +22,7 @@ tracks/0/path = NodePath("ScrollContainer:scroll_vertical")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 14),
+"times": PackedFloat32Array(0, 1, 20),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [0, 0, 2150]
@@ -44,7 +44,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = SubResource("Theme_1bcq7")
-scroll_vertical = 2150
+scroll_vertical = 1700
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer"]
 layout_mode = 2
@@ -69,7 +69,8 @@ seartsy
 Zelta & Hiross
 [color=#ff0000]SFX[/color]
 HaelDB (dice sounds)
-Little Robot Sound Factory (2D snake sounds)
+Little Robot Sound Factory 
+(2D snake and attack sounds)
 [/shake]
 
 
