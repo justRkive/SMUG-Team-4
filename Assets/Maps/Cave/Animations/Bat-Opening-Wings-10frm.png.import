@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://byy6j3rt1401s"
-path="res://.godot/imported/Bat-Opening-Wings-10frm.png-0af93793f8ea4b0a2453d29a4c0b0a6b.ctex"
+path="res://.godot/imported/Bat-Opening-Wings-10frm.png-2bb3bb0804e3290355770929952cd9c6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Maps/Cave/Animations/Bat-Opening-Wings-10frm.png"
-dest_files=["res://.godot/imported/Bat-Opening-Wings-10frm.png-0af93793f8ea4b0a2453d29a4c0b0a6b.ctex"]
+source_file="res://assets/Maps/Cave/Animations/Bat-Opening-Wings-10frm.png"
+dest_files=["res://.godot/imported/Bat-Opening-Wings-10frm.png-2bb3bb0804e3290355770929952cd9c6.ctex"]
 
 [params]
 

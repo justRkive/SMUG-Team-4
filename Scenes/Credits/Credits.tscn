@@ -26,7 +26,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1, 20),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [0, 0, 2150]
+"values": [0, 0, 2200]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7rpqt"]
@@ -46,7 +46,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = SubResource("Theme_1bcq7")
-scroll_vertical = 1700
+scroll_vertical = 2250
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer"]
 layout_mode = 2
@@ -78,6 +78,8 @@ Little Robot Sound Factory
 
 
 Thank you for playing! :)
+(Press ESC to go
+back to main menu)
 
 
 
