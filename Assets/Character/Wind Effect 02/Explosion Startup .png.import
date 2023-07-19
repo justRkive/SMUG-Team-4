@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c4thkqsd4ruk"
-path="res://.godot/imported/Explosion Startup .png-b1512e9dfcfc1d557dc7f5474d676085.ctex"
+path="res://.godot/imported/Explosion Startup .png-d736c1ebf241b194fce8fd4cfc205c80.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Character/Wind Effect 02/Explosion Startup .png"
-dest_files=["res://.godot/imported/Explosion Startup .png-b1512e9dfcfc1d557dc7f5474d676085.ctex"]
+source_file="res://Assets/Character/Wind Effect 02/Explosion Startup .png"
+dest_files=["res://.godot/imported/Explosion Startup .png-d736c1ebf241b194fce8fd4cfc205c80.ctex"]
 
 [params]
 

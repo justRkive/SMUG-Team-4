@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cid4qliwo5of4"
-path="res://.godot/imported/pasto.glb-7a141cd04e0e92a5333938793dbd1ac0.scn"
+path="res://.godot/imported/pasto.glb-25619b64b875f38731f11a63d8e4e8c0.scn"
 
 [deps]
 
-source_file="res://assets/pasto.glb"
-dest_files=["res://.godot/imported/pasto.glb-7a141cd04e0e92a5333938793dbd1ac0.scn"]
+source_file="res://Assets/pasto.glb"
+dest_files=["res://.godot/imported/pasto.glb-25619b64b875f38731f11a63d8e4e8c0.scn"]
 
 [params]
 

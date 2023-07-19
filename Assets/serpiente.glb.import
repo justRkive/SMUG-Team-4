@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bifgxdj4ru4td"
-path="res://.godot/imported/serpiente.glb-9471a38149045889fcf072096d89d1d0.scn"
+path="res://.godot/imported/serpiente.glb-4064e681fb9d1bea15260511a76f9316.scn"
 
 [deps]
 
-source_file="res://assets/serpiente.glb"
-dest_files=["res://.godot/imported/serpiente.glb-9471a38149045889fcf072096d89d1d0.scn"]
+source_file="res://Assets/serpiente.glb"
+dest_files=["res://.godot/imported/serpiente.glb-4064e681fb9d1bea15260511a76f9316.scn"]
 
 [params]
 

@@ -28,6 +28,7 @@ var target = Vector2.RIGHT
 func _ready():
 	animation_tree.active = true
 	timer.wait_time = longevity
+	timer_stun.wait_time = 2
 	timer.start()
 
 func _physics_process(delta):
@@ -48,6 +49,6 @@ func _on_enemy_hit(enemy_hit):
 	collision.disabled = true
 	pivot.visible = false
 
-func _on_inversion_timeout():
+func _on_stun_timeout():
 	enemy.release_stun()
 	queue_free()

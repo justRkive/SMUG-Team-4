@@ -145,7 +145,7 @@ position = Vector2(-7, 0)
 shape = SubResource("CircleShape2D_o8ao8")
 debug_color = Color(0.945098, 0.14902, 0.462745, 0.419608)
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="." groups=["attack"]]
 wait_time = 3.0
 one_shot = true
 
