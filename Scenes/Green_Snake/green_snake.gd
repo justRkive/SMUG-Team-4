@@ -1,16 +1,20 @@
 extends CharacterBody2D
 
 const SPEED = 200.0
+const JUMP_VELOCITY = 0
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+
 var permiso_atacar = true
 var angulo = 0
 var loking = Vector2.RIGHT
 var last_direction = 1
 var up = Vector2.UP
-const JUMP_VELOCITY = -500
-var  permiso_idle = true
-@onready var hp = 10
+var permiso_idle = true
+
+var maxHp = 20
+var hp = 20
+
 @onready var animated_sprite_2d = $Pivot/AnimatedSprite2D
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var pivot = $Pivot
 @onready var hitbox = $CollisionShape2D
 @onready var posicion_hitbox = hitbox.get("position")
@@ -19,13 +23,11 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var BlueBall = preload("res://Utility/blue_attack.tscn")
 
- 
 func rotar():
 	var sentido = Input.get_axis("key_O","key_P")
 	rotation += 0.1 * sentido
 	loking = Vector2.from_angle(rotation)
 	
-
 func attack():
 	var blueball_attack = BlueBall.instantiate()
 	var pivot = blueball_attack.get_node("%Pivot")

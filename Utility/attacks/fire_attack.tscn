@@ -1,30 +1,30 @@
-[gd_scene load_steps=18 format=3 uid="uid://dyyu7w4b8j3ib"]
+[gd_scene load_steps=17 format=3 uid="uid://c13h216xcrrdc"]
 
-[ext_resource type="Script" path="res://Utility/blue_attack.gd" id="1_mdu6x"]
-[ext_resource type="Texture2D" uid="uid://dplhgpidtnlbu" path="res://assets/Power_attack/projectile_blue.png" id="2_nudbe"]
+[ext_resource type="Script" path="res://Utility/attacks/fire_attack.gd" id="1_6pcwq"]
+[ext_resource type="Texture2D" uid="uid://dplhgpidtnlbu" path="res://Assets/Power_attack/projectile_blue.png" id="2_yektt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_agpdo"]
-atlas = ExtResource("2_nudbe")
+atlas = ExtResource("2_yektt")
 region = Rect2(0, 0, 40, 25)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xi2lp"]
-atlas = ExtResource("2_nudbe")
+atlas = ExtResource("2_yektt")
 region = Rect2(40, 0, 40, 25)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uwy6f"]
-atlas = ExtResource("2_nudbe")
+atlas = ExtResource("2_yektt")
 region = Rect2(80, 0, 40, 25)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1bhq7"]
-atlas = ExtResource("2_nudbe")
+atlas = ExtResource("2_yektt")
 region = Rect2(0, 25, 40, 25)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_auxlc"]
-atlas = ExtResource("2_nudbe")
+atlas = ExtResource("2_yektt")
 region = Rect2(40, 25, 40, 25)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0h78f"]
-atlas = ExtResource("2_nudbe")
+atlas = ExtResource("2_yektt")
 region = Rect2(80, 25, 40, 25)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_f4noj"]
@@ -114,23 +114,22 @@ states/fly/node = SubResource("AnimationNodeAnimation_3av7q")
 states/fly/position = Vector2(437, 100)
 transitions = ["Start", "fly", SubResource("AnimationNodeStateMachineTransition_m0xy6")]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_rk8pi"]
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_o8ao8"]
-radius = 12.0416
+radius = 12.0
 
-[node name="BlueBall" type="Area2D" groups=["blue_ball"]]
+[node name="FireAttack" type="Area2D" groups=["blue_ball"]]
 top_level = true
 collision_layer = 0
 collision_mask = 0
-script = ExtResource("1_mdu6x")
+script = ExtResource("1_6pcwq")
 
 [node name="Pivot" type="Node2D" parent="."]
 unique_name_in_owner = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Pivot"]
+modulate = Color(0.348639, 0.578519, 0.156533, 1)
 sprite_frames = SubResource("SpriteFrames_f4noj")
-frame = 1
+frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Pivot/AnimatedSprite2D"]
 libraries = {
@@ -141,10 +140,9 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_e7ckf")
 anim_player = NodePath("../Pivot/AnimatedSprite2D/AnimationPlayer")
 active = true
-parameters/playback = SubResource("AnimationNodeStateMachinePlayback_rk8pi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["attack"]]
-position = Vector2(-4, 1)
+position = Vector2(-7, 0)
 shape = SubResource("CircleShape2D_o8ao8")
 debug_color = Color(0.945098, 0.14902, 0.462745, 0.419608)
 
@@ -152,9 +150,5 @@ debug_color = Color(0.945098, 0.14902, 0.462745, 0.419608)
 wait_time = 3.0
 one_shot = true
 
-[node name="Rafaga" type="Timer" parent="."]
-wait_time = 1.5
-
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="Rafaga" to="." method="_on_rafaga_timeout"]

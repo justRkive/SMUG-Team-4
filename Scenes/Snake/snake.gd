@@ -1,24 +1,26 @@
 extends CharacterBody2D
 
-var permiso_atacar = true
 const SPEED = 200.0
+const JUMP_VELOCITY = -500
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+
+var permiso_atacar = true
 var angulo = 0
-var loking = Vector2.RIGHT
 var last_direction = 1
 var up = Vector2.UP
+var loking = Vector2.RIGHT
 var permiso_idle = true
-const JUMP_VELOCITY = -500
-@onready var hp = 20
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var maxHp = 20
+var hp = 20
+
 @onready var pivot = $Pivot
 @onready var hitbox = $CollisionShape2D
 @onready var posicion_hitbox = hitbox.get("position")
-#que pasa ahora si que si o no
 @onready var dead_timer = $DeadTimer
 @onready var animated_sprit_reed = $Pivot/AnimatedSpritReed
 @onready var attack_timer = $AttackTimer
 
-#Attack
+# Attack
 var BlueBall = preload("res://Utility/blue_attack.tscn")
 
 func rotar():
@@ -48,7 +50,7 @@ func _ready():
 	
 func _physics_process(delta):
 	
-	if hp>0 and permiso_idle:
+	if hp > 0 and permiso_idle:
 		animated_sprit_reed.play("idle")
 	
 	if Input.is_action_just_pressed("key_y"):
@@ -85,10 +87,10 @@ func _physics_process(delta):
 	
 	if direction!=0:
 		pivot.scale.x = sign(direction)
-		if direction==-1:
+		if direction == -1:
 			hitbox.position.x = -1
 		
-		if direction==1:
+		if direction == 1:
 			hitbox.position.x = 0
 	
 	move_and_slide()
@@ -96,7 +98,7 @@ func _physics_process(delta):
 func _on_hurt_box_area_entered(area):
 	if area.is_in_group("blue_ball"):
 		var damage = area.damage
-		hp-=damage
+		hp -= damage
 		if hp<=0:
 			animated_sprit_reed.play("die")
 			dead_timer.wait_time = 1

@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://b6i8phvj5ixr3"]
 
-[ext_resource type="SpriteFrames" uid="uid://j08g7gjt00m4" path="res://scenes/Snake/idle_animiation/snake.tres" id="2_qnjb4"]
+[ext_resource type="SpriteFrames" uid="uid://j08g7gjt00m4" path="res://Scenes/Snake/idle_animiation/snake.tres" id="2_qnjb4"]
 [ext_resource type="Script" path="res://Utility/hurt_box.gd" id="3_7ntqe"]
 [ext_resource type="PackedScene" uid="uid://bekvm2gch1soa" path="res://Menu/debug_menu_2d.tscn" id="4_ncqrs"]
 [ext_resource type="AudioStream" uid="uid://cytyrhd6uqg35" path="res://sounds/sfx/Jump_03.wav" id="4_t73wv"]
@@ -9,19 +9,25 @@
 [ext_resource type="AudioStream" uid="uid://drieccv1ox0aw" path="res://sounds/sfx/Hero_Death_00.wav" id="7_5urm0"]
 
 [sub_resource type="GDScript" id="GDScript_xq6l5"]
-script/source = "extends CharacterBody2D
+script/source = "# Red Snake
+
+extends CharacterBody2D
+
+const SPEED = 200.0
+const JUMP_VELOCITY = -500
+var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
 
 var permiso_atacar = true
-const SPEED = 200.0
 var velocidad_ataque = 400
 var angulo = 0
 var loking = Vector2.RIGHT
 var last_direction = 1
 var up = Vector2.UP
 var permiso_idle = true
-const JUMP_VELOCITY = -500
+var der = \"key_right\"
+var izq = \"key_left\"
+
 @onready var hp = 20
-var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
 @onready var pivot = $Pivot
 @onready var hitbox = $CollisionShape2D
 @onready var posicion_hitbox = hitbox.get(\"position\")
@@ -32,47 +38,81 @@ var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
 @onready var audio_stream_player_3 = $AudioStreamPlayer3
 @onready var audio_stream_player_4 = $AudioStreamPlayer4
 
-
 #que pasa ahora si que si o no
 @onready var dead_timer = $DeadTimer
 @onready var animated_sprit_reed = $Pivot/AnimatedSpritReed
 @onready var attack_timer = $AttackTimer
-@export  var puntos=0
+@export  var puntos = 0
 #Attack
-var BlueBall = preload(\"res://Utility/blue_attack.tscn\")
-#poderes
-@export var agua=0
-@export var fuego=0
-@export var trueno=0
+var normal_attack = preload(\"res://Utility/attacks/normal_attack.tscn\")
+var water_attack = preload(\"res://Utility/attacks/water_attack.tscn\")
+var fire_attack = preload(\"res://Utility/attacks/fire_attack.tscn\")
+var thunder_attack = preload(\"res://Utility/attacks/thunder_attack.tscn\")
+var selected_power = water_attack
+
+var poderes = {\"water\": 0, \"fire\": 0, \"thunder\": 0}
+var labels = [\"water\", \"fire\", \"thunder\"]
+var indice = 0
 
 func rotar():
 	var sentido = Input.get_axis(\"rotar_izq\",\"rotar_der\")
 	rotation += 0.1 * sentido
 	loking = Vector2.from_angle(rotation)
-	
+
+func power_selection():
+	if Input.is_action_just_pressed(\"key_comma\"):
+		indice = (indice - 1) % 3
+	if Input.is_action_just_pressed(\"key_dot\"):
+		indice = (indice + 1) % 3
+
+	match labels[indice]:
+		\"water\":
+			selected_power = water_attack
+		_:
+			selected_power = normal_attack
+
+func invert_input():
+	der = \"key_left\"
+	izq = \"key_right\"
+
+func release_inversion():
+	izq = \"key_left\"
+	der = \"key_right\"
 
 func attack():
-	var blueball_attack = BlueBall.instantiate()
-	blueball_attack.set_collision_layer_value(3, true)
-	var pivot = blueball_attack.get_node(\"%Pivot\")
-	blueball_attack.target = loking
-	blueball_attack.speed = velocidad_ataque
+	#var poder = poderes[labels[indice]]
+	var _attack
+	var poder = 1
+	if poder == 0:
+		_attack = normal_attack.instantiate()
+	else:
+		# poderes[labels[indice]] -= 1
+		_attack = water_attack.instantiate()
+		#_attack = normal_attack.instantiate()
+
+	_attack.set_collision_layer_value(3, true)
+	var pivot = _attack.get_node(\"%Pivot\")
+	_attack.target = loking
+	_attack.speed = velocidad_ataque
 	pivot.scale.x = -sign(loking.x)
 	if rotation>0:
-		blueball_attack.position = global_position 
+		_attack.position = global_position 
 		pivot.rotation = loking.angle()
-		if rotation>1.5707:
+		if rotation > 1.5707:
 			pivot.scale.x = sign(loking.x)
 	else:
-		blueball_attack.position = global_position
-	add_child(blueball_attack)
-
+		_attack.position = global_position
+	add_child(_attack)
+	permiso_atacar = false
+	attack_timer.start()
 
 func _ready():
 	pass
 
 	
 func _physics_process(delta):
+	
+	power_selection()
 	
 	if hp>0 and permiso_idle:
 		animated_sprit_reed.play(\"idle\")
@@ -97,7 +137,7 @@ func _physics_process(delta):
 		loking = Vector2.from_angle(rotation)
 	
 	#movimiento normal
-	var direction = Input.get_axis(\"key_left\", \"key_right\")
+	var direction = Input.get_axis(izq, der)
 	if direction:
 		velocity.x = direction * SPEED
 		loking = loking*direction
@@ -122,11 +162,14 @@ func _physics_process(delta):
 	move_and_slide()
 	
 func _on_hurt_box_area_entered(area):
-	if area.is_in_group(\"blue_ball\"):
+	if area.is_in_group(\"attack\"):
+		area._on_enemy_hit(self)
 		var damage = area.damage
-		hp-=damage
+		hp -= damage
 		audio_stream_player_3.play()
-		if hp<=0:
+		# match area.tipo:
+		#	\"agua\":
+		if hp <= 0:
 			animated_sprit_reed.play(\"die\")
 			audio_stream_player_4.play()
 			dead_timer.wait_time = 1
@@ -134,14 +177,13 @@ func _on_hurt_box_area_entered(area):
 			green_snake.puntos+=1
 			world.save_data()
 
-
 func _on_dead_timer_timeout():
 	queue_free()
 	get_tree().change_scene_to_file(\"res://scenes/general.tscn\")
 
 func _on_attack_timer_timeout():
 	permiso_idle = true
-	
+	permiso_atacar = true
 "
 
 [sub_resource type="Animation" id="Animation_vkw2x"]
@@ -285,6 +327,7 @@ shape = SubResource("CapsuleShape2D_2rkju")
 [node name="DeadTimer" type="Timer" parent="."]
 
 [node name="AttackTimer" type="Timer" parent="."]
+one_shot = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_t73wv")

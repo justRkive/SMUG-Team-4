@@ -13,7 +13,7 @@ extends CanvasLayer
 
 
 func _process(delta):
-	fires_number.text= "x"+str(green_snake.fuego)
+ 	fires_number.text= "x"+str(green_snake.fuego)
 	water_number.text= "x"+str(green_snake.agua)
 	thunder_number.text= "x"+str(green_snake.trueno)
 	

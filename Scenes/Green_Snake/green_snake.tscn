@@ -1,8 +1,8 @@
 [gd_scene load_steps=30 format=3 uid="uid://ci2pw58msbryp"]
 
-[ext_resource type="Texture2D" uid="uid://r5cai70cmcem" path="res://assets/Green_Snake/snake_attack.png" id="1_h1iub"]
-[ext_resource type="Texture2D" uid="uid://dok6rjya6dfum" path="res://assets/Green_Snake/snake_dead.png" id="2_0u2aw"]
-[ext_resource type="Texture2D" uid="uid://dif0u47ievfyw" path="res://assets/Green_Snake/snake_idle.png" id="3_olhuc"]
+[ext_resource type="Texture2D" uid="uid://r5cai70cmcem" path="res://Assets/Green_Snake/snake_attack.png" id="1_h1iub"]
+[ext_resource type="Texture2D" uid="uid://dok6rjya6dfum" path="res://Assets/Green_Snake/snake_dead.png" id="2_0u2aw"]
+[ext_resource type="Texture2D" uid="uid://dif0u47ievfyw" path="res://Assets/Green_Snake/snake_idle.png" id="3_olhuc"]
 [ext_resource type="AudioStream" uid="uid://cytyrhd6uqg35" path="res://sounds/sfx/Jump_03.wav" id="5_shs2v"]
 [ext_resource type="Script" path="res://Scenes/Green_Snake/Area2D.gd" id="5_ypi4v"]
 [ext_resource type="AudioStream" uid="uid://btjfbgefkp3q0" path="res://sounds/sfx/Explosion_00.wav" id="6_0dmft"]
@@ -13,17 +13,23 @@
 script/source = "extends CharacterBody2D
 
 const SPEED = 200.0
+const JUMP_VELOCITY = -500
+var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
+
 var velocidad_ataque = 400
 var permiso_atacar = true
 var angulo = 0
 var loking = Vector2.RIGHT
 var last_direction = 1
 var up = Vector2.UP
-const JUMP_VELOCITY = -500
-var  permiso_idle = true
-@onready var hp = 20
+var permiso_idle = true
+var der = \"key_D\"
+var izq = \"key_A\"
+
+var maxHp = 20
+var hp = 20
+
 @onready var animated_sprite_2d = $Pivot/AnimatedSprite2D
-var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
 @onready var pivot = $Pivot
 @onready var hitbox = $CollisionShape2D
 @onready var posicion_hitbox = hitbox.get(\"position\")
@@ -37,13 +43,15 @@ var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
 @onready var audio_stream_player_3 = $AudioStreamPlayer3
 @onready var audio_stream_player_4 = $AudioStreamPlayer4
 
+var normal_attack = preload(\"res://Utility/attacks/normal_attack.tscn\")
+var water_attack = preload(\"res://Utility/attacks/water_attack.tscn\")
+var fire_attack = preload(\"res://Utility/attacks/fire_attack.tscn\")
+var thunder_attack = preload(\"res://Utility/attacks/thunder_attack.tscn\")
+var selected_power = water_attack
 
-var BlueBall = preload(\"res://Utility/blue_attack.tscn\")
-
-#poderes
-@export var agua=0
-@export var fuego=0
-@export var trueno=0
+var poderes = {\"water\": 0, \"fire\": 0, \"thunder\": 0}
+var labels = [\"water\", \"fire\", \"thunder\"]
+var indice = 0
 
 func rotar():
 	var sentido = Input.get_axis(\"key_O\",\"key_P\")
@@ -51,23 +59,37 @@ func rotar():
 	loking = Vector2.from_angle(rotation)
 	
 
+func invert_input():
+	der = \"key_A\"
+	izq = \"key_D\"
+
+func release_inversion():
+	izq = \"key_A\"
+	der = \"key_D\"
+	
 func attack():
-	var blueball_attack = BlueBall.instantiate()
-	blueball_attack.set_collision_layer_value(2, true)
-	var pivot = blueball_attack.get_node(\"%Pivot\")
-	blueball_attack.target = loking
-	blueball_attack.speed = velocidad_ataque
+	var poder = poderes[labels[indice]]
+	var _attack
+	
+	if poder == 0:
+		_attack = normal_attack.instantiate()
+	else:
+		poderes[labels[indice]] -= 1
+		_attack = selected_power.instatiate()
+	
+	_attack.set_collision_layer_value(2, true)
+	var pivot = _attack.get_node(\"%Pivot\")
+	_attack.target = loking
+	_attack.speed = velocidad_ataque
 	pivot.scale.x = -sign(loking.x)
 	if rotation>0:
-		blueball_attack.position = global_position
+		_attack.position = global_position 
 		pivot.rotation = loking.angle()
-		if rotation>1.5707:
+		if rotation > 1.5707:
 			pivot.scale.x = sign(loking.x)
 	else:
-		blueball_attack.position = global_position
-	add_child(blueball_attack)
-
-	
+		_attack.position = global_position
+	add_child(_attack)	
 
 func _ready():
 	pass
@@ -97,7 +119,7 @@ func _physics_process(delta):
 		loking = Vector2.from_angle(rotation)
 	
 	#movimiento normal
-	var direction = Input.get_axis(\"key_A\", \"key_D\")
+	var direction = Input.get_axis(izq, der)
 	if direction:
 		velocity.x = direction * SPEED
 		loking = loking*direction
@@ -125,11 +147,12 @@ func _physics_process(delta):
 	
 
 func _on_hurt_box_green_area_entered(area):
-	if area.is_in_group(\"blue_ball\"):
+	if area.is_in_group(\"attack\"):
+		area._on_enemy_hit(self)
 		var damage = area.damage
-		hp-=damage
+		hp -= damage
 		audio_stream_player_3.play()
-		if hp<=0:
+		if hp <= 0:
 			animated_sprite_2d.play(\"die\")
 			audio_stream_player_4.play()
 			dead_timer.wait_time = 1
