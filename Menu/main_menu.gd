@@ -29,7 +29,7 @@ func _on_play3D_pressed():
 	get_tree().change_scene_to_packed(scene3D)
 
 func _on_credits_pressed():
-	pass
+	get_tree().change_scene_to_file("res://scenes/Credits/Credits.tscn")
 
 func _on_exit_pressed():
 	get_tree().quit()
