@@ -1,5 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://b6i8phvj5ixr3"]
+[gd_scene load_steps=17 format=3 uid="uid://b6i8phvj5ixr3"]
 
+[ext_resource type="Script" path="res://scripts/hp_snake.gd" id="1_82ye7"]
+[ext_resource type="Theme" uid="uid://bafyavu7yhamd" path="res://Resources/theme.tres" id="1_a6qy5"]
 [ext_resource type="SpriteFrames" uid="uid://j08g7gjt00m4" path="res://Scenes/Snake/idle_animiation/snake.tres" id="2_qnjb4"]
 [ext_resource type="Script" path="res://Utility/hurt_box.gd" id="3_7ntqe"]
 [ext_resource type="PackedScene" uid="uid://bekvm2gch1soa" path="res://Menu/debug_menu_2d.tscn" id="4_ncqrs"]
@@ -64,7 +66,7 @@ var labels = [\"fire\", \"water\", \"thunder\"]
 var indice = 0
 
 func rotar():
-	var sentido = Input.get_axis(\"rotar_izq\",\"rotar_der\")
+	var sentido = Input.get_axis(\"key_T\",\"rotar_der\")
 	rotation += 0.1 * sentido
 	loking = Vector2.from_angle(rotation)
 
@@ -131,13 +133,20 @@ func _ready():
 	pass
 
 func _physics_process(delta):
-	
+	#muerte por caída al precipicio 
+	if $\".\".position.y>1170 and $\".\".position.y<1200:
+		animated_sprit_reed.play(\"die\")
+		audio_stream_player_4.play()
+		dead_timer.wait_time = 1
+		dead_timer.start()
+		green_snake.puntos+=1
+		world.save_data()
 	power_selection()
 	
 	if hp>0 and permiso_idle:
 		animated_sprit_reed.play(\"idle\")
 	
-	if Input.is_action_just_pressed(\"key_y\"):
+	if Input.is_action_just_pressed(\"abajo\"):
 		if permiso_atacar:
 			permiso_idle = false
 			animated_sprit_reed.play(\"attack\")
@@ -171,7 +180,7 @@ func _physics_process(delta):
 		loking = loking*last_direction
 	
 	#saltar
-	if Input.is_action_just_pressed(\"ui_accept\") and is_on_floor():
+	if Input.is_action_just_pressed(\"arriba\") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		audio_stream_player.play()
 	
@@ -325,6 +334,31 @@ height = 23.4192
 
 [node name="red_snake" type="CharacterBody2D" groups=["atacable", "player_reed"]]
 script = SubResource("GDScript_xq6l5")
+
+[node name="Label2" type="Label" parent="."]
+modulate = Color(0.0980392, 0.0980392, 0.0980392, 1)
+texture_filter = 1
+texture_repeat = 2
+offset_left = -3.0
+offset_top = -28.0
+offset_right = 1119.0
+offset_bottom = 29.0
+scale = Vector2(0.359488, 0.360431)
+theme = ExtResource("1_a6qy5")
+text = "test"
+script = ExtResource("1_82ye7")
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+texture_repeat = 2
+offset_left = -2.0
+offset_top = -27.0
+offset_right = 1120.0
+offset_bottom = 30.0
+scale = Vector2(0.319593, 0.320431)
+theme = ExtResource("1_a6qy5")
+text = "test"
+script = ExtResource("1_82ye7")
 
 [node name="Pivot" type="Node2D" parent="."]
 

@@ -152,19 +152,45 @@ func _process(delta):
 		await get_tree().create_timer(1.5).timeout
 		fade_out.set_next_animation(true)
 		
+	if (int(current_round) == 9) and on_board:
+		#await get_tree().create_timer(1).timeout
+
+		
+		var player1_pts = serpiente.puntos
+		var player2_pts = serpiente_2.puntos
+
+			
+		if (player1_pts > player2_pts):
+			on_board = false		
+			dado.permiso_dado=false
+			canvasLayerEnding.visible = true
+			await get_tree().create_timer(2).timeout
+			player1wins.set_next_animation(true)
+				
+			print("Player 1 wins")
+			await get_tree().create_timer(5).timeout
+			get_tree().change_scene_to_file("res://Menu/main_menu.tscn")
+		if (player1_pts < player2_pts):
+			on_board = false		
+			dado.permiso_dado=false
+			canvasLayerEnding.visible = true
+			await get_tree().create_timer(2).timeout
+			player2wins.set_next_animation(true)
+				
+			print("Player 2 wins")
+			await get_tree().create_timer(5).timeout
+			get_tree().change_scene_to_file("res://Menu/main_menu.tscn")
 	if (int(current_round) == 13) and on_board:
 		#await get_tree().create_timer(1).timeout
-		print("game finished")
 		on_board = false		
 		dado.permiso_dado=false
-		
 		var player1_pts = serpiente.puntos
 		var player2_pts = serpiente_2.puntos
 		if (player1_pts > player2_pts):
 			canvasLayerEnding.visible = true
 			await get_tree().create_timer(2).timeout
 			player1wins.set_next_animation(true)
-			
+				
 			print("Player 1 wins")
 			await get_tree().create_timer(5).timeout
 			get_tree().change_scene_to_file("res://Menu/main_menu.tscn")
@@ -172,10 +198,8 @@ func _process(delta):
 			canvasLayerEnding.visible = true
 			await get_tree().create_timer(2).timeout
 			player2wins.set_next_animation(true)
-			
+				
 			print("Player 2 wins")
 			await get_tree().create_timer(5).timeout
 			get_tree().change_scene_to_file("res://Menu/main_menu.tscn")
-
-
 		

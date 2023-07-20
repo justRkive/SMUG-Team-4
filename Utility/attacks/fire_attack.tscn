@@ -129,7 +129,7 @@ unique_name_in_owner = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Pivot"]
 modulate = Color(0.348639, 0.578519, 0.156533, 1)
 sprite_frames = SubResource("SpriteFrames_f4noj")
-frame = 1
+frame = 5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Pivot/AnimatedSprite2D"]
 libraries = {

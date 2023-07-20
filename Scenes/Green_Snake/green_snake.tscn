@@ -1,8 +1,10 @@
-[gd_scene load_steps=30 format=3 uid="uid://ci2pw58msbryp"]
+[gd_scene load_steps=32 format=3 uid="uid://ci2pw58msbryp"]
 
-[ext_resource type="Texture2D" uid="uid://r5cai70cmcem" path="res://assets/Green_Snake/snake_attack.png" id="1_h1iub"]
-[ext_resource type="Texture2D" uid="uid://dok6rjya6dfum" path="res://assets/Green_Snake/snake_dead.png" id="2_0u2aw"]
-[ext_resource type="Texture2D" uid="uid://dif0u47ievfyw" path="res://assets/Green_Snake/snake_idle.png" id="3_olhuc"]
+[ext_resource type="Theme" uid="uid://bafyavu7yhamd" path="res://Resources/theme.tres" id="1_cvdqp"]
+[ext_resource type="Texture2D" uid="uid://r5cai70cmcem" path="res://Assets/Green_Snake/snake_attack.png" id="1_h1iub"]
+[ext_resource type="Script" path="res://scripts/hp_serpiente1.gd" id="1_u0yr2"]
+[ext_resource type="Texture2D" uid="uid://dok6rjya6dfum" path="res://Assets/Green_Snake/snake_dead.png" id="2_0u2aw"]
+[ext_resource type="Texture2D" uid="uid://dif0u47ievfyw" path="res://Assets/Green_Snake/snake_idle.png" id="3_olhuc"]
 [ext_resource type="AudioStream" uid="uid://cytyrhd6uqg35" path="res://sounds/sfx/Jump_03.wav" id="5_shs2v"]
 [ext_resource type="Script" path="res://Scenes/Green_Snake/Area2D.gd" id="5_ypi4v"]
 [ext_resource type="AudioStream" uid="uid://btjfbgefkp3q0" path="res://sounds/sfx/Explosion_00.wav" id="6_0dmft"]
@@ -59,7 +61,7 @@ var labels = [\"fire\", \"water\", \"thunder\"]
 var indice = 0
 
 func rotar():
-	var sentido = Input.get_axis(\"key_O\",\"key_P\")
+	var sentido = Input.get_axis(\"key_S\",\"key_X\")
 	rotation += 0.1 * sentido
 	loking = Vector2.from_angle(rotation)
 	
@@ -128,6 +130,15 @@ func _ready():
 	pass
 
 func _physics_process(delta):
+	#muerte por caída al precipicio 
+	if $\".\".position.y>1170 and $\".\".position.y<1200:
+		animated_sprite_2d.play(\"die\")
+		audio_stream_player_4.play()
+		dead_timer.wait_time = 1
+		dead_timer.start()
+		snake.puntos += 1
+		world.save_data()
+		
 	power_selection()
 
 	if hp>0 and permiso_idle:
@@ -367,6 +378,27 @@ height = 22.9172
 [node name="green_snake" type="CharacterBody2D" groups=["atacable", "player_green"]]
 position = Vector2(0, 6)
 script = SubResource("GDScript_dua3t")
+
+[node name="Label2" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = 1.0
+offset_top = -32.0
+offset_right = 73.0
+offset_bottom = 25.0
+scale = Vector2(0.32, 0.32)
+theme = ExtResource("1_cvdqp")
+text = "test"
+script = ExtResource("1_u0yr2")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 2.0
+offset_top = -31.0
+offset_right = 74.0
+offset_bottom = 26.0
+scale = Vector2(0.28, 0.28)
+theme = ExtResource("1_cvdqp")
+text = "test"
+script = ExtResource("1_u0yr2")
 
 [node name="Pivot" type="Node2D" parent="."]
 unique_name_in_owner = true

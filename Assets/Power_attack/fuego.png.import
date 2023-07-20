@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cw0jxctnaom5t"
-path="res://.godot/imported/fuego.png-1b2e8c200276aaa2ee0e4bf9f91b6a94.ctex"
+path="res://.godot/imported/fuego.png-1fbbc650ceb41dce82481de0a7ece675.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Power_attack/fuego.png"
-dest_files=["res://.godot/imported/fuego.png-1b2e8c200276aaa2ee0e4bf9f91b6a94.ctex"]
+source_file="res://Assets/Power_attack/fuego.png"
+dest_files=["res://.godot/imported/fuego.png-1fbbc650ceb41dce82481de0a7ece675.ctex"]
 
 [params]
 

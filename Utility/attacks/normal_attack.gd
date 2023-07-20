@@ -5,7 +5,7 @@ extends Area2D
 var level = 1
 var hp = 1
 var speed = 10000
-var damage = 5
+var damage = 6
 var knock_amount = 100
 var attack_size = 1.0
 var longevity = 5

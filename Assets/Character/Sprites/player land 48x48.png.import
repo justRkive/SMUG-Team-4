@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d128j58538jxs"
-path="res://.godot/imported/player land 48x48.png-1c0e77052d2c759ab3eabe1d7d919606.ctex"
+path="res://.godot/imported/player land 48x48.png-8988f4cb9511cda13ac410c08fa257eb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Character/Sprites/player land 48x48.png"
-dest_files=["res://.godot/imported/player land 48x48.png-1c0e77052d2c759ab3eabe1d7d919606.ctex"]
+source_file="res://Assets/Character/Sprites/player land 48x48.png"
+dest_files=["res://.godot/imported/player land 48x48.png-8988f4cb9511cda13ac410c08fa257eb.ctex"]
 
 [params]
 
