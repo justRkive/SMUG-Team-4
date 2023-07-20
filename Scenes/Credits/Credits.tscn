@@ -46,7 +46,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = SubResource("Theme_1bcq7")
-scroll_vertical = 2450
+scroll_vertical = 100
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer"]
 layout_mode = 2

@@ -1,10 +1,10 @@
 [gd_scene load_steps=32 format=3 uid="uid://ci2pw58msbryp"]
 
 [ext_resource type="Theme" uid="uid://bafyavu7yhamd" path="res://Resources/theme.tres" id="1_cvdqp"]
-[ext_resource type="Texture2D" uid="uid://r5cai70cmcem" path="res://Assets/Green_Snake/snake_attack.png" id="1_h1iub"]
+[ext_resource type="Texture2D" uid="uid://r5cai70cmcem" path="res://assets/Green_Snake/snake_attack.png" id="1_h1iub"]
 [ext_resource type="Script" path="res://scripts/hp_serpiente1.gd" id="1_u0yr2"]
-[ext_resource type="Texture2D" uid="uid://dok6rjya6dfum" path="res://Assets/Green_Snake/snake_dead.png" id="2_0u2aw"]
-[ext_resource type="Texture2D" uid="uid://dif0u47ievfyw" path="res://Assets/Green_Snake/snake_idle.png" id="3_olhuc"]
+[ext_resource type="Texture2D" uid="uid://dok6rjya6dfum" path="res://assets/Green_Snake/snake_dead.png" id="2_0u2aw"]
+[ext_resource type="Texture2D" uid="uid://dif0u47ievfyw" path="res://assets/Green_Snake/snake_idle.png" id="3_olhuc"]
 [ext_resource type="AudioStream" uid="uid://cytyrhd6uqg35" path="res://sounds/sfx/Jump_03.wav" id="5_shs2v"]
 [ext_resource type="Script" path="res://Scenes/Green_Snake/Area2D.gd" id="5_ypi4v"]
 [ext_resource type="AudioStream" uid="uid://btjfbgefkp3q0" path="res://sounds/sfx/Explosion_00.wav" id="6_0dmft"]

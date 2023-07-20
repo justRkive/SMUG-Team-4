@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d3mh72rp6vhwi"
-path="res://.godot/imported/Explosion 2 SpriteSheet.png-eb93b7ba8076c615d22d37f207ed9f7c.ctex"
+path="res://.godot/imported/Explosion 2 SpriteSheet.png-d1925ee98ac5e07d6ecb2224064d1127.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Character/Fire Effect 2/Explosion 2 SpriteSheet.png"
-dest_files=["res://.godot/imported/Explosion 2 SpriteSheet.png-eb93b7ba8076c615d22d37f207ed9f7c.ctex"]
+source_file="res://assets/Character/Fire Effect 2/Explosion 2 SpriteSheet.png"
+dest_files=["res://.godot/imported/Explosion 2 SpriteSheet.png-d1925ee98ac5e07d6ecb2224064d1127.ctex"]
 
 [params]
 

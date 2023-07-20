@@ -123,7 +123,7 @@ func _on_area_trueno_body_entered(body):
 		carta_3.position.y=pos_y
 		body.permiso_movimiento=false
 		dado.permiso_dado=false
-		await get_tree().create_timer(5).timeout
+		await get_tree().create_timer(3).timeout
 		body.permiso_movimiento=true
 		dado.permiso_dado=true
 		carta_3.position.x=pos_out
@@ -134,7 +134,7 @@ func _on_area_trueno_body_entered(body):
 		carta_3.position.y=pos_y
 		dado.permiso_dado=false
 		body.permiso_movimiento=false
-		await get_tree().create_timer(5).timeout
+		await get_tree().create_timer(3).timeout
 		body.permiso_movimiento=true
 		dado.permiso_dado=true
 		carta_3.position.x=pos_out
@@ -152,7 +152,7 @@ func _on_area_trueno_2_body_entered(body):
 		carta_3.position.y=pos_y
 		dado.permiso_dado=false
 		body.permiso_movimiento=false
-		await get_tree().create_timer(5).timeout
+		await get_tree().create_timer(3).timeout
 		body.permiso_movimiento=true
 		dado.permiso_dado=true
 		carta_3.position.x=pos_out
@@ -163,7 +163,7 @@ func _on_area_trueno_2_body_entered(body):
 		carta_3.position.y=pos_y
 		dado.permiso_dado=false
 		body.permiso_movimiento=false
-		await get_tree().create_timer(5).timeout
+		await get_tree().create_timer(3).timeout
 		body.permiso_movimiento=true
 		dado.permiso_dado=true
 		carta_3.position.x=pos_out
@@ -180,7 +180,7 @@ func _on_area_trueno_3_body_entered(body):
 		carta_3.position.y=pos_y
 		dado.permiso_dado=false
 		body.permiso_movimiento=false
-		await get_tree().create_timer(5).timeout
+		await get_tree().create_timer(3).timeout
 		body.permiso_movimiento=true
 		dado.permiso_dado=true
 		carta_3.position.x=pos_out
@@ -191,7 +191,7 @@ func _on_area_trueno_3_body_entered(body):
 		carta_3.position.y=pos_y
 		dado.permiso_dado=false
 		body.permiso_movimiento=false
-		await get_tree().create_timer(5).timeout
+		await get_tree().create_timer(3).timeout
 		body.permiso_movimiento=true
 		dado.permiso_dado=true
 		carta_3.position.x=pos_out
@@ -208,7 +208,7 @@ func _on_area_trueno_4_body_entered(body):
 		carta_3.position.y=pos_y
 		dado.permiso_dado=false
 		body.permiso_movimiento=false
-		await get_tree().create_timer(5).timeout
+		await get_tree().create_timer(3).timeout
 		body.permiso_movimiento=true
 		dado.permiso_dado=true
 		carta_3.position.x=pos_out
@@ -218,7 +218,7 @@ func _on_area_trueno_4_body_entered(body):
 		carta_3.position.y=pos_y
 		dado.permiso_dado=false
 		body.permiso_movimiento=false
-		await get_tree().create_timer(5).timeout
+		await get_tree().create_timer(3).timeout
 		body.permiso_movimiento=true
 		dado.permiso_dado=true
 		carta_3.position.x=pos_out
@@ -235,7 +235,7 @@ func _on_area_fuego_body_entered(body):
 		carta_2.position.y=pos_y
 		dado.permiso_dado=false
 		body.permiso_movimiento=false
-		await get_tree().create_timer(5).timeout
+		await get_tree().create_timer(3).timeout
 		body.permiso_movimiento=true
 		dado.permiso_dado=true
 		carta_2.position.x=pos_out
@@ -245,7 +245,7 @@ func _on_area_fuego_body_entered(body):
 		carta_2.position.y=pos_y
 		dado.permiso_dado=false
 		body.permiso_movimiento=false
-		await get_tree().create_timer(5).timeout
+		await get_tree().create_timer(3).timeout
 		body.permiso_movimiento=true
 		dado.permiso_dado=true
 		carta_2.position.x=pos_out
@@ -263,7 +263,7 @@ func _on_area_fuego_2_body_entered(body):
 		carta_2.position.y=pos_y
 		dado.permiso_dado=false
 		body.permiso_movimiento=false
-		await get_tree().create_timer(5).timeout
+		await get_tree().create_timer(3).timeout
 		body.permiso_movimiento=true
 		dado.permiso_dado=true
 		carta_2.position.x=pos_out
@@ -273,7 +273,7 @@ func _on_area_fuego_2_body_entered(body):
 		carta_2.position.y=pos_y
 		dado.permiso_dado=false
 		body.permiso_movimiento=false
-		await get_tree().create_timer(5).timeout
+		await get_tree().create_timer(3).timeout
 		body.permiso_movimiento=true
 		dado.permiso_dado=true
 		carta_2.position.x=pos_out
@@ -291,7 +291,7 @@ func _on_area_fuego_3_body_entered(body):
 		carta_2.position.y=pos_y
 		dado.permiso_dado=false
 		body.permiso_movimiento=false
-		await get_tree().create_timer(5).timeout
+		await get_tree().create_timer(3).timeout
 		body.permiso_movimiento=true
 		dado.permiso_dado=true
 		carta_2.position.x=pos_out
@@ -301,7 +301,7 @@ func _on_area_fuego_3_body_entered(body):
 		carta_2.position.y=pos_y
 		dado.permiso_dado=false
 		body.permiso_movimiento=false
-		await get_tree().create_timer(5).timeout
+		await get_tree().create_timer(3).timeout
 		body.permiso_movimiento=true
 		dado.permiso_dado=true
 		carta_2.position.x=pos_out
@@ -319,7 +319,7 @@ func _on_area_fuego_4_body_entered(body):
 		carta_2.position.y=pos_y
 		dado.permiso_dado=false
 		body.permiso_movimiento=false
-		await get_tree().create_timer(5).timeout
+		await get_tree().create_timer(3).timeout
 		body.permiso_movimiento=true
 		dado.permiso_dado=true
 		carta_2.position.x=pos_out
@@ -329,7 +329,7 @@ func _on_area_fuego_4_body_entered(body):
 		carta_2.position.y=pos_y
 		dado.permiso_dado=false
 		body.permiso_movimiento=false
-		await get_tree().create_timer(5).timeout
+		await get_tree().create_timer(3).timeout
 		body.permiso_movimiento=true
 		dado.permiso_dado=true
 		carta_2.position.x=pos_out
@@ -347,7 +347,7 @@ func _on_area_agua_body_entered(body):
 		carta_1.position.y=pos_y
 		dado.permiso_dado=false
 		body.permiso_movimiento=false
-		await get_tree().create_timer(5).timeout
+		await get_tree().create_timer(3).timeout
 		body.permiso_movimiento=true
 		dado.permiso_dado=true
 		carta_1.position.x=pos_out
@@ -357,7 +357,7 @@ func _on_area_agua_body_entered(body):
 		carta_1.position.y=pos_y
 		dado.permiso_dado=false
 		body.permiso_movimiento=false
-		await get_tree().create_timer(5).timeout
+		await get_tree().create_timer(3).timeout
 		body.permiso_movimiento=true
 		dado.permiso_dado=true
 		carta_1.position.x=pos_out
@@ -374,7 +374,7 @@ func _on_area_agua_2_body_entered(body):
 		carta_1.position.y=pos_y
 		dado.permiso_dado=false
 		body.permiso_movimiento=false
-		await get_tree().create_timer(5).timeout
+		await get_tree().create_timer(3).timeout
 		body.permiso_movimiento=true
 		dado.permiso_dado=true
 		carta_1.position.x=pos_out
@@ -384,7 +384,7 @@ func _on_area_agua_2_body_entered(body):
 		carta_1.position.y=pos_y
 		dado.permiso_dado=false
 		body.permiso_movimiento=false
-		await get_tree().create_timer(5).timeout
+		await get_tree().create_timer(3).timeout
 		body.permiso_movimiento=true
 		dado.permiso_dado=true
 		carta_1.position.x=pos_out
@@ -401,7 +401,7 @@ func _on_area_agua_3_body_entered(body):
 		carta_1.position.y=pos_y
 		dado.permiso_dado=false
 		body.permiso_movimiento=false
-		await get_tree().create_timer(5).timeout
+		await get_tree().create_timer(3).timeout
 		body.permiso_movimiento=true
 		dado.permiso_dado=true
 		carta_1.position.x=pos_out
@@ -411,7 +411,7 @@ func _on_area_agua_3_body_entered(body):
 		carta_1.position.y=pos_y
 		dado.permiso_dado=false
 		body.permiso_movimiento=false
-		await get_tree().create_timer(5).timeout
+		await get_tree().create_timer(3).timeout
 		body.permiso_movimiento=true
 		dado.permiso_dado=true
 		carta_1.position.x=pos_out
@@ -429,7 +429,7 @@ func _on_area_agua_4_body_entered(body):
 		carta_1.position.y=pos_y
 		dado.permiso_dado=false
 		body.permiso_movimiento=false
-		await get_tree().create_timer(5).timeout
+		await get_tree().create_timer(3).timeout
 		body.permiso_movimiento=true
 		dado.permiso_dado=true
 		carta_1.position.x=pos_out
@@ -439,7 +439,7 @@ func _on_area_agua_4_body_entered(body):
 		carta_1.position.y=pos_y
 		dado.permiso_dado=false
 		body.permiso_movimiento=false
-		await get_tree().create_timer(5).timeout
+		await get_tree().create_timer(3).timeout
 		body.permiso_movimiento=true
 		dado.permiso_dado=true
 		carta_1.position.x=pos_out

@@ -16,7 +16,7 @@ func _physics_process(delta):
 		serpiente.movimientos_disponibles=numero_elegido+1
 		await get_tree().create_timer(0.1).timeout
 		jugador_actual=(jugador_actual+1)%2
-	if Input.is_action_just_pressed("espacio") and jugador_actual==1 and serpiente.movimientos_disponibles==0:
+	if Input.is_action_just_pressed("espacio") and jugador_actual==1 and serpiente.movimientos_disponibles==0 and permiso_dado==true:
 		audio_stream_player.play()
 		randomize()
 		numero_elegido=(randi()%6)

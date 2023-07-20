@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dplhgpidtnlbu"
-path="res://.godot/imported/projectile_blue.png-b862f5dac7a098d6777ed9db08c56d8a.ctex"
+path="res://.godot/imported/projectile_blue.png-28d01985b8bbde4ef6412cf44367a400.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Power_attack/projectile_blue.png"
-dest_files=["res://.godot/imported/projectile_blue.png-b862f5dac7a098d6777ed9db08c56d8a.ctex"]
+source_file="res://assets/Power_attack/projectile_blue.png"
+dest_files=["res://.godot/imported/projectile_blue.png-28d01985b8bbde4ef6412cf44367a400.ctex"]
 
 [params]
 
