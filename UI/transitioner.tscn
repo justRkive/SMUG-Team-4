@@ -1,6 +1,24 @@
-[gd_scene load_steps=7 format=3 uid="uid://ds0biv0hjomfi"]
+[gd_scene load_steps=11 format=3 uid="uid://ds0biv0hjomfi"]
 
 [ext_resource type="Script" path="res://UI/transitioner.gd" id="1_bi60q"]
+[ext_resource type="FontFile" uid="uid://bvgx168yqjte4" path="res://fonts/magofonts/mago3.ttf" id="2_3gop3"]
+
+[sub_resource type="Gradient" id="Gradient_wbk7i"]
+interpolation_mode = 1
+colors = PackedColorArray(0, 0, 0, 0.509804, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jgllh"]
+gradient = SubResource("Gradient_wbk7i")
+fill_to = Vector2(1, 1)
+repeat = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_btkn0"]
+font = ExtResource("2_3gop3")
+font_size = 128
+outline_color = Color(0, 0, 0, 0.360784)
+shadow_size = 0
+shadow_color = Color(0, 0.239216, 0.160784, 1)
+shadow_offset = Vector2(0, 0)
 
 [sub_resource type="Gradient" id="Gradient_huhwv"]
 interpolation_mode = 1
@@ -41,6 +59,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_jjdsm"]
 resource_name = "fade_out"
+length = 2.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -48,7 +67,7 @@ tracks/0/path = NodePath("TextureRect:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(1.5, 2.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0.1, 0.1), Vector2(25, 25)]
@@ -60,10 +79,46 @@ tracks/1/path = NodePath("TextureRect:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CanvasLayer/Label:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.1, 0.168), Vector2(1, 1.677)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CanvasLayer/TextureRect:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.1, 0.1), Vector2(0.9, 0.9)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jrqs6"]
@@ -82,7 +137,52 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_bi60q")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 34.0
+offset_top = -62.0
+offset_right = -18.0
+offset_bottom = 88.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.9, 0.9)
+pivot_offset = Vector2(550, 75)
+size_flags_horizontal = 3
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.0
+texture = SubResource("GradientTexture2D_jgllh")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+top_level = true
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -450.0
+offset_top = -50.0
+offset_right = 462.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 1.677)
+pivot_offset = Vector2(450, 50)
+text = "THE BATTLE BEGINS!"
+label_settings = SubResource("LabelSettings_btkn0")
+vertical_alignment = 1
+
 [node name="TextureRect" type="TextureRect" parent="."]
+show_behind_parent = true
+visibility_layer = 2
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

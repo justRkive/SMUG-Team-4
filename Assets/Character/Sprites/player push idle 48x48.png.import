@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cugywu6siumhj"
-path="res://.godot/imported/player push idle 48x48.png-067032536c9ec966ea241c2ff0a068e3.ctex"
+path="res://.godot/imported/player push idle 48x48.png-95fa8a8135892b1458144948fbf6885c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Character/Sprites/player push idle 48x48.png"
-dest_files=["res://.godot/imported/player push idle 48x48.png-067032536c9ec966ea241c2ff0a068e3.ctex"]
+source_file="res://Assets/Character/Sprites/player push idle 48x48.png"
+dest_files=["res://.godot/imported/player push idle 48x48.png-95fa8a8135892b1458144948fbf6885c.ctex"]
 
 [params]
 

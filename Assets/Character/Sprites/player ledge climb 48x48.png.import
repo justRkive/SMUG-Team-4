@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cl8cakawyinvy"
-path="res://.godot/imported/player ledge climb 48x48.png-916ad88c8cfa7c2bdd40e85c262f1f81.ctex"
+path="res://.godot/imported/player ledge climb 48x48.png-236a73964661c3afab5820a163069ae8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Character/Sprites/player ledge climb 48x48.png"
-dest_files=["res://.godot/imported/player ledge climb 48x48.png-916ad88c8cfa7c2bdd40e85c262f1f81.ctex"]
+source_file="res://Assets/Character/Sprites/player ledge climb 48x48.png"
+dest_files=["res://.godot/imported/player ledge climb 48x48.png-236a73964661c3afab5820a163069ae8.ctex"]
 
 [params]
 

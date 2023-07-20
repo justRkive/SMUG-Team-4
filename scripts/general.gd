@@ -26,6 +26,8 @@ extends Node3D
 @onready var on_board = true
 @onready var canvasLayer := $CanvasLayer
 @onready var canvasLayerEnding := $CanvasLayerEnding
+@onready var canvasLayerfadeIn := $CanvasLayer/fadeIn/CanvasLayer
+@onready var canvasLayerfadeOut := $CanvasLayer/fadeOut/CanvasLayer
 
 @export var fade_out : Transitioner
 @export var fade_in : Transitioner 
@@ -45,6 +47,8 @@ func _ready():
 
 	canvasLayer.visible = false
 	canvasLayerEnding.visible = false
+	canvasLayerfadeIn.visible = false
+	canvasLayerfadeOut.visible = false
 	var current_round = label_2.rondas
 	if (current_round > 1):
 		canvasLayer.visible = true

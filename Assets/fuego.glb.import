@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://tiha2450ibjc"
-path="res://.godot/imported/fuego.glb-2430866291304bc963a6ea2534a996b3.scn"
+path="res://.godot/imported/fuego.glb-ef0231e5ad7b2a561fe3ab617e5567b8.scn"
 
 [deps]
 
-source_file="res://assets/fuego.glb"
-dest_files=["res://.godot/imported/fuego.glb-2430866291304bc963a6ea2534a996b3.scn"]
+source_file="res://Assets/fuego.glb"
+dest_files=["res://.godot/imported/fuego.glb-ef0231e5ad7b2a561fe3ab617e5567b8.scn"]
 
 [params]
 

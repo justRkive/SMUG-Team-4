@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bpikg0nww018v"
-path="res://.godot/imported/snake spritesheet calciumtrice.png-7636e61463b98a60b92dd7ff0a8fd496.ctex"
+path="res://.godot/imported/snake spritesheet calciumtrice.png-39963bf3696d7382c1b1edb6bdbb0e09.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Snake/Snake-green/snake spritesheet calciumtrice.png"
-dest_files=["res://.godot/imported/snake spritesheet calciumtrice.png-7636e61463b98a60b92dd7ff0a8fd496.ctex"]
+source_file="res://Assets/Snake/Snake-green/snake spritesheet calciumtrice.png"
+dest_files=["res://.godot/imported/snake spritesheet calciumtrice.png-39963bf3696d7382c1b1edb6bdbb0e09.ctex"]
 
 [params]
 
