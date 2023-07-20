@@ -168,7 +168,6 @@ func _process(delta):
 			on_board = false		
 			dado.permiso_dado=false
 			canvasLayerEnding.visible = true
-			await get_tree().create_timer(2).timeout
 			player1wins.set_next_animation(true)
 				
 			print("Player 1 wins")
@@ -178,7 +177,6 @@ func _process(delta):
 			on_board = false		
 			dado.permiso_dado=false
 			canvasLayerEnding.visible = true
-			await get_tree().create_timer(2).timeout
 			player2wins.set_next_animation(true)
 				
 			print("Player 2 wins")
@@ -192,7 +190,6 @@ func _process(delta):
 		var player2_pts = serpiente_2.puntos
 		if (player1_pts > player2_pts):
 			canvasLayerEnding.visible = true
-			await get_tree().create_timer(2).timeout
 			player1wins.set_next_animation(true)
 				
 			print("Player 1 wins")
@@ -200,7 +197,6 @@ func _process(delta):
 			get_tree().change_scene_to_file("res://Menu/main_menu.tscn")
 		else:
 			canvasLayerEnding.visible = true
-			await get_tree().create_timer(2).timeout
 			player2wins.set_next_animation(true)
 				
 			print("Player 2 wins")

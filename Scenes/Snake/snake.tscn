@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/hp_snake.gd" id="1_82ye7"]
 [ext_resource type="Theme" uid="uid://bafyavu7yhamd" path="res://Resources/theme.tres" id="1_a6qy5"]
-[ext_resource type="SpriteFrames" uid="uid://j08g7gjt00m4" path="res://Scenes/Snake/idle_animiation/snake.tres" id="2_qnjb4"]
+[ext_resource type="SpriteFrames" uid="uid://j08g7gjt00m4" path="res://scenes/Snake/idle_animiation/snake.tres" id="2_qnjb4"]
 [ext_resource type="Script" path="res://Utility/hurt_box.gd" id="3_7ntqe"]
 [ext_resource type="PackedScene" uid="uid://bekvm2gch1soa" path="res://Menu/debug_menu_2d.tscn" id="4_ncqrs"]
 [ext_resource type="AudioStream" uid="uid://cytyrhd6uqg35" path="res://sounds/sfx/Jump_03.wav" id="4_t73wv"]
