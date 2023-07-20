@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cmky7daid4r4w"]
+[gd_scene load_steps=9 format=3 uid="uid://cmky7daid4r4w"]
 
 [ext_resource type="FontFile" uid="uid://6p27sne4gm62" path="res://fonts/magofonts/mago2.ttf" id="1_hs6ah"]
 [ext_resource type="Script" path="res://scenes/Credits/Credits.gd" id="1_mkjkm"]
+[ext_resource type="AudioStream" uid="uid://dp44ebbfgwmb5" path="res://sounds/music/Credits-2.mp3" id="3_8u8cu"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7bib5"]
 
@@ -15,7 +16,7 @@ VScrollBar/styles/scroll = SubResource("StyleBoxEmpty_ptcrx")
 
 [sub_resource type="Animation" id="Animation_m5lyu"]
 resource_name = "Credits"
-length = 20.0
+length = 30.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -23,10 +24,10 @@ tracks/0/path = NodePath("ScrollContainer:scroll_vertical")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 19.9),
+"times": PackedFloat32Array(0, 1.9, 30),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [0, 0, 2450]
+"values": [0, 0, 2900]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7rpqt"]
@@ -54,6 +55,8 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 bbcode_enabled = true
 text = "[center][shake][color=#33ff66]Credits[/color]
+PARTY SNAKES
+Made by SMUG-Team-4
 [color=#ff0000]DEV TEAM[/color]  
 Ignacio Arros
 Bastian Corrales
@@ -65,6 +68,8 @@ Gabriel Orrego
 Christopher Marin
 Diego Garcia
 Nadia Decar
+[color=#ff0000]MUSIC PROGRAM USED[/color]
+Beepbox.co
 [color=#ff0000]2D CAVE MAP BY[/color]
 seartsy
 [color=#ff0000]FONTS BY[/color]
@@ -80,8 +85,8 @@ Little Robot Sound Factory
 
 
 Thank you for playing! :)
-(Press ESC to go
-back to main menu)
+[shake](Press ESC to go
+back to main menu)[/shake]
 
 
 
@@ -94,3 +99,8 @@ autoplay = "Credits"
 libraries = {
 "": SubResource("AnimationLibrary_7rpqt")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_8u8cu")
+autoplay = true
+bus = &"Music"
