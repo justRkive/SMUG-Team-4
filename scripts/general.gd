@@ -171,7 +171,7 @@ func _process(delta):
 			player1wins.set_next_animation(true)
 				
 			print("Player 1 wins")
-			await get_tree().create_timer(5).timeout
+			await get_tree().create_timer(7).timeout
 			get_tree().change_scene_to_file("res://Menu/main_menu.tscn")
 		if (player1_pts < player2_pts):
 			on_board = false		
@@ -180,7 +180,7 @@ func _process(delta):
 			player2wins.set_next_animation(true)
 				
 			print("Player 2 wins")
-			await get_tree().create_timer(5).timeout
+			await get_tree().create_timer(7).timeout
 			get_tree().change_scene_to_file("res://Menu/main_menu.tscn")
 	if (int(current_round) == 13) and on_board:
 		#await get_tree().create_timer(1).timeout
@@ -193,13 +193,13 @@ func _process(delta):
 			player1wins.set_next_animation(true)
 				
 			print("Player 1 wins")
-			await get_tree().create_timer(5).timeout
+			await get_tree().create_timer(7).timeout
 			get_tree().change_scene_to_file("res://Menu/main_menu.tscn")
 		else:
 			canvasLayerEnding.visible = true
 			player2wins.set_next_animation(true)
 				
 			print("Player 2 wins")
-			await get_tree().create_timer(5).timeout
+			await get_tree().create_timer(7).timeout
 			get_tree().change_scene_to_file("res://Menu/main_menu.tscn")
 		

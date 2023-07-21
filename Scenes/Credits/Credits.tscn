@@ -27,7 +27,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1.9, 30),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [0, 0, 2900]
+"values": [0, 0, 3400]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7rpqt"]
@@ -47,7 +47,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = SubResource("Theme_1bcq7")
-scroll_vertical = 100
+scroll_vertical = 3400
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer"]
 layout_mode = 2
@@ -68,6 +68,8 @@ Gabriel Orrego
 Christopher Marin
 Diego Garcia
 Nadia Decar
+[color=#ff0000]ENGINE USED[/color] 
+Godot 4.1 
 [color=#ff0000]MUSIC PROGRAM USED[/color]
 Beepbox.co
 [color=#ff0000]2D CAVE MAP BY[/color]
@@ -78,7 +80,10 @@ Nimble Beasts Collective
 Zelta & Hiross
 [color=#ff0000]SFX[/color]
 HaelDB (dice sounds)
-Little Robot Sound Factory 
+Little Robot Sound Factory
+[www.littlerobotsoundfactory.com
+-
+Fair Use of Copyright CC-BY 3.0]
 (2D snake and attack sounds)
 [/shake]
 
