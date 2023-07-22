@@ -3,7 +3,7 @@ extends Label
 @onready var serpiente = $"../../../../serpiente"
 @onready var dado = $"../../../SubViewport/Camera3D/dado"
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if serpiente.movimientos_disponibles==0 and serpiente_2.movimientos_disponibles==0:
 		self.text="Throw Dice"
 	if serpiente.movimientos_disponibles==1 or serpiente_2.movimientos_disponibles==1:	

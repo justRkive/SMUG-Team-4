@@ -28,9 +28,6 @@ extends Node3D
 @onready var carta_1 = $"../SubViewportContainer/Carta1"
 @onready var carta_2 = $"../SubViewportContainer/Carta2"
 @onready var carta_3 = $"../SubViewportContainer/Carta3"
-@onready var carta_4 = $"../SubViewportContainer/Carta4"
-@onready var carta_5 = $"../SubViewportContainer/Carta5"
-@onready var carta_6 = $"../SubViewportContainer/Carta6"
 
 @onready var serpiente = $"../serpiente"
 @onready var serpiente_2 = $"../serpiente2"

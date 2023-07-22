@@ -116,12 +116,12 @@ font_size = 100
 script/source = "extends Camera3D
 @onready var serpiente = $\"../../../serpiente\"
 @onready var serpiente_2 = $\"../../../serpiente2\"
-const altura_camara=6
+const altura_camara=5
 @onready var dado = $dado
 
 @export var mapa=0
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if mapa==0 and dado.jugador_actual==0 and serpiente.movimientos_disponibles==0 and serpiente_2.movimientos_disponibles==0:
 		$\".\".position.x=(serpiente.position.x)+(cos(serpiente.rotation.y)*0.5)
 		$\".\".position.y=serpiente.position.y+0.3

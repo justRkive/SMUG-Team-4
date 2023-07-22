@@ -144,7 +144,7 @@ func load_data():
 	mapa.casillas_agua=PackedVector3Array(data.water_array)
 	mapa.casillas_trueno=PackedVector3Array(data.thunder_array)
 	
-func _process(delta):
+func _process(_delta):
 	var current_round = label_2.rondas
 	if (int(current_round)%4 == 0) and on_board:
 		on_board = false

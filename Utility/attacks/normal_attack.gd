@@ -31,5 +31,5 @@ func _physics_process(delta):
 func _on_timer_timeout():
 	queue_free()
 
-func _on_enemy_hit(enemy_hit):
+func _on_enemy_hit(_enemy_hit):
 	queue_free()

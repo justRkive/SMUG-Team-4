@@ -12,7 +12,7 @@ extends CanvasLayer
 @onready var green_snake = $"../green_snake"
 
 
-func _process(delta):
+func _process(_delta):
 	gs_fire_number.text= "x"+str(green_snake.poderes["fire"])
 	gs_water_number.text= "x"+str(green_snake.poderes["water"])
 	gs_thunder_number.text= "x"+str(green_snake.poderes["thunder"])

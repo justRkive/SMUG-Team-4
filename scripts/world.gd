@@ -26,7 +26,7 @@ func save_data():
 	file1.store_string(JSON.stringify(data1))
 
 	var file = FileAccess.open("user://data.json",FileAccess.READ)
-	var data = JSON.parse_string(file.get_as_text())
+	var _data = JSON.parse_string(file.get_as_text())
 
 		
 func load_data():

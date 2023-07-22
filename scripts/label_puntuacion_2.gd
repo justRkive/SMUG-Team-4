@@ -4,5 +4,5 @@ extends Label
 
 @export var puntos=0
 
-func _process(delta):
+func _process(_delta):
 	self.text= "Player 2 = " + str(serpiente_2.puntos)

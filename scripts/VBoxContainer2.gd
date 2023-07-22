@@ -6,7 +6,7 @@ extends VBoxContainer
 
 @onready var serpiente = $"../../../serpiente"
 
-func _process(delta):
+func _process(_delta):
 	label_2.text=str(serpiente.fuego)
 	label_3.text=str(serpiente.agua)
 	label_4.text=str(serpiente.trueno)
