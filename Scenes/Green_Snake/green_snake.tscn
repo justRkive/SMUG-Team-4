@@ -381,20 +381,20 @@ script = SubResource("GDScript_dua3t")
 
 [node name="Label2" type="Label" parent="."]
 modulate = Color(0, 0, 0, 1)
-offset_left = 1.0
-offset_top = -32.0
-offset_right = 73.0
-offset_bottom = 25.0
+offset_left = -5.0
+offset_top = -33.0
+offset_right = 67.0
+offset_bottom = 24.0
 scale = Vector2(0.32, 0.32)
 theme = ExtResource("1_cvdqp")
 text = "test"
 script = ExtResource("1_u0yr2")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 2.0
-offset_top = -31.0
-offset_right = 74.0
-offset_bottom = 26.0
+offset_left = -4.0
+offset_top = -32.0
+offset_right = 68.0
+offset_bottom = 25.0
 scale = Vector2(0.28, 0.28)
 theme = ExtResource("1_cvdqp")
 text = "test"
